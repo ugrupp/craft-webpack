@@ -6,8 +6,8 @@ require('dotenv').config();
 // Webpack settings exports
 // noinspection WebpackConfigHighlighting
 module.exports = {
-    name: "Example Project",
-    copyright: "Example Company, Inc.",
+    name: "Craft Webpack Scaffold",
+    copyright: "Urs Grupp, 21sieben.de",
     paths: {
         src: {
             base: "./src/",
@@ -26,9 +26,9 @@ module.exports = {
         templates: "./templates/"
     },
     urls: {
-        live: "https://example.com/",
-        local: "http://example.test/",
-        critical: "http://example.test/",
+        live: "https://craft-webpack-prod-domain.com/",
+        local: "http://craft-webpack.test/",
+        critical: "http://craft-webpack.test/",
         publicPath: () => process.env.PUBLIC_PATH || "/dist/",
     },
     vars: {
