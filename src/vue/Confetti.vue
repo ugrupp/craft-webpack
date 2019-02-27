@@ -22,3 +22,9 @@
         methods: {}
     }
 </script>
+
+<style>
+    body {
+        font-size: 40px;
+    }
+</style>

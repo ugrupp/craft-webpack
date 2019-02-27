@@ -113,7 +113,6 @@ const baseConfig = {
         ],
     },
     plugins: [
-        new WebpackNotifierPlugin({title: 'Webpack', excludeWarnings: true, alwaysNotify: true}),
         new VueLoaderPlugin(),
     ]
 };
@@ -132,6 +131,11 @@ const legacyConfig = {
         new ManifestPlugin(
             configureManifest('manifest-legacy.json')
         ),
+        new WebpackNotifierPlugin({
+            title: 'Webpack (Legacy Build)',
+            excludeWarnings: true,
+            alwaysNotify: true
+        }),
     ]
 };
 
@@ -146,6 +150,11 @@ const modernConfig = {
         new ManifestPlugin(
             configureManifest('manifest.json')
         ),
+        new WebpackNotifierPlugin({
+            title: 'Webpack (Modern Build)',
+            excludeWarnings: true,
+            alwaysNotify: true
+        }),
     ]
 };
 
