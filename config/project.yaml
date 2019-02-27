@@ -1,3 +1,4 @@
+dateModified: 1551025899
 email:
   fromEmail: urs@21sieben.de
   fromName: 'Craft Webpack Scaffold'
@@ -5,6 +6,32 @@ email:
 fieldGroups:
   6d3a100d-2416-43b3-913c-6206c7a61231:
     name: Common
+plugins:
+  twigpack:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+sections:
+  7d93f9fa-b037-4efb-a916-d7367dfec86d:
+    enableVersioning: true
+    entryTypes:
+      b3c1da07-b917-4063-865a-0f24c5ba6b3b:
+        handle: home
+        hasTitleField: false
+        name: Home
+        sortOrder: 1
+        titleFormat: '{section.name|raw}'
+        titleLabel: null
+    handle: home
+    name: Home
+    propagateEntries: true
+    siteSettings:
+      665b92a3-8815-4c5e-9908-277d2d6ea628:
+        enabledByDefault: true
+        hasUrls: true
+        template: _index
+        uriFormat: __home__
+    type: single
 siteGroups:
   a160c4ba-1b94-4a79-ae3c-8bedb0b16477:
     name: 'Craft Webpack Scaffold'

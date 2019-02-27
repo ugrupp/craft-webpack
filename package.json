@@ -1,27 +1,14 @@
 {
-    "name": "example-project",
+    "name": "craft-webpack",
     "version": "1.0.0",
-    "description": "Example Project brand website",
-    "keywords": [
-        "Example",
-        "Keywords"
-    ],
-    "homepage": "https://github.com/example-developer/example-project",
-    "bugs": {
-        "email": "someone@example-developer.com",
-        "url": "https://github.com/example-developer/example-project/issues"
-    },
-    "license": "SEE LICENSE IN LICENSE.md",
+    "description": "Craft Webpack Scaffold",
+    "license": "UNLICENSED",
     "author": {
-        "name": "Example Developer",
-        "email": "someone@example-developer.com",
-        "url": "https://example-developer.com"
+        "name": "Urs Grupp, 21sieben",
+        "email": "urs@21sieben.de",
+        "url": "https://www.21sieben.de"
     },
     "browser": "/web/index.php",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/example-developer/example-project.git"
-    },
     "private": true,
     "scripts": {
         "dev": "webpack-dev-server --config webpack.dev.js",

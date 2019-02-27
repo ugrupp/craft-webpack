@@ -27,7 +27,7 @@ const configureDevServer = (buildType) => {
         port: settings.devServerConfig.port(),
         https: !!parseInt(settings.devServerConfig.https()),
         disableHostCheck: true,
-        quiet: true,
+        quiet: false,
         hot: true,
         hotOnly: true,
         overlay: true,
