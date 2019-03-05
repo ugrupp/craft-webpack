@@ -21,6 +21,9 @@ module.exports = {
                 "./criticalcss",
                 "./css",
                 "./js"
+            ],
+            cleanSVG: [
+                "./img/svg-sprite/*.*",
             ]
         },
         templates: "./templates/"
@@ -67,6 +70,10 @@ module.exports = {
     },
     manifestConfig: {
         basePath: ""
+    },
+    svgConfig: {
+        spriteFilename: 'img/svg-sprite/sprite.[hash].svg',
+        urlPattern: /img\/svg-sprite\/.*\.svg$/,
     },
     saveRemoteFileConfig: [
         {

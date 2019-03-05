@@ -19,8 +19,8 @@ return [
         ],
         // webpack-dev-server config
         'devServer' => [
-            'manifestPath' => 'http://localhost:2170/',
-            'publicPath' => 'http://localhost:2170/',
+            'manifestPath' => 'http://craft-webpack.test:2170/',
+            'publicPath' => 'http://craft-webpack.test:2170/',
         ],
         // Local files config
         'localFiles' => [

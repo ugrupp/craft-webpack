@@ -43,7 +43,8 @@ const configureBanner = () => {
             ' */',
             ''
         ].join('\n'),
-        raw: true
+        raw: true,
+        exclude: /\.(svg)$/i,
     };
 };
 
@@ -112,7 +113,7 @@ const configureHtml = () => {
 const configureImageLoader = (buildType) => {
     if (buildType === LEGACY_CONFIG) {
         return {
-            test: /\.(png|jpe?g|gif|svg|webp)$/i,
+            test: /\.(png|jpe?g|gif|webp)$/i,
             use: [
                 {
                     loader: 'file-loader',
@@ -125,7 +126,7 @@ const configureImageLoader = (buildType) => {
     }
     if (buildType === MODERN_CONFIG) {
         return {
-            test: /\.(png|jpe?g|gif|svg|webp)$/i,
+            test: /\.(png|jpe?g|gif|webp)$/i,
             use: [
                 {
                     loader: 'file-loader',

@@ -11,6 +11,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
 // config files
 const pkg = require('./package.json');
@@ -85,6 +86,24 @@ const configureManifest = (fileName) => {
     };
 };
 
+// Configure SVG loader
+const configureSVGLoader = () => {
+    return {
+        test: settings.svgConfig.urlPattern,
+        use: [
+            {
+                loader: 'svg-sprite-loader',
+                options: {
+                    extract: true,
+                    spriteFilename: settings.svgConfig.spriteFilename,
+                }
+            },
+            // 'svg-fill-loader',
+            // 'svgo-loader'
+        ]
+    }
+};
+
 // Configure Vue loader
 const configureVueLoader = () => {
     return {
@@ -110,10 +129,14 @@ const baseConfig = {
         rules: [
             configureFontLoader(),
             configureVueLoader(),
+            configureSVGLoader(),
         ],
     },
     plugins: [
         new VueLoaderPlugin(),
+        new SpriteLoaderPlugin({
+            plainSprite: true
+        }),
     ]
 };
 

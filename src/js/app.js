@@ -1,4 +1,6 @@
 import styles from '../css/app.pcss';
+import './webpack/require-img';
+import './webpack/require-svg';
 
 // App main
 const main = async () => {

@@ -15,6 +15,10 @@
   <h1>It works</h1>
   <p>Nulla vitae elit libero, a pharetra augue. Maecenas sed diam eget risus varius blandit sit amet non magna. Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.</p>
 
+  <svg class="icon">
+    <use xlink:href="{{ craft.twigpack.getModuleUri("img/svg-sprite/sprite.svg") | replace({':2170': '/dist'}) }}#ic-angle-left"></use>
+  </svg>
+
   <div id="app">
     <confetti></confetti>
   </div>

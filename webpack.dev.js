@@ -9,6 +9,7 @@ const sane = require('sane');
 const webpack = require('webpack');
 
 // webpack plugins
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const Dashboard = require('webpack-dashboard');
 const DashboardPlugin = require('webpack-dashboard/plugin');
 const dashboard = new Dashboard();
@@ -27,11 +28,14 @@ const configureDevServer = (buildType) => {
         port: settings.devServerConfig.port(),
         https: !!parseInt(settings.devServerConfig.https()),
         disableHostCheck: true,
-        quiet: true,
+        quiet: false,
         hot: true,
         hotOnly: false,
         overlay: true,
         stats: 'errors-only',
+        writeToDisk: (filePath) => {
+            return settings.svgConfig.urlPattern.test(filePath);
+        },
         watchOptions: {
             poll: !!parseInt(settings.devServerConfig.poll()),
             ignored: /node_modules/,
@@ -53,11 +57,19 @@ const configureDevServer = (buildType) => {
     };
 };
 
+// Configure Clean webpack
+const configureCleanWebpack = () => {
+    return {
+        root: path.resolve(__dirname, settings.paths.dist.base),
+        watch: true,
+    };
+};
+
 // Configure Image loader
 const configureImageLoader = (buildType) => {
     if (buildType === LEGACY_CONFIG) {
         return {
-            test: /\.(png|jpe?g|gif|svg|webp)$/i,
+            test: /\.(png|jpe?g|gif|webp)$/i,
             use: [
                 {
                     loader: 'file-loader',
@@ -70,7 +82,7 @@ const configureImageLoader = (buildType) => {
     }
     if (buildType === MODERN_CONFIG) {
         return {
-            test: /\.(png|jpe?g|gif|svg|webp)$/i,
+            test: /\.(png|jpe?g|gif|webp)$/i,
             use: [
                 {
                     loader: 'file-loader',
@@ -142,6 +154,9 @@ module.exports = [
                 ],
             },
             plugins: [
+                new CleanWebpackPlugin(settings.paths.dist.cleanSVG,
+                    configureCleanWebpack()
+                ),
                 new webpack.HotModuleReplacementPlugin(),
             ],
         }
@@ -163,6 +178,9 @@ module.exports = [
                 ],
             },
             plugins: [
+                new CleanWebpackPlugin(settings.paths.dist.cleanSVG,
+                    configureCleanWebpack()
+                ),
                 new webpack.HotModuleReplacementPlugin(),
                 new DashboardPlugin(dashboard.setData),
             ],
