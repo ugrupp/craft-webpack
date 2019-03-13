@@ -11,6 +11,7 @@ const webpack = require('webpack');
 // webpack plugins
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const Stylish = require('webpack-stylish');
+const StylelintBarePlugin = require('stylelint-bare-webpack-plugin');
 
 // config files
 const common = require('./webpack.common.js');
@@ -183,6 +184,9 @@ module.exports = [
                 ],
             },
             plugins: [
+                new StylelintBarePlugin({
+                    files: 'src/css/**/*.scss'
+                }),
                 new webpack.HotModuleReplacementPlugin(),
                 new Stylish(),
             ],

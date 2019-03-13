@@ -22,6 +22,7 @@ const SaveRemoteFilePlugin = require('save-remote-file-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const WebappWebpackPlugin = require('webapp-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
+const StylelintBarePlugin = require('stylelint-bare-webpack-plugin');
 
 // config files
 const common = require('./webpack.common.js');
@@ -301,6 +302,9 @@ module.exports = [
                 new CleanWebpackPlugin(settings.paths.dist.clean,
                     configureCleanWebpack()
                 ),
+                new StylelintBarePlugin({
+                    files: 'src/css/**/*.scss'
+                }),
                 new MiniCssExtractPlugin({
                     path: path.resolve(__dirname, settings.paths.dist.base),
                     filename: path.join('./css', '[name].[chunkhash].css'),
