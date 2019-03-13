@@ -21,29 +21,37 @@ const settings = require('./webpack.settings.js');
 const configureBabelLoader = (browserList) => {
     return {
         test: /\.js$/,
-        exclude: /node_modules/,
         use: {
             loader: 'babel-loader',
             options: {
                 presets: [
                     [
                         '@babel/preset-env', {
-                        modules: false,
-                        useBuiltIns: 'entry',
-                        targets: {
-                            browsers: browserList,
-                        },
-                    }
+                            modules: false,
+                            useBuiltIns: 'usage',
+                            targets: {
+                                browsers: browserList,
+                            },
+                        }
                     ],
                 ],
                 plugins: [
                     '@babel/plugin-syntax-dynamic-import',
                     [
                         "@babel/plugin-transform-runtime", {
-                        "regenerator": true
-                    }
+                            "regenerator": true
+                        }
                     ]
                 ],
+                cacheDirectory: true,
+                ignore: [
+                    /\/core-js/,
+                    /@babel\b/,
+                ],
+                overrides: [{
+                    test: './node_modules',
+                    sourceType: 'unambiguous', // allows us to transpile node_modules
+                }],
             },
         },
     };
@@ -62,7 +70,8 @@ const configureEntries = () => {
 // Configure Font loader
 const configureFontLoader = () => {
     return {
-        test: /\.(ttf|eot|woff2?)$/i,
+        test: /\.(ttf|eot|svg|woff2?)$/i,
+        include: [/fonts/],
         use: [
             {
                 loader: 'file-loader',
@@ -70,7 +79,7 @@ const configureFontLoader = () => {
                     name: 'fonts/[name].[ext]'
                 }
             }
-        ]
+        ],
     };
 };
 

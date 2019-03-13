@@ -209,7 +209,7 @@ const configureOptimization = (buildType) => {
 const configurePostcssLoader = (buildType) => {
     if (buildType === LEGACY_CONFIG) {
         return {
-            test: /\.(pcss|css)$/,
+            test: /\.scss$/,
             use: [
                 MiniCssExtractPlugin.loader,
                 {
@@ -227,14 +227,21 @@ const configurePostcssLoader = (buildType) => {
                     options: {
                         sourceMap: true
                     }
-                }
+                },
+                {
+                    loader: 'sass-loader',
+                    options: {
+                        implementation: require("sass"),
+                        sourceMap: true,
+                    }
+                },
             ]
         };
     }
     // Don't generate CSS for the modern config in production
     if (buildType === MODERN_CONFIG) {
         return {
-            test: /\.(pcss|css)$/,
+            test: /\.scss$/,
             loader: 'ignore-loader'
         };
     }

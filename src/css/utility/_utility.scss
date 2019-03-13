@@ -1,0 +1,38 @@
+//
+// Utilities
+// --------------------------------------------------
+
+// Screen reader friendly hiding utility
+.u-invisible {
+  margin: -3px;
+  position: absolute;
+  text-indent: 100%;
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  display: block;
+}
+
+// Spacing utility
+@import '~spejson';
+
+$spacing-prefix: 'u-';
+$spacing-sizes: (
+  xs: 16px,
+  sm: 24px,
+  md: 32px,
+  lg: 48px,
+  xl: 96px,
+);
+$spacing-bp: $breakpoints;
+$spacing-scales: (
+  'phone': 1, // this name cannot be changed and must be defined
+  'xs': 1,
+  'sm': 1.25,
+  'md': 1.5,
+  'lg': 1.75,
+  'xl': 2
+);
+
+@include generate-spacing-margin;
+@include generate-spacing-padding;

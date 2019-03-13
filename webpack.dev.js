@@ -10,9 +10,7 @@ const webpack = require('webpack');
 
 // webpack plugins
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const Dashboard = require('webpack-dashboard');
-const DashboardPlugin = require('webpack-dashboard/plugin');
-const dashboard = new Dashboard();
+const Stylish = require('webpack-stylish');
 
 // config files
 const common = require('./webpack.common.js');
@@ -100,13 +98,13 @@ const configurePostcssLoader = (buildType) => {
     // Don't generate CSS for the legacy config in development
     if (buildType === LEGACY_CONFIG) {
         return {
-            test: /\.(pcss|css)$/,
+            test: /\.scss$/,
             loader: 'ignore-loader'
         };
     }
     if (buildType === MODERN_CONFIG) {
         return {
-            test: /\.(pcss|css)$/,
+            test: /\.scss$/,
             use: [
                 {
                     loader: 'style-loader',
@@ -129,7 +127,14 @@ const configurePostcssLoader = (buildType) => {
                     options: {
                         sourceMap: true
                     }
-                }
+                },
+                {
+                    loader: 'sass-loader',
+                    options: {
+                        implementation: require("sass"),
+                        sourceMap: true,
+                    }
+                },
             ]
         };
     }
@@ -178,11 +183,8 @@ module.exports = [
                 ],
             },
             plugins: [
-                new CleanWebpackPlugin(settings.paths.dist.cleanSVG,
-                    configureCleanWebpack()
-                ),
                 new webpack.HotModuleReplacementPlugin(),
-                new DashboardPlugin(dashboard.setData),
+                new Stylish(),
             ],
         }
     ),

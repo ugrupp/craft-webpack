@@ -1,11 +1,21 @@
-import styles from '../css/app.pcss';
+//
+// Main entry file
+// --------------------------------------------------
+
+// Webpack entries
+// Styles
+import '../css/app.scss';
+// Images
 import './webpack/require-img';
+// SVGs
 import './webpack/require-svg';
 
-// App main
+// JS module imports
+import './modules/fontfaceobserver';
+import './modules/object-fit-images';
+
+// Example app main
 const main = async () => {
-    // Import our CSS
-    //const Styles = await import(/* webpackChunkName: "styles" */ '../css/app.pcss');
     // Async load the vue module
     const Vue = await import(/* webpackChunkName: "vue" */ 'vue');
     // Create our vue instance
@@ -22,6 +32,9 @@ const main = async () => {
         },
     });
 };
+
 // Execute async function
-main().then( (value) => {
+main().then((value) => {
+    console.log('main executed');
+
 });

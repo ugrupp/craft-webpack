@@ -23,8 +23,10 @@
     }
 </script>
 
-<style>
+<style lang="scss">
+    @import '../css/configuration/colors';
+
     body {
-        font-size: 40px;
+        background-color: $color-secondary;
     }
 </style>

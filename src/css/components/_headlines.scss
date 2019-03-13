@@ -1,0 +1,33 @@
+//
+// Headlines
+// --------------------------------------------------
+
+.c-headline {
+  display: block;
+  font-weight: 700;
+}
+
+.c-headline--h1 {
+  @include font-ci;
+  @include typi('h1');
+}
+
+.c-headline--h2 {
+  @include typi('h2');
+}
+
+.c-headline--h3 {
+  @include typi('h3');
+}
+
+.c-headline--h4 {
+  @include typi('h4');
+}
+
+.c-headline--h5 {
+  @include typi('h5');
+}
+
+.c-headline--h6 {
+  @include typi('h6');
+}

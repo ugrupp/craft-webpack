@@ -1,0 +1,20 @@
+//
+// Colors
+// --------------------------------------------------
+
+// Shades of gray
+$color-gray-f: #f3f3f3;
+$color-gray-e: #eee;
+$color-gray-d: #dadada;
+$color-gray-a: #a7a7a7;
+$color-gray-4: #4a4a4a;
+
+// CI colors
+$color-primary: #009fe3;
+$color-secondary: yellow;
+
+// Color mapping
+$color-inverted: $color-primary;
+$color-text: $color-gray-4;
+$color-link: $color-inverted;
+$color-link-hover: inherit;

@@ -1,0 +1,56 @@
+//
+// Container object
+// Adaptive version
+// If you need special, non-linear left/right spacing, use padding or nested max-width on component-level!
+// --------------------------------------------------
+
+$container-padding: 16px;
+$container-max-widths: (
+  xs: 448px,
+  sm: 720px,
+  md: 848px,
+  lg: 948px,
+  xl: 1296px,
+);
+
+// General container styles
+@mixin make-container() {
+  width: 100%;
+  padding-right: rem($container-padding);
+  padding-left: rem($container-padding);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// For each breakpoint, define the maximum width of the container
+@mixin make-container-max-widths() {
+  @each $breakpoint, $container-max-width in $container-max-widths {
+    @include mappy-bp($breakpoint) {
+      max-width: $container-max-width + ($container-padding * 2);
+    }
+  }
+}
+
+// Generate modifier classes for limiting horizontal space
+@mixin make-container-modifiers() {
+  @each $breakpoint, $container-max-width in $container-max-widths {
+    $nextIndex: index(map-keys($container-max-widths), $breakpoint) + 1;
+
+    @if $nextIndex <= length($container-max-widths) {
+      $nextBreakpoint: nth(map-keys($container-max-widths), $nextIndex);
+
+      .o-container--max-#{$breakpoint} {
+        @include mappy-bp($nextBreakpoint) {
+          max-width: $container-max-width + ($container-padding * 2);
+        }
+      }
+    }
+  }
+}
+
+.o-container {
+  @include make-container();
+  @include make-container-max-widths();
+}
+
+@include make-container-modifiers();

@@ -1,0 +1,32 @@
+//
+// Scaffolding
+// --------------------------------------------------
+
+// sets base font-sizing on html element
+@include typi-init;
+
+html {
+  box-sizing: border-box;
+  text-size-adjust: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  color: $color-text;
+  @include font-sans;
+  @include font-smoothing;
+}
+
+::selection {
+  background: $color-inverted;
+  color: #fff;
+}
+
+.u-cookieconsent-initialiser {
+  display: none;
+}

@@ -1,0 +1,8 @@
+//
+// Layout
+// --------------------------------------------------
+
+.o-main {
+  position: relative;
+  z-index: index($z-index, main);
+}
