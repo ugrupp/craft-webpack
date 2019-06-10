@@ -234,6 +234,9 @@ const configurePostcssLoader = (buildType) => {
                     options: {
                         implementation: require("sass"),
                         sourceMap: true,
+                        includePaths: [
+                            path.join(__dirname, settings.paths.src.css, 'vendor'),
+                        ]
                     }
                 },
             ]
@@ -270,6 +273,9 @@ const configureWebapp = () => {
             developerName: pkg.author.name,
             developerURL: pkg.author.url,
             path: settings.paths.dist.base,
+            lang: settings.webappConfig.lang,
+            background: settings.webappConfig.background,
+            theme_color: settings.webappConfig.theme_color,
         }
     };
 };

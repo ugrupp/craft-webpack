@@ -33,7 +33,7 @@ const configureDevServer = (buildType) => {
         overlay: true,
         stats: 'errors-only',
         writeToDisk: (filePath) => {
-            return settings.svgConfig.urlPattern.test(filePath);
+            return settings.svgConfig.urlPattern.test(filePath) || settings.svgConfig.nonSpriteUrlPattern.test(filePath);
         },
         watchOptions: {
             poll: !!parseInt(settings.devServerConfig.poll()),
@@ -134,6 +134,9 @@ const configurePostcssLoader = (buildType) => {
                     options: {
                         implementation: require("sass"),
                         sourceMap: true,
+                        includePaths: [
+                            path.join(__dirname, settings.paths.src.css, 'vendor'),
+                        ]
                     }
                 },
             ]

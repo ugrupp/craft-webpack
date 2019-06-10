@@ -35,7 +35,7 @@ module.exports = {
         publicPath: () => process.env.PUBLIC_PATH || "/dist/",
     },
     vars: {
-        cssName: "styles"
+        cssName: "app"
     },
     entries: {
         "app": "app.js"
@@ -44,6 +44,10 @@ module.exports = {
         {
             from: "./src/js/workbox-catch-handler.js",
             to: "js/[name].[ext]"
+        },
+        {
+            from: "./src/img/*.svg",
+            to: "img/[name].[ext]"
         }
     ],
     criticalCssConfig: {
@@ -74,6 +78,7 @@ module.exports = {
     svgConfig: {
         spriteFilename: 'img/svg-sprite/sprite.[hash].svg',
         urlPattern: /img\/svg-sprite\/.*\.svg$/,
+        nonSpriteUrlPattern: /img\/.*\.svg$/,
     },
     saveRemoteFileConfig: [
         {
@@ -89,7 +94,10 @@ module.exports = {
     ],
     webappConfig: {
         logo: "./src/img/favicon-src.png",
-        prefix: "img/favicons/"
+        prefix: "img/favicons/",
+        lang: "de-DE",
+        background: "#fff",
+        theme_color: "#78be20",
     },
     workboxConfig: {
         swDest: "../sw.js",
