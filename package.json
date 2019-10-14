@@ -112,6 +112,7 @@
         "fontfaceobserver": "^2.1.0",
         "lazysizes": "^5.1.2",
         "object-fit-images": "^3.2.4",
+        "svgxuse": "^1.2.6",
         "vue": "^2.5.17",
         "vue-confetti": "^0.4.2"
     }

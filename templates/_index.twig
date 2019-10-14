@@ -8,8 +8,9 @@
 
   {# Twigpack includes #}
   {{ craft.twigpack.includeCriticalCssTags() }}
-  {{ craft.twigpack.includeCssModule("styles.css", true) }}
+  {{ craft.twigpack.includeCssModule("app.css", true) }}
   {{ craft.twigpack.includeCssRelPreloadPolyfill() }}
+  {{ craft.twigpack.includeJsModule("head.js", true) }}
 </head>
 <body>
   <h1 class="c-headline c-headline--h1">It works</h1>
