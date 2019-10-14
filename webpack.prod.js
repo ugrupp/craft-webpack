@@ -111,21 +111,10 @@ const configureHtml = () => {
 };
 
 // Configure Image loader
+// This deviates from the article in that it applies the optimizations for the legacy build. That way, background-images from CSS (which is put together during legacy build phase, too) don't resolve the non-optimized image.
+// In twig, that leads to having to apply an additional `type` parameter to `getModuleUri`: 'legacy'.
 const configureImageLoader = (buildType) => {
     if (buildType === LEGACY_CONFIG) {
-        return {
-            test: /\.(png|jpe?g|gif|webp)$/i,
-            use: [
-                {
-                    loader: 'file-loader',
-                    options: {
-                        name: 'img/[name].[hash].[ext]'
-                    }
-                }
-            ]
-        };
-    }
-    if (buildType === MODERN_CONFIG) {
         return {
             test: /\.(png|jpe?g|gif|webp)$/i,
             use: [
@@ -158,6 +147,12 @@ const configureImageLoader = (buildType) => {
                     }
                 }
             ]
+        };
+    }
+    if (buildType === MODERN_CONFIG) {
+        return {
+            test: /\.(png|jpe?g|gif|webp)$/i,
+            loader: 'ignore-loader',
         };
     }
 };
@@ -318,6 +313,7 @@ module.exports = [
                 new webpack.BannerPlugin(
                     configureBanner()
                 ),
+                new ImageminWebpWebpackPlugin(),
                 new HtmlWebpackPlugin(
                     configureHtml()
                 ),
@@ -359,7 +355,6 @@ module.exports = [
                 new webpack.BannerPlugin(
                     configureBanner()
                 ),
-                new ImageminWebpWebpackPlugin(),
                 new WorkboxPlugin.GenerateSW(
                     configureWorkbox()
                 ),
