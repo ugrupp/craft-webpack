@@ -14,6 +14,9 @@ return [
         // Default Week Start Day (0 = Sunday, 1 = Monday...)
         'defaultWeekStartDay' => 1,
 
+        // Enable CSRF Protection (recommended)
+        'enableCsrfProtection' => true,
+
         // Whether generated URLs should omit "index.php"
         'omitScriptNameInUrls' => true,
 
@@ -32,6 +35,9 @@ return [
     'dev' => [
         // Dev Mode (see https://craftcms.com/guides/what-dev-mode-does)
         'devMode' => true,
+        // custom backup command (see https://craftcms.com/guides/database-backups-in-craft-3-with-mamp)
+        'backupCommand' => getenv('BACKUP_COMMAND'),
+        'restoreCommand' => getenv('RESTORE_COMMAND'),
     ],
 
     // Staging environment settings

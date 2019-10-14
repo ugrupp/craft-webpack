@@ -1,4 +1,4 @@
-dateModified: 1551025899
+dateModified: 1571054268
 email:
   fromEmail: urs@21sieben.de
   fromName: 'Craft Webpack Scaffold'
@@ -24,7 +24,6 @@ sections:
         titleLabel: null
     handle: home
     name: Home
-    propagateEntries: true
     siteSettings:
       665b92a3-8815-4c5e-9908-277d2d6ea628:
         enabledByDefault: true
@@ -32,6 +31,7 @@ sections:
         template: _index
         uriFormat: __home__
     type: single
+    propagationMethod: all
 siteGroups:
   a160c4ba-1b94-4a79-ae3c-8bedb0b16477:
     name: 'Craft Webpack Scaffold'
@@ -49,7 +49,7 @@ system:
   edition: solo
   live: true
   name: 'Craft Webpack Scaffold'
-  schemaVersion: 3.1.25
+  schemaVersion: 3.3.3
   timeZone: America/Los_Angeles
 users:
   allowPublicRegistration: false

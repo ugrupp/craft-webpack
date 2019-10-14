@@ -10,6 +10,13 @@ import './webpack/require-img';
 // SVGs
 import './webpack/require-svg';
 
+// SVG <use> polyfill
+import 'svgxuse';
+
+// Manually load some polyfills based on `useBuiltIns: usage`
+Array.from;
+Object.assign;
+
 // JS module imports
 import './modules/fontfaceobserver';
 import './modules/object-fit-images';

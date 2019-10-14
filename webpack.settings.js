@@ -38,6 +38,7 @@ module.exports = {
         cssName: "app"
     },
     entries: {
+        "head": "head.js",
         "app": "app.js"
     },
     copyWebpackConfig: [
