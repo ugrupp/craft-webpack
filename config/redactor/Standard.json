@@ -1,6 +1,45 @@
 {
-  "buttons": ["formatting", "bold", "italic", "unorderedlist", "orderedlist", "link", "image", "video"],
-  "plugins": ["fullscreen", "video"],
+  "buttons": ["html", "formatting", "bold", "italic", "unorderedlist", "orderedlist", "line", "link", "file", "image", "video"],
+  "customStyles": {
+    "style": {
+      "dropdown": {
+        "small": {
+          "title": "Small",
+          "args": "small"
+        },
+        "sup": {
+          "title": "Superscript",
+          "args": "sup"
+        },
+        "sub": {
+          "title": "Subscript",
+          "args": "sub"
+        },
+        "mark": {
+          "title": "Highlighted",
+          "args": "mark"
+        },
+        "clearStyles": {
+          "api": "module.inline.clearformat"
+        }
+      }
+    }
+  },
+  "formattingAdd": {
+    "metaheadline": {
+      "title": "Heading Meta",
+      "api": "module.block.format",
+      "args": {
+        "tag": "p",
+        "class": "c-headline c-headline--meta",
+        "type": "toggle",
+        "style": {
+          "font-weight": "700"
+        }
+      }
+    }
+  },
+  "plugins": ["fullscreen", "video", "properties", "customstyles"],
   "linkNewTab": true,
   "toolbarFixed": true
 }
