@@ -96,7 +96,7 @@
         "vue-template-compiler": "^2.5.17",
         "webapp-webpack-plugin": "https://github.com/brunocodutra/webapp-webpack-plugin.git",
         "webpack": "^4.29.5",
-        "webpack-bundle-analyzer": "^3.0.2",
+        "webpack-bundle-analyzer": "^3.6.0",
         "webpack-cli": "^3.1.1",
         "webpack-dev-server": "^3.1.9",
         "webpack-manifest-plugin": "^2.0.4",
@@ -107,7 +107,7 @@
     },
     "dependencies": {
         "@babel/polyfill": "^7.0.0",
-        "axios": "^0.18.0",
+        "axios": "^0.18.1",
         "custom-event-polyfill": "^1.0.6",
         "fontfaceobserver": "^2.1.0",
         "lazysizes": "^5.1.2",
