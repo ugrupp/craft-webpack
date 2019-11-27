@@ -190,16 +190,16 @@ return [
     "set_min_after_url_wrap" => 5,
 
     // wrap ampersands in <span class="amp">
-    "set_style_ampersands" => true,
+    "set_style_ampersands" => false,
 
     // wrap caps in <span class="caps">
-    "set_style_caps" => true,
+    "set_style_caps" => false,
 
     // wrap initial quotes in <span class="quo"> or <span class="dquo">
-    "set_style_initial_quotes" => true,
+    "set_style_initial_quotes" => false,
 
     // wrap numbers in <span class="numbers">
-    "set_style_numbers" => true,
+    "set_style_numbers" => false,
 
     // sets tags where initial quotes and guillemets should be styled
     "set_initial_quote_tags" => [
