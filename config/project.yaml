@@ -1,4 +1,4 @@
-dateModified: 1574865369
+dateModified: 1574873696
 email:
   fromEmail: $MAIL_SYSTEM_FROM_MAIL
   fromName: $MAIL_SYSTEM_FROM_NAME
@@ -825,7 +825,7 @@ plugins:
   super-table:
     edition: standard
     enabled: true
-    schemaVersion: 2.2.0
+    schemaVersion: 2.2.1
   typedlinkfield:
     edition: standard
     enabled: true
