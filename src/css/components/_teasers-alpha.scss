@@ -35,6 +35,7 @@
 }
 
 $teaser-image-size: 100%;
+$teaser-image-size-svg: 78%;
 
 .c-teaser-alpha__img {
   display: block;
@@ -59,6 +60,14 @@ $teaser-image-size: 100%;
     @include mappy-bp(lg) {
       transform: scale(1.05);
     }
+  }
+
+  .c-teaser-alpha__img-wrapper--svg & {
+    left: (100% - $teaser-image-size-svg) / 2;
+    top: (100% - $teaser-image-size-svg) / 2;
+    width: $teaser-image-size-svg;
+    height: $teaser-image-size-svg;
+    object-fit: contain;
   }
 }
 

@@ -4,6 +4,8 @@
  #
 -#}
 
+{% from '_macros' import objectFit %}
+
 {% set defaults = {
   linkit: '',
   text: '',
@@ -19,7 +21,7 @@
       <div class="c-teaser-alpha__img-block">
         {# SVG #}
         {% if options.image.extension|lower == 'svg' %}
-          <figure class="c-teaser-alpha__img-wrapper">
+          <figure class="c-teaser-alpha__img-wrapper c-teaser-alpha__img-wrapper--svg">
             <img
               class="c-teaser-alpha__img lazyload"
               src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='
@@ -40,6 +42,7 @@
               src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='
               data-src="{{ transformedImage.url }}"
               data-sizes='auto'
+              style="{{ objectFit(options.image) }}"
               alt="{{ options.image.title }}">
           </figure>
         {% endif %}
