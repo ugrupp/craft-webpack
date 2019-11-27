@@ -36,10 +36,10 @@ $button-icon-spacing-y: 6px;
     content: '';
     position: absolute;
     z-index: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
+    left: rem(-$button-border-width);
+    right: rem(-$button-border-width);
+    bottom: rem(-$button-border-width);
+    top: rem(-$button-border-width);
 
     background-color: rgba(255, 255, 255, .15);
     transition: all $transition-time-default;
@@ -88,7 +88,11 @@ $button-icon-spacing-y: 6px;
   background-color: #fff;
 
   &::before {
-    background-color: rgba($color-primary, .1);
+    background-color: rgba($color-primary, .15);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
   }
 }
 
