@@ -1,0 +1,28 @@
+{#
+ # Detail View Template – Default
+ # ----------------------------
+ #
+ # This template gets loaded whenever the Detail Router falls back to the default variant.
+ #
+-#}
+
+{% block view_header %}
+  <header class="o-main__header">
+    {% block view_header_inner %}
+      Hero/Header
+    {% endblock %}
+  </header>
+{% endblock %}
+
+<article class="o-main__article" id="article">
+  {% block view_article %}
+    {# Content builder #}
+    {% if entry.contentBuilder ??? false %}
+      {% include "_components/contentBuilder" with {
+        self: entry.contentBuilder,
+      } %}
+    {% endif %}
+  {% endblock %}
+</article>
+
+{% block view_footer %}{% endblock %}

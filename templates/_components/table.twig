@@ -1,0 +1,83 @@
+{#
+ # Component Template – Table
+ # ------------------------------
+ #
+-#}
+
+{% from _self import renderRow %}
+
+{% set defaults = {
+  table: [],
+  headRow: false,
+  headColumn: false,
+  caption: '',
+  tableSize: 6,
+  widthTable: [],
+  responsive: true,
+  narrow: false,
+} %}
+
+{% set options = options is defined ? defaults|merge(options) : defaults %}
+
+{% set rows = options.table.all() %}
+{# set dynamic column amount = max column entry in the whole table #}
+{% set realColAmount = 0 %}
+{% for row in rows %}
+  {% for i in 1..(options.tableSize) %}
+    {% set colValue = attribute(row, "column" ~ i) %}
+    {% if colValue|length %}
+      {% set realColAmount = max(i, realColAmount) %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+{% macro renderRow(row, isHeadRow, realColAmount, options) %}
+  <tr>
+    {% for i in 1..(options.tableSize) %}
+      {% if i <= realColAmount %}
+        {% set isHeadCol = isHeadRow or (options.headColumn and loop.first) %}
+        {% set colWidth = attribute(options.widthTable[0], "widthColumn" ~ i) ??? false %}
+        {% set colValue = attribute(row, "column" ~ i) %}
+
+        <{{ isHeadCol ? 'th' : 'td'}}{% if colWidth %} style="width: {{ colWidth }}";{% endif %}>
+          <div class="c-richtext">
+            {{ colValue|typogrify }}
+          </div>
+        </{{ isHeadCol ? 'th' : 'td'}}>
+      {% endif %}
+    {% endfor %}
+  </tr>
+{% endmacro %}
+
+<div class="c-table{% if options.responsive %} c-table--responsive{% endif %}{% if options.narrow %} c-table--narrow{% endif %}">
+  <table class="c-table__table">
+    {# Caption #}
+    {% if options.caption|length %}
+      <caption>
+        {% include "_components/text" with {
+          options: {
+            text: options.caption,
+            small: true,
+            centered: true,
+          }
+        } %}
+      </caption>
+    {% endif %}
+
+    {# Head row #}
+    {% for row in rows|slice(0, 1) if options.headRow %}
+      <thead>
+        {{ renderRow(row, true, realColAmount, options) }}
+      </thead>
+    {% endfor %}
+
+    {# Body #}
+    <tbody>
+      {% for row in rows|slice(options.headRow ? 1 : 0) %}
+        {{ renderRow(row, false, realColAmount, options) }}
+      {% endfor %}
+    </tbody>
+  </table>
+
+</div>
+

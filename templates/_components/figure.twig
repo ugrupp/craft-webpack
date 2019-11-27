@@ -1,0 +1,104 @@
+{#
+ # Component Template – Figure
+ # ----------------------------
+ #
+-#}
+
+{% set defaults = {
+  image: null,
+  caption: '',
+  centered: true,
+  video: false,
+  videoAspectRatio: false,
+  size: 'xl',
+} %}
+
+{% set options = options is defined ? defaults|merge(options) : defaults %}
+
+{# Modifiers #}
+{% set modifiersStringArray = [] %}
+
+{# Centered modifier #}
+{% if options.centered %}
+  {% set modifiersStringArray = modifiersStringArray|merge(['c-figure--centered']) %}
+{% endif %}
+
+{# No-bg modifier #}
+{% if options.image and options.image.extension|lower in ['png', 'svg'] %}
+  {% set modifiersStringArray = modifiersStringArray|merge(['c-figure--no-bg']) %}
+{% endif %}
+
+<figure class="c-figure {{ modifiersStringArray|join(' ') }}">
+  {# Video (TODO) #}
+  {% if options.video %}
+    <figure class="c-figure {{ modifiersStringArray|join(' ') }}">
+      <div class="c-figure__video-wrapper{% if options.videoAspectRatio %} c-figure__video-wrapper--aspect-ratio{% endif %}">
+        <iframe src='https://player.vimeo.com/video/112866269' width='640' height='360' frameborder='0' allow='autoplay; fullscreen' allowfullscreen=''></iframe>
+      </div>
+    </figure>
+
+  {# Image #}
+  {% elseif options.image %}
+    {# SVG #}
+    {% if options.image.extension|lower == 'svg' %}
+      <div class="c-figure__img-wrapper">
+        <img
+          class="c-figure__img lazyload"
+          src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='
+          data-src="{{ options.image.url }}"
+          alt="{{ options.image.title }}">
+      </div>
+
+    {# No SVG #}
+    {% else %}
+      {% set transformedStartWidth = null %}
+      {% switch options.size %}
+        {% case "full" %}
+          {% set transformedStartWidth = 1920 %}
+        {% case "xl" %}
+          {% set transformedStartWidth = 1296 %}
+        {% case "lg" %}
+          {% set transformedStartWidth = 1072 %}
+        {% case "md" %}
+          {% set transformedStartWidth = 848 %}
+        {% case "sm" %}
+          {% set transformedStartWidth = 720 %}
+        {% case "xs" %}
+          {% set transformedStartWidth = 440 %}
+        {% default %}
+          {% set transformedStartWidth = 1296 %}
+      {% endswitch %}
+
+      {% set transformedImages = craft.imager.transformImage(options.image, [
+        { width: transformedStartWidth },
+        { width: 440 },
+      ],
+      null,
+      {
+        fillTransforms: true,
+        fillInterval: 300,
+      }) %}
+
+      <div class="c-figure__img-wrapper">
+        <img
+          class="c-figure__img lazyload"
+          src="{{ transformedImages[0].url }}"
+          srcset='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='
+          data-srcset="{{ transformedImages | srcset }}"
+          alt="{{ options.image.title }}">
+      </div>
+    {% endif %}
+  {% endif %}
+
+  {# Caption #}
+  {% if options.caption|length %}
+    <figcaption>
+      {% include "_components/text" with {
+        options: {
+          text: options.caption,
+          small: true,
+        }
+      } %}
+    </figcaption>
+  {% endif %}
+</figure>

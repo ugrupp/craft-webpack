@@ -1,0 +1,8 @@
+{% set privacyEntry = craft.entries().section('privacy').one() %}
+<div class="u-cookieconsent-initialiser"
+  data-cookieconsent-initialiser=""
+  data-cookieconsent-initialiser-message="{{ 'This website uses cookies to ensure you get the best experience on our website.'|t }}"
+  data-cookieconsent-initialiser-link="{{ 'Privacy statement'|t }}"
+  data-cookieconsent-initialiser-dismiss="{{ 'I consent'|t }}"
+  {% if privacyEntry | length %}data-cookieconsent-initialiser-href="{{ privacyEntry.url }}"{% endif %}
+></div>

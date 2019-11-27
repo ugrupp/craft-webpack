@@ -1,0 +1,16 @@
+{#
+ # Block Template – Panels
+ # ----------------------------
+ #
+-#}
+
+<section class="o-main__section o-main__section--type-{{ type }}" id="section-{{ type }}-{{ self.id }}">
+  <div class="o-container o-container--max-md">
+    {% include '_components/panels' with {
+      options: {
+        panels: self.panels.all(),
+        numbered: self.numbered,
+      }
+    } %}
+  </div>
+</section>

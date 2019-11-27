@@ -1,0 +1,18 @@
+{#
+ # Block Template – Blockquote
+ # ----------------------------
+ #
+-#}
+
+<section class="o-main__section o-main__section--type-{{ type }}" id="section-{{ type }}-{{ self.id }}">
+  <div class="o-container">
+    {% include '_components/blockquote' with {
+      options: {
+        quote: self.quote,
+        author: self.author,
+        company: self.company,
+      }
+    } %}
+  </div>
+</section>
+

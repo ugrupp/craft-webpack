@@ -1,0 +1,57 @@
+{#
+ # Page Router Template
+ # --------------------
+ #
+ # This template gets loaded whenever a full page is requested, either because an
+ # entry section's Template setting is set to "_routers/page" or using dymanic routes.
+ #
+ # An `entry` variable will be automatically passed to this template if the URI matches
+ # an element URI. Otherwise an `entry` array is created before invoking a view router.
+-#}
+
+{% extends '_layouts/site' %}
+
+{# Handle special routes that don’t correspond to Craft entries. #}
+{% if entry is not defined %}
+
+  {# Special routes for non-entry pages, e.g. routed index pages #}
+  {% set specialRoutes = {} %}
+
+  {% set baseSegmentRoute = specialRoutes[craft.app.request.pathInfo] ?? null %}
+
+  {#
+   # Trick the routing precedence logic using a dummy entry.
+   #
+   # In our case we’re setting `null` values so that we can avoid a twig error when
+   # when it processes `entry.section.handle` expressions in the `include` statement.
+  -#}
+
+  {% set entry = {
+      title: null,
+      section: { handle: null },
+      type: { handle: null },
+    }
+  %}
+
+  {# Set body class #}
+  {% set bodyClass = craft.app.request.segments|first %}
+
+{% elseif entry.section.handle ends with 'Index' %}
+
+  {# Set body class for index pages. #}
+  {% set bodyClass = entry.section.handle|replace({ 'Index': '' }) %}
+
+{% endif %}
+
+{# Main block #}
+{% block main %}
+  {# entry will be passed into the template #}
+  {% include "_routers/detail" %}
+{% endblock %}
+
+{# Footer info block #}
+{% block footer_info %}
+  {# entry will be passed into the template #}
+  {% include "_routers/footer-info" %}
+{% endblock %}
+

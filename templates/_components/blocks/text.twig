@@ -1,0 +1,23 @@
+{#
+ # Block Template – Text
+ # -------------------------
+ #
+-#}
+
+{# Set spacing modifiers #}
+{% set modifiers = [] %}
+{% for option in self.spacing %}
+  {% set modifiers = modifiers|merge(['o-main__section--' ~ option|kebab]) %}
+{% endfor %}
+
+<section class="o-main__section o-main__section--type-{{ type }} {{ modifiers|join(' ') }}" id="section-{{ type }}-{{ self.id }}">
+  <div class="o-container o-container--max-md">
+    {% include '_components/text' with {
+      options: {
+        text: self.text,
+        keepBottomSpacing: self.spacing.contains('keepRichtextBottomSpacing'),
+        keepTopSpacing: self.spacing.contains('keepRichtextTopSpacing'),
+      }
+    } %}
+  </div>
+</section>

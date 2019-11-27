@@ -1,0 +1,36 @@
+{% from '_macros' import svgSprite %}
+
+<div class="c-topbar" data-topbar>
+  <div class="c-topbar__main">
+    <div class="c-topbar__container o-container">
+      <div class="c-topbar__inner">
+        <div class="c-topbar__left">
+          <a href="{{ siteUrl }}" class="c-topbar__logo">
+            <strong>{{ siteName }}</strong>
+          </a>
+        </div>
+
+        <div class="c-topbar__right">
+          {# Menu #}
+          <div class="c-topbar__menu">
+            {# Desktop menu #}
+            {% include "_components/static/menu" with {
+              options: {
+                type: "desktop",
+              }
+            } %}
+          </div>
+
+          {# Menu toggler #}
+          <a href="#menu" class="c-topbar__menu-toggler" data-overlay-toggler='menu' data-overlay-closer='widget-contact,widget-location'>
+            <span class="c-topbar__burger">
+              {{ svgSprite('ic-menu') }}
+              {{ svgSprite('ic-times') }}
+            </span>
+            <span class="u-invisible">{{ 'Menü öffnen'|t }}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

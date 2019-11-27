@@ -1,0 +1,31 @@
+{% macro renderServiceMenuList(entry) %}
+  <ul>
+    {% for item in craft.entries.section('serviceMenu').all() %}
+      {# Set active flag #}
+      {% set isActive = false %}
+      {# Only entry-references are supported right now #}
+      {% set linkedElement = item.menuLink.getElement() ??? false %}
+      {% if linkedElement %}
+        {% set pageIsCurrent = (linkedElement.id == entry.id) %}
+        {% set pageIsTopParent = (craft.app.request.segments|first == linkedElement.uri) %}
+        {# ^ = start of string, prevents mid-url matches. {} = custom delimiters, since / doesn't play well with URLs. #}
+        {% set pageIsInPath = (entry.uri matches '{^' ~ linkedElement.uri ~ '}') %}
+
+        {% set isActive = pageIsCurrent or pageIsTopParent or pageIsInPath %}
+      {% endif %}
+
+      {# Render nav item #}
+      <li class="{% if isActive %} is-active{% endif %}">
+        <a {{ item.menuLink.getLinkAttributes() }}>
+          {{ item.menuLink.getText() }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endmacro %}
+
+{% from _self import renderServiceMenuList %}
+
+<nav class="c-service-menu">
+  {{ renderServiceMenuList(entry) }}
+</nav>

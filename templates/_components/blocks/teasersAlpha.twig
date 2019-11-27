@@ -1,0 +1,16 @@
+{#
+ # Block Template – Alpha teasers
+ # -------------------------
+ #
+-#}
+
+<section class="o-main__section o-main__section--type-{{ type }} o-main__section--bg-ice o-main__section--framed o-main__section--with-top-spacing o-main__section--push-next" id="section-{{ type }}-{{ self.id }}">
+  <div class="o-container">
+    {% include '_components/teasers-alpha' with {
+      options: {
+        teasers: self.teasers.all(),
+        text: self.text,
+      }
+    } %}
+  </div>
+</section>

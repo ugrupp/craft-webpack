@@ -1,0 +1,18 @@
+{#
+ # Detail Router Template
+ # ----------------------
+ #
+ # This template gets loaded whenever a Detail View is requested by either the
+ # Page Router or in a parent view.
+ #
+ # An `entry` variable expected in this template,
+ # and optionally a `baseSegmentRoute` for special non-entry URIs.
+-#}
+
+{%- include [
+  '_views/detail/' ~ baseSegmentRoute ?? null,
+  '_views/detail/' ~ entry.section.handle ~ '/' ~ entry.type.handle,
+  '_views/detail/' ~ entry.section.handle ~ '/default',
+  '_views/detail/' ~ entry.section.handle,
+  '_views/detail/default',
+] -%}

@@ -1,0 +1,61 @@
+{#
+ # Component Template – Content builder
+ # ---------------------------------
+ #
+ # This template is used to output HTML for an "Content-Builder" Matrix field.
+ #
+ # A `self` variable is expected in this template.
+-#}
+
+{% set prevType = null %}
+{% set nextType = null %}
+{% set blocks = self %}
+{% set groupIndex = 1 %}
+{% set sectionWrapperOpen = false %}
+
+{% for i, block in blocks.all() %}
+
+  {% set type = (nextType ?: block.type.handle) %}
+  {% set nextType = (not loop.last ? blocks[i+1].type.handle) %}
+  {% set groupIndex = (prevType == type) ? (groupIndex + 1) : 1 %}
+
+  {# Handle section wrappers #}
+  {% if type == 'sectionWrapper' %}
+    {% if sectionWrapperOpen %}
+      {# Close the opened section wrapper #}
+      {% include '_components/blocks/sectionWrapper' with {
+        action: 'close',
+      } %}
+      {% set sectionWrapperOpen = false %} {# Just for good measure #}
+    {% endif %}
+
+    {# Open section wrapper #}
+    {% include '_components/blocks/sectionWrapper' with {
+      self: block,
+      action: 'open',
+    } %}
+    {% set sectionWrapperOpen = true %}
+
+  {# Handle normal CB blocks #}
+  {% else %}
+    {% include [
+      '_components/blocks/' ~ type,
+      '_components/blocks/default',
+    ] with {
+      self: block,
+      nextType: nextType,
+      prevType: prevType,
+      groupIndex: groupIndex,
+    } %}
+  {% endif %}
+
+  {# Handle possibly opened section wrappers #}
+  {% if loop.last and sectionWrapperOpen %}
+    {% include '_components/blocks/sectionWrapper' with {
+      action: 'close',
+    } %}
+    {% set sectionWrapperOpen = false %}
+  {% endif %}
+
+  {% set prevType = type %}
+{% endfor %}

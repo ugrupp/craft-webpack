@@ -1,0 +1,19 @@
+{% from "_components/static/service-menu" import renderServiceMenuList %}
+
+<footer class="c-footer">
+  <div class="o-container">
+    <div class="c-footer__inner">
+      <div class="c-footer__alpha">
+        <p class="c-footer__imprint">
+          &copy; {{ 'now'|date('Y') }} 21sieben
+        </p>
+      </div>
+
+      <div class="c-footer__beta">
+        <div class="c-footer__nav">
+          {{ renderServiceMenuList(entry) }}
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

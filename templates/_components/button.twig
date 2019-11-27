@@ -1,0 +1,94 @@
+{#
+ # Component Template – Button
+ # -------------------------
+ #
+-#}
+
+{% from '_macros' import svgSprite %}
+
+{% set defaults = {
+  size: 'md',
+  type: 'primary',
+  url: '',
+  target: '',
+  text: '',
+  title: '',
+  icon: '',
+  iconOnly: false,
+  iconOnlyXS: false,
+  iconPos: 'left',
+  class: '',
+  attributes: [],
+  submit: false,
+  readonly: false,
+  block: false,
+  blockXS: false,
+} %}
+
+{% set options = options is defined ? defaults|merge(options) : defaults %}
+
+{# Build modifiers string array #}
+{% set modifiersStringArray = [] %}
+{% for modifier in [options.size, options.type] %}
+  {% set modifiersStringArray = modifiersStringArray|merge(['c-button--' ~ modifier]) %}
+{% endfor %}
+
+{# Icon only #}
+{% if options.iconOnly %}
+  {% set modifiersStringArray = modifiersStringArray|merge(['c-button--icon-only']) %}
+{% endif %}
+
+{# Icon only on XS viewports #}
+{% if options.iconOnlyXS %}
+  {% set modifiersStringArray = modifiersStringArray|merge(['c-button--icon-only-xs']) %}
+{% endif %}
+
+{# Readonly (no hover or pointer) #}
+{% if options.readonly %}
+  {% set modifiersStringArray = modifiersStringArray|merge(['c-button--readonly']) %}
+{% endif %}
+
+{# Block #}
+{% if options.block %}
+  {% set modifiersStringArray = modifiersStringArray|merge(['c-button--block']) %}
+{% endif %}
+
+{# Block on XS viewports #}
+{% if options.blockXS %}
+  {% set modifiersStringArray = modifiersStringArray|merge(['c-button--block-xs']) %}
+{% endif %}
+
+
+{# Create button wrapper #}
+{% set buttonTag = tag(options.url ? 'a' : (options.submit ? 'button' : 'div'),
+  {
+    class: ['c-button', options.class]|merge(modifiersStringArray)|filter|join(' '),
+    href: options.url ??? null,
+    target: options.target ??? null,
+    title: options.title ??? null,
+  }
+) %}
+
+{# Apply possible attributes to tag #}
+{% set buttonTag = buttonTag|attr(options.attributes) %}
+
+{# Create button text #}
+{% set buttonText %}
+  <span class="c-button__text">{{ options.text|raw }}</span>
+{% endset %}
+
+{# Append text to wrapper #}
+{% set buttonTag = buttonTag|append(buttonText) %}
+
+
+{# Create button icon and prepend/append it to wrapper #}
+{% if options.icon|length %}
+  {% set buttonIcon %}
+    {{ svgSprite(options.icon, 'c-button__icon c-button__icon--' ~ options.icon) }}
+  {% endset %}
+
+  {% set buttonTag = options.iconPos == 'right' ? buttonTag|append(buttonIcon) : buttonTag|prepend(buttonIcon) %}
+{% endif %}
+
+{# Render it all #}
+{{ buttonTag|raw }}

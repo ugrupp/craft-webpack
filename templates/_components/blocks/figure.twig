@@ -1,0 +1,17 @@
+{#
+ # Block Template – Figure
+ # ----------------------------
+ #
+-#}
+
+<section class="o-main__section o-main__section--type-{{ type }}" id="section-{{ type }}-{{ self.id }}">
+  {% if self.size.value != 'full' %}<div class="o-container o-container--max-{{ self.size.value ??? 'xl' }}">{% endif %}
+    {% include '_components/figure' with {
+      options: {
+        image: self.image.one(),
+        caption: self.caption,
+        size: self.size,
+      }
+    } %}
+  {% if self.size.value != 'full' %}</div>{% endif %}
+</section>

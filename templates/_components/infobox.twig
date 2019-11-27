@@ -1,0 +1,42 @@
+{#
+ # Component Template – Infobox
+ # -------------------------
+ #
+-#}
+
+{% from '_macros' import svgSprite %}
+
+{% set defaults = {
+  headline: '',
+  body: '',
+} %}
+
+<div class="c-infobox">
+  <div class="c-infobox__icon">
+    {{ svgSprite('ic-info') }}
+  </div>
+
+  {# Content #}
+  <div class="c-infobox__content">
+    {% set infoboxContent %}
+      {% if options.headline|length %}
+        <h3 class="c-infobox__headline c-headline c-headline--h5">
+          {{ options.headline }}
+        </h3>
+      {% endif %}
+
+      {% if options.body|length %}
+        {{ options.body }}
+      {% endif %}
+    {% endset %}
+
+    {% if infoboxContent|length %}
+      {% include "_components/text" with {
+        options: {
+          text: infoboxContent,
+          large: true,
+        }
+      } %}
+    {% endif %}
+  </div>
+</div>

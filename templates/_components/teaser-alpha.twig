@@ -1,0 +1,59 @@
+{#
+ # Component Template – Alpha teaser
+ # ------------------------------
+ #
+-#}
+
+{% set defaults = {
+  linkAttributes: '',
+  text: '',
+  image: null,
+} %}
+
+{% set options = options is defined ? defaults|merge(options) : defaults %}
+
+<a {{ options.linkAttributes }} class="c-teaser-alpha">
+  {# Image #}
+  {% if options.image %}
+    <div class="c-teaser-alpha__img-block">
+      {# SVG #}
+      {% if options.image.extension|lower == 'svg' %}
+        <figure class="c-teaser-alpha__img-wrapper">
+          <img
+            class="c-teaser-alpha__img lazyload"
+            src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='
+            data-src="{{ options.image.url }}"
+            data-sizes='auto'
+            alt="{{ options.image.title }}">
+        </figure>
+
+      {# No SVG #}
+      {% else %}
+        {% set transformedImage = craft.imager.transformImage(options.image, {
+          width: 400,
+          allowUpscale: false,
+        }) %}
+        <figure class="c-teaser-alpha__img-wrapper">
+          <img
+            class="c-teaser-alpha__img lazyload"
+            src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='
+            data-src="{{ transformedImage.url }}"
+            data-sizes='auto'
+            alt="{{ options.image.title }}">
+        </figure>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {# Content block #}
+  <div class="c-teaser-alpha__content">
+    {% include '_components/button' with {
+      options: {
+        text: options.text,
+        class: 'c-teaser-alpha__button',
+        block: true,
+        readonly: true,
+      }
+    } %}
+  </div>
+</a>

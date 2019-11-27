@@ -1,0 +1,40 @@
+{#
+ # Component Template – Text
+ # -------------------------
+ #
+-#}
+
+{% set defaults = {
+  text: '',
+  inverted: false,
+  small: false,
+  extraSmall: false,
+  large: false,
+  keepBottomSpacing: false,
+  keepTopSpacing: false,
+  narrow: false,
+  centered: false,
+  underlineInverted: false,
+} %}
+
+{% set options = options is defined ? defaults|merge(options) : defaults %}
+
+{# Set modifiers #}
+{% set modifiers = [] %}
+{% set modifiers = options.extraSmall ? modifiers|merge(['c-richtext--xs']) : modifiers %}
+{% set modifiers = options.small ? modifiers|merge(['c-richtext--sm']) : modifiers %}
+{% set modifiers = options.large ? modifiers|merge(['c-richtext--lg']) : modifiers %}
+{% set modifiers = options.inverted ? modifiers|merge(['c-richtext--inverted']) : modifiers %}
+{% set modifiers = options.keepBottomSpacing ? modifiers|merge(['c-richtext--keep-bottom-spacing']) : modifiers %}
+{% set modifiers = options.keepTopSpacing ? modifiers|merge(['c-richtext--keep-top-spacing']) : modifiers %}
+{% set modifiers = options.centered ? modifiers|merge(['c-richtext--centered']) : modifiers %}
+{% set modifiers = options.underlineInverted ? modifiers|merge(['c-richtext--underline-inverted']) : modifiers %}
+
+<div class="c-text{% if options.narrow %} c-text--narrow{% endif %}">
+  {# Text #}
+  {% if options.text|length %}
+    <div class="c-richtext {{ modifiers|join(' ') }}">
+      {{ options.text | typogrify }}
+    </div>
+  {% endif %}
+</div>

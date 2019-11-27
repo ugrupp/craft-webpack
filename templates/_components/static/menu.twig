@@ -1,0 +1,148 @@
+{% import _self as macro %}
+
+<nav class="c-menu" data-menu>
+  {{ macro.buildMenuLevel({
+    items: craft.entries.section('menu').level(1),
+    level: 1,
+    id: "menu-" ~ options.type ~ "-0",
+    entry: entry,
+  }) }}
+</nav>
+
+{% macro buildMenuLevel(options) %}
+  {% import _self as macro %}
+  {% set maxLevel = 2 %}
+
+  {# Level root #}
+  <ul class="c-menu-level{{ options.level }}" data-menu-level="{{ options.level }}" id="{{ options.id }}">
+    {% for item in options.items.all() %}
+      {% set itemBaseClass = "c-menu-level" ~ options.level %}
+      {% set showSubmenu = (options.level <= maxLevel) and item.hasDescendants %}
+
+      {# Build submenu ID #}
+      {% set submenuID = showSubmenu ? (options.id ~ "-" ~ loop.index0) : false %}
+
+      {# Category link element #}
+      {% if item.menuLink.type == 'category' %}
+        {% set linkedCategory = item.menuLink.getElement() ??? false %}
+        {% if linkedCategory %}
+          {# Get category parent page #}
+          {# TODO: Remove the diagnostics scope, make it more abstract ('categoryOverviewPage') #}
+          {% set categoryOverviewPage = linkedCategory.diagnosticsParent.one() %}
+          {% if categoryOverviewPage %}
+
+            {# Query category items #}
+            {% set categoryItemsQuery = craft.entries()
+              .relatedTo(linkedCategory)
+              .descendantOf(categoryOverviewPage) %}
+            {% set categoryItems = categoryItemsQuery.all() %}
+
+            {% if categoryItems|length %}
+              <li class="{{ itemBaseClass }}__item {{ itemBaseClass }}__item--category" data-menu-item="{{ options.level }}">
+                {# Label #}
+                <div class="{{ itemBaseClass }}__label-wrapper">
+                  {% set itemTitle = item.menuLink.getText() ??? item.title %}
+                  <strong class="{{ itemBaseClass }}__label">
+                    {{ itemTitle }}
+                  </strong>
+                </div>
+
+                <ul class="{{ itemBaseClass }}__category-items">
+                  {# Print category items #}
+                  {% for categoryItem in categoryItems %}
+                    {{ macro.buildMenuItem({
+                      item: null,
+                      linkedEntry: categoryItem,
+                      target: null,
+                      title: categoryItem.title,
+                      entry: options.entry,
+                      level: options.level,
+                      itemBaseClass: itemBaseClass,
+                      showSubmenu: false,
+                      submenuID: submenuID
+                    }) }}
+                  {% endfor %}
+                </ul>
+              </li>
+            {% endif %}
+          {% endif %}
+        {% endif %}
+
+      {# Default link element #}
+      {% else %}
+        {{ macro.buildMenuItem({
+          item: item,
+          linkedEntry: item.menuLink.getElement() ??? null,
+          target: item.menuLink.getTarget(),
+          title: item.menuLink.getText() ??? item.title,
+          entry: options.entry,
+          level: options.level,
+          itemBaseClass: itemBaseClass,
+          showSubmenu: showSubmenu,
+          submenuID: submenuID
+        }) }}
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endmacro %}
+
+{% macro buildMenuItem(options) %}
+  {% from '_macros' import svgSprite %}
+
+  {# Set overview flag #}
+  {% set isOverview = options.item.menuOverviewItem ??? false %}
+
+  {# Set active flag #}
+  {% set isActive = false %}
+  {% if options.linkedEntry %}
+    {% set pageIsCurrent = (options.linkedEntry.id == options.entry.id) %}
+    {% set pageIsTopParent = (craft.app.request.segments|first == options.linkedEntry.uri) %}
+    {# ^ = start of string, prevents mid-url matches. {} = custom delimiters, since / doesn't play well with URLs. #}
+    {% set pageIsInPath = (options.entry.uri matches '{^' ~ options.linkedEntry.uri ~ '}') %}
+
+    {% set isActive = pageIsCurrent or (not isOverview and (pageIsTopParent or pageIsInPath)) %}
+  {% endif %}
+
+  {# Item #}
+  <li class="{{ options.itemBaseClass }}__item{% if isOverview %} {{ options.itemBaseClass }}__item--overview{% endif %}{% if isActive %} is-active{% endif %}" data-menu-item="{{ options.level }}">
+    {# Link wrapper #}
+    <div class="{{ options.itemBaseClass }}__link-wrapper">
+      {# Link #}
+      <a href="{{ options.linkedEntry.url ??? options.item.menuLink.getUrl() ??? '#' }}"
+        {% if options.target %}target="{{ options.target }}"{% endif %}
+        class="{{ options.itemBaseClass }}__link"
+        {% if options.showSubmenu %}data-menu-toggle="{{ options.level + 1 }}"{% endif %}
+        {% if options.showSubmenu %}data-menu-target="{{ options.submenuID }}"{% endif %}
+      >
+        {# Overview icon #}
+        {% if isOverview %}
+          <div class="{{ options.itemBaseClass }}__overview-icon">
+            {{ svgSprite('ic-overview') }}
+          </div>
+        {% endif %}
+
+        {# Title #}
+        <strong class="{{ options.itemBaseClass }}__title">
+          {{ options.title }}
+        </strong>
+
+        {# Submenu indicator #}
+        {% if options.showSubmenu %}
+          <div class="{{ options.itemBaseClass }}__indicator">
+            {{ svgSprite('ic-angle-down') }}
+          </div>
+        {% endif %}
+      </a>
+    </div>
+
+    {# Submenu #}
+    {% if options.showSubmenu %}
+      {{ macro.buildMenuLevel({
+        items: options.item.children,
+        level: options.level + 1,
+        id: options.submenuID,
+        entry: options.entry,
+      }) }}
+    {% endif %}
+  </li>
+{% endmacro %}

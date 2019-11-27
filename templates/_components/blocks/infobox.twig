@@ -1,0 +1,19 @@
+{#
+ # Block Template – Infobox
+ # ----------------------------
+ #
+-#}
+
+<section class="o-main__section o-main__section--type-{{ type }}" id="section-{{ type }}-{{ self.id }}">
+  <div class="o-container">
+    <div class="c-infobox-wrapper">
+      {% include '_components/infobox' with {
+        options: {
+          headline: self.headline,
+          body: self.body,
+        }
+      } %}
+    </div>
+  </div>
+</section>
+

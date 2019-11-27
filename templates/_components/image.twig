@@ -1,0 +1,70 @@
+{#
+ # Component Template – Image
+ # ------------------------------
+ #
+-#}
+
+{% from '_macros' import objectFit %}
+
+{% set defaults = {
+  image: null,
+  baseClass: 'c-image',
+  objectFit: false,
+  alt: null,
+  imageSizesMax: 1920,
+  imageSizesMin: 320,
+  fillInterval: 300,
+} %}
+
+{% set options = options is defined ? defaults|merge(options) : defaults %}
+
+{% if options.image %}
+  {# Set alt text #}
+  {% set altText = options.alt is not null ? options.alt : options.image.title %}
+
+  {# Create transforms #}
+  {% set imageSizes = [
+    { width: options.imageSizesMax },
+    { width: options.imageSizesMin },
+  ] %}
+
+  {# Default transforms #}
+  {% set transformedImages = craft.imager.transformImage(options.image,
+    imageSizes,
+    null,
+    {
+      fillTransforms: true,
+      fillInterval: options.fillInterval,
+    })
+  %}
+
+  {# If the server has support for WebP, create transforms #}
+  {% if craft.imager.serverSupportsWebp() %}
+    {% set transformedImagesWebp = craft.imager.transformImage(options.image,
+      imageSizes,
+      { format: 'webp' },
+      {
+        fillTransforms: true,
+        fillInterval: options.fillInterval,
+      })
+    %}
+  {% endif %}
+
+  <picture class="{{ options.baseClass }}img-wrapper">
+    {% if craft.imager.serverSupportsWebp() %}
+      <source
+        data-srcset="{{ transformedImagesWebp|srcset }}"
+        srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+        type="image/webp" />
+    {% endif %}
+
+    <img
+        class="{{ options.baseClass }}img lazyload"
+        src="{{ transformedImages[transformedImages|length - 1].url }}"
+        srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+        data-srcset="{{ transformedImages|srcset }}"
+        data-sizes="auto"
+        {% if options.objectFit %} style="{{ objectFit(options.image, options.objectFit) }}"{% endif %}
+        alt="{{ altText }}">
+  </picture>
+{% endif %}

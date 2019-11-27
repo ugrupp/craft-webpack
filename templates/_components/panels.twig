@@ -1,0 +1,25 @@
+{#
+ # Component Template – Panels
+ # -------------------------
+ #
+-#}
+
+{% set defaults = {
+  panels: [],
+  numbered: false,
+} %}
+
+{% set options = options is defined ? defaults|merge(options) : defaults %}
+
+<div class="c-panel-list{% if options.numbered %} c-panel-list--numbered{% endif %}">
+  {% for panel in options.panels %}
+    {% include '_components/panel' with {
+      options: {
+        headline: panel.headline,
+        body: panel.body,
+        id: panel.id,
+        number: options.numbered ? loop.index : false,
+      }
+    } %}
+  {% endfor %}
+</div>

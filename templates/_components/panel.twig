@@ -1,0 +1,53 @@
+{#
+ # Component Template – Panel
+ # -------------------------
+ #
+-#}
+
+{% from '_macros' import svgSprite %}
+
+{% set defaults = {
+  id: '',
+  headline: '',
+  body: '',
+  number: false,
+} %}
+
+{% set options = options is defined ? defaults|merge(options) : defaults %}
+
+<article class="c-panel{% if options.number %} c-panel--numbered{% endif %}" data-panel>
+  {# Panel header #}
+  <header class="c-panel__header-wrapper">
+    {# Number #}
+    {% if options.number %}
+      <div class="c-panel__number">
+        <span>{{ options.number }}</span>
+      </div>
+    {% endif %}
+
+    {# Header #}
+    <button class="c-panel__header" data-panel-header="panel-{{ options.id }}" aria-label="{{ 'Expand'|t }}">
+      <div class="c-panel__header-content">
+        <span class="c-panel__headline">{{ options.headline }}</span>
+      </div>
+      <span class="c-panel__toggle-icon">
+        {{ svgSprite("ic-angle-down") }}
+      </span>
+    </button>
+  </header>
+
+  {# Panel body #}
+  <div class="c-panel__panel" data-panel-panel id="panel-{{ options.id }}">
+    <div class="c-panel__panel-inner" data-panel-panel-inner>
+      <div class="c-panel__content">
+        {% if options.body|length %}
+          {% include "_components/text" with {
+            options: {
+              text: options.body,
+            }
+          } %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</article>

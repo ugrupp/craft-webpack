@@ -1,0 +1,66 @@
+{#
+ # Component Template – Blockquote
+ # -------------------------
+ #
+-#}
+
+{% from '_macros' import svgSprite %}
+
+{% set defaults = {
+  quote: '',
+  author: '',
+  company: '',
+} %}
+
+<blockquote class="c-blockquote">
+  {# Icon #}
+  <div class="c-blockquote__icon">
+    {{ svgSprite('ic-quote') }}
+  </div>
+
+  {# Content #}
+  <div class="c-blockquote__content">
+    {# Quote #}
+    <div class="c-blockquote__quote">
+      {% set blockquoteContent %}
+        {% if options.quote|length %}
+          <p class="c-headline c-headline--h3">
+            {{ options.quote }}
+          </p>
+        {% endif %}
+      {% endset %}
+
+      {% if blockquoteContent|length %}
+        {% include "_components/text" with {
+          options: {
+            text: blockquoteContent,
+            large: true,
+            keepBottomSpacing: true,
+          }
+        } %}
+      {% endif %}
+    </div>
+
+    {# Cite #}
+    {% set citeParts = [] %}
+    {% set citeParts = options.author|length ? citeParts|merge(['<span>' ~ options.author ~ '</span>']) : citeParts %}
+    {% set citeParts = options.company|length ? citeParts|merge([options.company]) : citeParts %}
+
+    {% if citeParts|length %}
+      {% set citeContent %}
+        <p>
+          {{ citeParts|join('<br />')|raw }}
+        </p>
+      {% endset %}
+
+      <cite class="c-blockquote__cite">
+        {% include "_components/text" with {
+          options: {
+            text: citeContent,
+            large: true,
+          }
+        } %}
+      </cite>
+    {% endif %}
+  </div>
+</blockquote>
