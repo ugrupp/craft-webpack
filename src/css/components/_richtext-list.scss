@@ -85,7 +85,6 @@ $list-bullet-space-sub-ol-lg: 71px;
     // counter
     li::before {
       content: counters(item, ".");
-      opacity: .8;
     }
   }
 
