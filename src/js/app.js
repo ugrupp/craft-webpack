@@ -34,26 +34,26 @@ new Panels();
 new Inputs();
 
 
-// Example app main
-const main = async () => {
-    // Async load the vue module
-    const Vue = await import(/* webpackChunkName: "vue" */ 'vue');
-    // Create our vue instance
-    const vm = new Vue.default({
-        el: "#app",
-        components: {
-            'confetti': () => import(/* webpackChunkName: "confetti" */ '../vue/Confetti.vue'),
-        },
-        data: {
-        },
-        methods: {
-        },
-        mounted() {
-        },
-    });
-};
+// // Example app main
+// const main = async () => {
+//     // Async load the vue module
+//     const Vue = await import(/* webpackChunkName: "vue" */ 'vue');
+//     // Create our vue instance
+//     const vm = new Vue.default({
+//         el: "#app",
+//         components: {
+//             'confetti': () => import(/* webpackChunkName: "confetti" */ '../vue/Confetti.vue'),
+//         },
+//         data: {
+//         },
+//         methods: {
+//         },
+//         mounted() {
+//         },
+//     });
+// };
 
-// Execute async function
-main().then((value) => {
-    console.log('main executed');
-});
+// // Execute async function
+// main().then((value) => {
+//     console.log('main executed');
+// });
