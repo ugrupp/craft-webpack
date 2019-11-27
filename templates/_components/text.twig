@@ -15,6 +15,7 @@
   narrow: false,
   centered: false,
   underlineInverted: false,
+  classes: [],
 } %}
 
 {% set options = options is defined ? defaults|merge(options) : defaults %}
@@ -30,7 +31,7 @@
 {% set modifiers = options.centered ? modifiers|merge(['c-richtext--centered']) : modifiers %}
 {% set modifiers = options.underlineInverted ? modifiers|merge(['c-richtext--underline-inverted']) : modifiers %}
 
-<div class="c-text{% if options.narrow %} c-text--narrow{% endif %}">
+<div class="c-text{% if options.narrow %} c-text--narrow{% endif %}{% if options.classes|length %} {{ options.classes|join(' ') }}{% endif %}">
   {# Text #}
   {% if options.text|length %}
     <div class="c-richtext {{ modifiers|join(' ') }}">

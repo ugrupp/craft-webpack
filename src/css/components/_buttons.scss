@@ -46,6 +46,8 @@ $button-icon-spacing-y: 6px;
     opacity: 0;
   }
 
+  .c-teaser-alpha:hover &,
+  .c-teaser-alpha:focus &,
   &:hover,
   &:focus {
     &::before {
@@ -88,13 +90,6 @@ $button-icon-spacing-y: 6px;
   &::before {
     background-color: rgba($color-primary, .1);
   }
-}
-
-// Tertiary
-.c-button--tertiary {
-  color: $color-primary;
-  border-color: #fff;
-  background-color: transparent;
 }
 
 // Block

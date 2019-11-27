@@ -6,14 +6,10 @@
   // Inline elements
   p,
   address {
-    padding-bottom: rem(32px);
+    padding-bottom: rem(16px);
 
     @include mappy-bp(sm) {
-      padding-bottom: rem(40px);
-    }
-
-    @include mappy-bp(lg) {
-      padding-bottom: rem(56px);
+      padding-bottom: rem(24px);
     }
 
     &.u-text-sm {
@@ -22,30 +18,34 @@
   }
 
   .c-intro {
-    padding-top: rem(8px);
+    padding-bottom: rem(24px);
 
     @include mappy-bp(sm) {
-      padding-top: rem(16px);
+      padding-bottom: rem(48px);
     }
 
-    @include mappy-bp(sm) {
-      padding-top: rem(24px);
+    // For adjacent intro blocks, use default paragraph spacing
+    + .c-intro {
+      margin-top: rem(16px - 24px);
+
+      @include mappy-bp(sm) {
+        margin-top: rem(24px - 48px);
+      }
     }
   }
 
   // Headlines
   .c-headline--h1 {
-    padding-top: rem(8px);
-    padding-bottom: rem(16px);
+    padding-top: rem(16px);
+    padding-bottom: rem(24px);
 
     @include mappy-bp(sm) {
-      padding-top: rem(16px);
-      padding-bottom: rem(24px);
+      padding-top: rem(24px);
+      padding-bottom: rem(32px);
     }
 
     @include mappy-bp(lg) {
-      padding-top: rem(24px);
-      padding-bottom: rem(32px);
+      padding-bottom: rem(40px);
     }
   }
 
@@ -54,67 +54,42 @@
     padding-bottom: rem(16px);
 
     @include mappy-bp(sm) {
-      padding-top: rem(32px);
-      padding-bottom: rem(32px);
-    }
-
-    @include mappy-bp(lg) {
-      padding-bottom: rem(56px);
+      padding-top: rem(24px);
+      padding-bottom: rem(24px);
     }
   }
 
   .c-headline--h3 {
-    padding-top: rem(16px);
+    padding-top: rem(24px);
     padding-bottom: rem(16px);
-
-    @include mappy-bp(sm) {
-      padding-top: rem(32px);
-      padding-bottom: rem(32px);
-    }
-
-    @include mappy-bp(lg) {
-      padding-bottom: rem(48px);
-    }
   }
 
   .c-headline--h4 {
-    padding-top: rem(16px);
-    padding-bottom: rem(16px);
+    padding-top: rem(24px);
+    padding-bottom: rem(8px);
 
     @include mappy-bp(sm) {
-      padding-top: rem(24px);
-      padding-bottom: rem(32px);
-    }
-
-    @include mappy-bp(lg) {
-      padding-bottom: rem(48px);
+      padding-bottom: rem(16px);
     }
   }
 
   .c-headline--h5 {
     padding-top: rem(16px);
-    padding-bottom: rem(16px);
+    padding-bottom: rem(8px);
 
     @include mappy-bp(sm) {
-      padding-bottom: rem(24px);
-    }
-
-    @include mappy-bp(lg) {
-      padding-bottom: rem(32px);
+      padding-top: rem(24px);
+      padding-bottom: rem(16px);
     }
   }
 
   .c-headline--h6 {
-    padding-top: rem(8px);
-    padding-bottom: rem(16px);
+    padding-top: rem(16px);
+    padding-bottom: rem(8px);
 
     @include mappy-bp(sm) {
-      padding-top: rem(16px);
-      padding-bottom: rem(24px);
-    }
-
-    @include mappy-bp(lg) {
-      padding-bottom: rem(32px);
+      padding-top: rem(24px);
+      padding-bottom: rem(16px);
     }
   }
 
@@ -124,17 +99,12 @@
 
 
   hr {
-    margin-top: rem(24px);
-    margin-bottom: rem(24px);
-
-    @include mappy-bp(sm) {
-      margin-top: rem(32px);
-      margin-bottom: rem(32px);
-    }
+    margin-top: rem(32px);
+    margin-bottom: rem(32px);
 
     @include mappy-bp(lg) {
-      margin-top: rem(56px);
-      margin-bottom: rem(56px);
+      margin-top: rem(48px);
+      margin-bottom: rem(48px);
     }
   }
 
@@ -142,17 +112,13 @@
   // Lists
   ul,
   ol {
-    padding-bottom: rem(32px);
+    padding-top: rem(16px); // extra spacing
+    padding-bottom: rem(16px + 16px); // paragraph + extra spacing
 
     @include mappy-bp(sm) {
-      padding-bottom: rem(40px);
+      padding-bottom: rem(24px + 16px); // paragraph + extra spacing
     }
 
-    @include mappy-bp(lg) {
-      padding-bottom: rem(56px);
-    }
-
-    // list items
     li {
       &:not(:last-of-type) {
         margin-bottom: rem(16px);
@@ -160,25 +126,18 @@
         @include mappy-bp(sm) {
           margin-bottom: rem(24px);
         }
-
-        @include mappy-bp(lg) {
-          margin-bottom: rem(32px);
-        }
       }
     }
 
     // nested lists
     ul,
     ol {
-      padding-bottom: 0;
       padding-top: rem(16px);
+      padding-bottom: 0;
 
       @include mappy-bp(sm) {
         padding-top: rem(24px);
-      }
-
-      @include mappy-bp(lg) {
-        padding-top: rem(32px);
+        padding-bottom: 0;
       }
     }
   }
@@ -217,16 +176,5 @@
   .u-no-bottom-spacing {
     padding-bottom: 0;
     margin-bottom: 0;
-  }
-}
-
-p,
-address {
-  &:not(.c-intro):not(.c-headline) {
-    & + & {
-      .c-richtext & {
-        margin-top: rem(-16px);
-      }
-    }
   }
 }

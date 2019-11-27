@@ -7,24 +7,15 @@
 <section class="o-main__section o-main__section--type-{{ type }}" id="section-{{ type }}-{{ self.id }}">
   <div class="o-container o-container--max-md">
     {% if not self.linkit.isEmpty %}
-      {% if self.style.value == 'link-button' %}
-        {% include '_components/link-button' with {
-          options: {
-            attributes: self.linkit.getLinkAttributes(),
-            text: self.linkit.getText(),
-          }
-        } %}
-      {% else %}
-        {% include '_components/button' with {
-          options: {
-            url: self.linkit.getUrl(),
-            target: self.linkit.getTarget(),
-            type: self.style.value,
-            text: self.linkit.getText(),
-            title: self.linkit.getTitle(),
-          }
-        } %}
-      {% endif %}
+      {% include '_components/button' with {
+        options: {
+          url: self.linkit.getUrl(),
+          target: self.linkit.getTarget(),
+          type: self.style.value,
+          text: self.linkit.getText(),
+          title: self.linkit.getTitle(),
+        }
+      } %}
     {% endif %}
   </div>
 </section>

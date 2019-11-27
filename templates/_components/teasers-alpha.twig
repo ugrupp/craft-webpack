@@ -6,24 +6,11 @@
 
 {% set defaults = {
   teasers: [],
-  text: '',
 } %}
 
 {% set options = options is defined ? defaults|merge(options) : defaults %}
 
 <div class="c-teasers-alpha">
-  {# Text #}
-  {% if options.text|length %}
-    {% include '_components/text' with {
-      options: {
-        text: options.text,
-        keepBottomSpacing: true,
-        centered: true,
-        narrow: true,
-      }
-    } %}
-  {% endif %}
-
   {# Teasers #}
   {% if options.teasers|length %}
     <div class="o-row o-row--centered c-teasers-alpha__row">
@@ -31,8 +18,8 @@
         <div class="o-col-sm-6 o-col-md-4 c-teasers-alpha__col">
           {% include "_components/teaser-alpha" with {
             options: {
-              linkAttributes: teaser.linkit.getLinkAttributes(),
-              text: teaser.linkit.getText(),
+              linkit: teaser.linkit,
+              text: teaser.body,
               image: teaser.image.one(),
             }
           } %}

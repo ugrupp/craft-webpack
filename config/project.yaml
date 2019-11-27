@@ -1,4 +1,4 @@
-dateModified: 1574878271
+dateModified: 1574893638
 email:
   fromEmail: $MAIL_SYSTEM_FROM_MAIL
   fromName: $MAIL_SYSTEM_FROM_NAME
@@ -124,7 +124,7 @@ matrixBlockTypes:
           minRows: '1'
           maxRows: ''
           contentTable: '{{%stc_8_panels}}'
-          propagationMethod: all
+          propagationMethod: none
           staticField: ''
           columns:
             25c732bd-b25e-4311-9ccf-30130ee35a0e:
@@ -132,7 +132,7 @@ matrixBlockTypes:
             63594945-f4dd-4173-a595-5d65cd2f815f:
               width: ''
           fieldLayout: row
-          selectionLabel: 'Panel hinzufügen'
+          selectionLabel: 'Add panel'
         contentColumnType: string
         fieldGroup: null
     fieldLayouts:
@@ -559,27 +559,6 @@ matrixBlockTypes:
     handle: teasersAlpha
     sortOrder: 7
     fields:
-      6bdc9924-c6c5-40ae-b111-28763e4b0a38:
-        name: Text
-        handle: text
-        instructions: ''
-        searchable: true
-        translationMethod: site
-        translationKeyFormat: null
-        type: craft\redactor\Field
-        settings:
-          redactorConfig: Standard.json
-          purifierConfig: ''
-          cleanupHtml: true
-          removeInlineStyles: '1'
-          removeEmptyTags: '1'
-          removeNbsp: '1'
-          purifyHtml: '1'
-          columnType: text
-          availableVolumes: '*'
-          availableTransforms: '*'
-        contentColumnType: text
-        fieldGroup: null
       e4af480c-70ce-465d-b323-42c79a1ca454:
         name: Teasers
         handle: teasers
@@ -597,10 +576,12 @@ matrixBlockTypes:
           columns:
             29e1e561-03e0-48e6-aa50-db0fb6e3cfd9:
               width: ''
+            657f4c29-3c6a-4a3a-961c-4d62db1d8388:
+              width: ''
             81fe4a53-33ce-4303-b700-c33aea9daa65:
               width: ''
           fieldLayout: row
-          selectionLabel: 'Teaser hinzufügen'
+          selectionLabel: 'Add teaser'
         contentColumnType: string
         fieldGroup: null
     fieldLayouts:
@@ -610,12 +591,9 @@ matrixBlockTypes:
             name: Content
             sortOrder: 1
             fields:
-              6bdc9924-c6c5-40ae-b111-28763e4b0a38:
-                required: false
-                sortOrder: 1
               e4af480c-70ce-465d-b323-42c79a1ca454:
                 required: true
-                sortOrder: 2
+                sortOrder: 1
   f2756a3d-3c04-4191-9aec-407e1163ee9b:
     field: a2dcd655-a57b-404b-af71-b272c5ed6621
     name: Figure
@@ -1413,6 +1391,27 @@ superTableBlockTypes:
           validateRelatedElements: ''
         contentColumnType: string
         fieldGroup: null
+      657f4c29-3c6a-4a3a-961c-4d62db1d8388:
+        name: Body
+        handle: body
+        instructions: ''
+        searchable: true
+        translationMethod: site
+        translationKeyFormat: null
+        type: craft\redactor\Field
+        settings:
+          redactorConfig: Standard.json
+          purifierConfig: ''
+          cleanupHtml: true
+          removeInlineStyles: '1'
+          removeEmptyTags: '1'
+          removeNbsp: '1'
+          purifyHtml: '1'
+          columnType: text
+          availableVolumes: '*'
+          availableTransforms: '*'
+        contentColumnType: text
+        fieldGroup: null
       81fe4a53-33ce-4303-b700-c33aea9daa65:
         name: Link
         handle: linkit
@@ -1469,9 +1468,12 @@ superTableBlockTypes:
               29e1e561-03e0-48e6-aa50-db0fb6e3cfd9:
                 required: true
                 sortOrder: 1
-              81fe4a53-33ce-4303-b700-c33aea9daa65:
+              657f4c29-3c6a-4a3a-961c-4d62db1d8388:
                 required: true
                 sortOrder: 2
+              81fe4a53-33ce-4303-b700-c33aea9daa65:
+                required: true
+                sortOrder: 3
 system:
   edition: solo
   live: true
