@@ -1,4 +1,4 @@
-dateModified: 1574893638
+dateModified: 1574896555
 email:
   fromEmail: $MAIL_SYSTEM_FROM_MAIL
   fromName: $MAIL_SYSTEM_FROM_NAME
@@ -371,6 +371,39 @@ matrixBlockTypes:
               default: ''
         contentColumnType: string
         fieldGroup: null
+      73fb5471-67b3-40b7-8f1f-523803c3f6ea:
+        name: Width
+        handle: width
+        instructions: ''
+        searchable: true
+        translationMethod: site
+        translationKeyFormat: null
+        type: craft\fields\Dropdown
+        settings:
+          optgroups: true
+          options:
+            -
+              label: 'Extra large'
+              value: xl
+              default: ''
+            -
+              label: Large
+              value: lg
+              default: ''
+            -
+              label: Medium
+              value: md
+              default: '1'
+            -
+              label: Small
+              value: sm
+              default: ''
+            -
+              label: 'Extra small'
+              value: xs
+              default: ''
+        contentColumnType: string
+        fieldGroup: null
     fieldLayouts:
       c9a12436-e7fe-4023-b7a5-b99ea4b8eca7:
         tabs:
@@ -383,6 +416,9 @@ matrixBlockTypes:
                 sortOrder: 1
               42d8451c-ba6f-473a-9bd4-7293a18e0936:
                 required: false
+                sortOrder: 3
+              73fb5471-67b3-40b7-8f1f-523803c3f6ea:
+                required: true
                 sortOrder: 2
   bd0329bd-65bf-486f-a17c-4f7e24195f35:
     field: a2dcd655-a57b-404b-af71-b272c5ed6621
@@ -618,11 +654,11 @@ matrixBlockTypes:
             -
               label: 'Extra Large'
               value: xl
-              default: '1'
+              default: ''
             -
               label: Large
               value: lg
-              default: ''
+              default: '1'
             -
               label: Medium
               value: md

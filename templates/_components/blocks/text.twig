@@ -11,7 +11,7 @@
 {% endfor %}
 
 <section class="o-main__section o-main__section--type-{{ type }} {{ modifiers|join(' ') }}" id="section-{{ type }}-{{ self.id }}">
-  <div class="o-container o-container--max-md">
+  <div class="o-container o-container--max-{{ self.width }}">
     {% include '_components/text' with {
       options: {
         text: self.text,
