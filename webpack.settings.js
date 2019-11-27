@@ -98,7 +98,7 @@ module.exports = {
         prefix: "img/favicons/",
         lang: "de-DE",
         background: "#fff",
-        theme_color: "#78be20",
+        theme_color: "#55ae95",
     },
     workboxConfig: {
         swDest: "../sw.js",
