@@ -27,6 +27,6 @@
     @import '../css/configuration/colors';
 
     body {
-        background-color: $color-secondary;
+        // background-color: $color-primary;
     }
 </style>

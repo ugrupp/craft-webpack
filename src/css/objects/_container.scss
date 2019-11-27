@@ -4,15 +4,6 @@
 // If you need special, non-linear left/right spacing, use padding or nested max-width on component-level!
 // --------------------------------------------------
 
-$container-padding: 16px;
-$container-max-widths: (
-  xs: 448px,
-  sm: 720px,
-  md: 848px,
-  lg: 948px,
-  xl: 1296px,
-);
-
 // General container styles
 @mixin make-container() {
   width: 100%;

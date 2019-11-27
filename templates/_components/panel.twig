@@ -10,21 +10,13 @@
   id: '',
   headline: '',
   body: '',
-  number: false,
 } %}
 
 {% set options = options is defined ? defaults|merge(options) : defaults %}
 
-<article class="c-panel{% if options.number %} c-panel--numbered{% endif %}" data-panel>
+<article class="c-panel" data-panel>
   {# Panel header #}
   <header class="c-panel__header-wrapper">
-    {# Number #}
-    {% if options.number %}
-      <div class="c-panel__number">
-        <span>{{ options.number }}</span>
-      </div>
-    {% endif %}
-
     {# Header #}
     <button class="c-panel__header" data-panel-header="panel-{{ options.id }}" aria-label="{{ 'Expand'|t }}">
       <div class="c-panel__header-content">

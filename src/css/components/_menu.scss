@@ -1,0 +1,330 @@
+//
+// Menu
+// --------------------------------------------------
+
+$menu-mobile-collapse-duration: $transition-time-default;
+$menu-submenu-shadow: rem(8px) rem(8px) 0 rgba(0, 0, 0, .15);
+$menu-item-padding: 12px;
+$menu-item-padding-sm: 12px;
+$menu-item-padding-lg: 10px;
+$menu-item-padding-horizontal-lg: 16px;
+$menu-item-indicator-size: $topbar-btn-size;
+$menu-item-indicator-size-sm: $topbar-btn-size-sm;
+
+@mixin make-logo-offset() {
+  @include mappy-bp(sm lg) {
+    margin-left: rem(329px - 329px * 209 / 329);
+
+    .is-topbar-compact & {
+      margin-left: rem(167px - 167px * 209 / 329);
+    }
+  }
+}
+
+.c-menu,
+.c-menu-level1 {
+  @include mappy-bp(lg) {
+    height: 100%;
+  }
+}
+
+// Level 1
+// List
+.c-menu-level1 {
+  background-color: #fff;
+
+  @include mappy-bp(lg) {
+    display: flex;
+    background-color: transparent;
+  }
+}
+
+// Item
+.c-menu-level1__item {
+  position: relative; // for submenu
+
+  @include mappy-bp(lg) {
+    display: flex;
+    align-items: center;
+  }
+}
+
+// Link wrappers
+.c-menu-level1__link-wrapper {
+  position: relative;
+  z-index: 10; // > submenu
+
+  @include make-container();
+  @include make-container-max-widths();
+
+  @include mappy-bp(lg) {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+  }
+}
+
+// Link
+.c-menu-level1__link {
+  display: flex; // might contain indicator
+  align-items: center;
+
+  color: $color-text;
+  font-weight: 700;
+
+  @include make-logo-offset;
+
+  @include mappy-bp(lg) {
+    color: $color-primary;
+    padding-left: rem($menu-item-padding-horizontal-lg);
+    padding-right: rem($menu-item-padding-horizontal-lg);
+    position: relative;
+  }
+
+  // active
+  .c-menu-level1__item.is-active & {
+    color: $color-primary;
+
+    @include mappy-bp(lg) {
+      color: $color-text;
+    }
+  }
+
+  // hover
+  .c-menu-level1__item.is-open &,
+  &:hover,
+  &:focus,
+  .c-menu-level1__item.is-active &:hover,
+  .c-menu-level1__item.is-active &:focus {
+    @include mappy-bp(lg) {
+      color: #000;
+    }
+  }
+}
+
+// Title
+.c-menu-level1__title {
+  @include typi('menu-level1');
+  margin-right: auto;
+  position: relative;
+
+  padding-top: rem($menu-item-padding);
+  padding-bottom: rem($menu-item-padding);
+
+  @include mappy-bp(sm) {
+    padding-top: rem($menu-item-padding-sm);
+    padding-bottom: rem($menu-item-padding-sm);
+  }
+
+  @include mappy-bp(lg) {
+    padding-top: rem(24px);
+    padding-bottom: rem(24px);
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+// Indicator
+.c-menu-level1__indicator {
+  flex-shrink: 0;
+  margin-left: rem(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: rem($menu-item-indicator-size);
+  height: rem($menu-item-indicator-size);
+
+  @include mappy-bp(sm) {
+    width: rem($menu-item-indicator-size-sm);
+    height: rem($menu-item-indicator-size-sm);
+  }
+
+  @include mappy-bp(lg) {
+    display: none;
+  }
+
+  svg {
+    width: 75%;
+    height: 75%;
+    transition: all $menu-mobile-collapse-duration;
+
+    .c-menu-level1__item.is-open & {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+// Level 2
+// List
+.c-menu-level2 {
+  display: none;
+
+  background-color: $color-gray-f;
+  background-clip: padding-box;
+  border: rem(4px) solid rgba(0, 0, 0, .15);
+  border-left: none;
+  border-right: none;
+
+  padding-top: rem($menu-item-padding / 2);
+  padding-bottom: rem($menu-item-padding / 2);
+
+  @include mappy-bp(sm) {
+    border-width: rem(8px);
+    padding-top: rem($menu-item-padding-sm / 2);
+    padding-bottom: rem($menu-item-padding-sm / 2);
+  }
+
+  @include mappy-bp(lg) {
+    background-clip: inherit;
+    position: absolute;
+    left: rem(-$menu-item-padding-horizontal-lg);
+    top: 100%;
+    min-width: rem(360px);
+    border: 0 none;
+    box-shadow: $menu-submenu-shadow;
+    background-color: #fff;
+
+    .c-menu-level1__item:last-of-type & {
+      right: rem(-$menu-item-padding-horizontal-lg);
+      left: auto;
+    }
+  }
+
+  .c-menu-level1__item.is-open & {
+    display: block;
+  }
+}
+
+// Item
+.c-menu-level2__item {
+  position: relative; // for submenu
+}
+
+// Link wrappers
+.c-menu-level2__link-wrapper {
+  position: relative;
+  z-index: 10; // > submenu
+
+  @include make-container();
+  @include make-container-max-widths();
+
+  @include mappy-bp(lg) {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+  }
+}
+
+// Link
+.c-menu-level2__link {
+  display: flex; // might contain indicator and overview icon
+  align-items: center;
+
+  color: $color-text;
+  font-weight: 700;
+
+  @include make-logo-offset;
+
+  @include mappy-bp(lg) {
+    padding-left: rem($menu-item-padding-horizontal-lg * 2);
+    padding-right: rem($menu-item-padding-horizontal-lg * 2);
+  }
+
+  // active
+  .c-menu-level2__item.is-active & {
+    color: #000;
+  }
+
+  // hover
+  .c-menu-level2__item.is-open &,
+  &:hover,
+  &:focus,
+  .c-menu-level2__item.is-active &:hover,
+  .c-menu-level2__item.is-active &:focus {
+    @include mappy-bp(lg) {
+      color: $color-primary;
+    }
+  }
+}
+
+// Overview icon
+.c-menu-level2__overview-icon {
+  flex-shrink: 0;
+  margin-right: rem(10px);
+  width: rem(14px);
+  height: rem(14px);
+  transform: translateY(-.05em); // magic number for alignment
+
+  @include mappy-bp(sm) {
+    width: rem(16px);
+    height: rem(16px);
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// Indicator: no indicator for level 2 & 3
+// ...
+
+// Title
+.c-menu-level2__title {
+  @include typi('menu-level2');
+  margin-right: auto;
+
+  padding-top: rem($menu-item-padding);
+  padding-bottom: rem($menu-item-padding);
+
+  @include mappy-bp(sm) {
+    padding-top: rem($menu-item-padding-sm);
+    padding-bottom: rem($menu-item-padding-sm);
+  }
+
+  @include mappy-bp(lg) {
+    padding-top: rem($menu-item-padding-lg);
+    padding-bottom: rem($menu-item-padding-lg);
+  }
+}
+
+
+// Service menu
+.c-menu-service {
+  .c-menu + & {
+    margin-top: rem(16px);
+    padding-top: rem(16px);
+    border-top: rem(2px) solid currentColor;
+
+    @include mappy-bp(sm) {
+      margin-top: rem(24px);
+      padding-top: rem(24px);
+    }
+  }
+}
+
+.c-menu-service__item {
+  padding-top: rem($menu-item-padding);
+  padding-bottom: rem($menu-item-padding);
+  line-height: 1;
+
+  @include mappy-bp(sm) {
+    padding-top: rem($menu-item-padding-sm);
+    padding-bottom: rem($menu-item-padding-sm);
+  }
+}
+
+.c-menu-service__item-row {
+  display: inline-block;
+
+  &,
+  &:hover,
+  &:focus {
+    color: inherit;
+  }
+}
+
+.c-menu-service__item-title {
+  display: block;
+  @include typi('menu-level1');
+}

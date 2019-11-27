@@ -2,7 +2,75 @@
 // Layout
 // --------------------------------------------------
 
+.o-pagelayout {
+  position: relative;
+  z-index: index($z-index, pagelayout);
+}
+
 .o-main {
   position: relative;
   z-index: index($z-index, main);
+
+  padding-top: rem($topbar-height);
+
+  @include mappy-bp(sm) {
+    padding-top: rem($topbar-height-sm);
+  }
 }
+
+.o-main__article {
+  position: relative;
+  z-index: 10; // > header
+  padding-top: rem($section-spacing);
+
+  @include mappy-bp(sm) {
+    padding-top: rem($section-spacing-sm);
+  }
+
+  @include mappy-bp(lg) {
+    padding-top: rem($section-spacing-lg);
+  }
+}
+
+// Sections
+.o-main__section {
+  overflow-x: hidden; // prevent overflow scroll from negative grid margins
+  position: relative;
+  padding-bottom: rem($section-spacing);
+
+  @include mappy-bp(sm) {
+    padding-bottom: rem($section-spacing-sm);
+  }
+
+  @include mappy-bp(lg) {
+    padding-bottom: rem($section-spacing-lg);
+  }
+}
+
+.o-main__section--bg-primary {
+  background-color: $color-primary;
+  color: #fff;
+}
+
+.o-main__section--allow-overflow {
+  overflow: visible;
+}
+
+// Spacing
+.o-main__section--with-top-spacing,
+[class*="o-main__section--push-next"] + .o-main__section:not(.o-main__section--no-top-spacing) { // keep an eye on this. could be moved onto twig logic.
+  padding-top: rem($section-spacing);
+
+  @include mappy-bp(sm) {
+    padding-top: rem($section-spacing-sm);
+  }
+
+  @include mappy-bp(lg) {
+    padding-top: rem($section-spacing-lg);
+  }
+}
+
+.o-main__section--no-bottom-spacing {
+  padding-bottom: 0;
+}
+

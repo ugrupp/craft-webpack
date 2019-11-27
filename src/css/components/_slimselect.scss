@@ -1,0 +1,436 @@
+// TODO: rem()
+
+$ss-height: $form-input-height;
+$ss-height-sm: $form-input-height-sm;
+$ss-height-lg: $form-input-height-lg;
+$ss-white: #fff;
+$ss-font-color: $color-text;
+$ss-font-placeholder-color: currentColor;
+$ss-primary-color: $color-primary;
+$ss-border-color: currentColor;
+$ss-border-width: 2px;
+$ss-content-spacing: 4px;
+$ss-value-bg: $color-gray-f;
+$ss-option-hover-bg: $color-gray-f;
+$ss-search-highlight-color: unquote('#fff70062');
+$ss-border-radius: 0;
+$ss-spacing-l: 8px;
+$ss-spacing-m: 6px;
+$ss-spacing-s: 4px;
+$ss-delete-bg-color: $color-text;
+$ss-delete-bg-color-hover: $color-text-dark;
+
+
+.ss-main {
+  @include typi('form-element');
+  font-weight: 400;
+
+  position: relative;
+  display: inline-block;
+  user-select: none;
+  color: $ss-font-color;
+  width: 100%;
+
+  &.has-error .ss-single-selected,
+  &.has-error .ss-multi-selected {
+    border-color: $color-error;
+  }
+
+  .ss-single-selected {
+    display: flex;
+    cursor: pointer;
+    width: 100%;
+    height: $ss-height;
+    padding: rem($form-padding-y) rem($form-padding-x);
+    border: rem($ss-border-width) solid $ss-border-color;
+    border-radius: $ss-border-radius;
+    background-color: $ss-white;
+    outline: 0;
+    transition: background-color $transition-time-default;
+
+    @include mappy-bp(sm) {
+      height: $ss-height-sm;
+    }
+
+    @include mappy-bp(lg) {
+      height: $ss-height-lg;
+    }
+
+    &.ss-disabled {
+      opacity: .5;
+      cursor: not-allowed;
+    }
+
+    // &.ss-open-above {
+    //   border-top-left-radius: 0;
+    //   border-top-right-radius: 0;
+    // }
+
+    &.ss-open-above,
+    &.ss-open-below {
+      background-color: $color-gray-f;
+    }
+
+    .placeholder {
+      display: flex;
+      flex: 1 1 100%;
+      align-items: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-align: left;
+      width: calc(100% - #{rem(30px)});
+      line-height: 1em;
+      user-select: none;
+
+      * {
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: auto;
+      }
+
+      .ss-disabled {
+        cursor: pointer;
+        color: $ss-font-placeholder-color;
+      }
+    }
+
+    .ss-deselect {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex: 0 1 auto;
+      margin: 0 rem($ss-spacing-m) 0 rem($ss-spacing-m);
+      font-weight: bold;
+
+      &.ss-hide {
+        display: none;
+      }
+    }
+
+    .ss-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex: 0 1 auto;
+      margin: 0 0 0 rem($ss-spacing-m);
+
+      span {
+        width: 1.1em;
+        height: 1.1em;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 14' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cdefs%3E%3Cpath d='M23.63 7.524L12.893 18.261a1.26 1.26 0 0 1-1.786 0L.37 7.524a1.26 1.26 0 0 1 0-1.785 1.26 1.26 0 0 1 1.786 0L12 15.582l9.844-9.843a1.26 1.26 0 0 1 1.786 0 1.26 1.26 0 0 1 0 1.785' id='a'/%3E%3C/defs%3E%3Cuse fill='#{url-friendly-color($ss-font-color)}' xlink:href='%23a' transform='translate(0 -5)' fill-rule='evenodd'/%3E%3C/svg%3E%0A");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+
+        &.arrow-up {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+
+  .ss-multi-selected {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    cursor: pointer;
+    min-height: $ss-height;
+    width: 100%;
+    padding: rem($form-padding-y) rem($form-padding-x);
+    border: rem($ss-border-width) solid $ss-border-color;
+    border-radius: $ss-border-radius;
+    background-color: $ss-white;
+    outline: 0;
+    box-sizing: border-box;
+    transition: background-color $transition-time-default;
+
+    @include mappy-bp(sm) {
+      min-height: $ss-height-sm;
+    }
+
+    @include mappy-bp(lg) {
+      min-height: $ss-height-lg;
+    }
+
+    &.ss-disabled {
+      opacity: .5;
+      cursor: not-allowed;
+
+      .ss-values {
+        .ss-disabled {
+          color: $ss-font-color;
+        }
+
+        .ss-value {
+          .ss-value-delete {
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+
+    // &.ss-open-above {
+    //   border-top-left-radius: 0;
+    //   border-top-right-radius: 0;
+    // }
+
+    // &.ss-open-below {
+    //   border-bottom-left-radius: 0;
+    //   border-bottom-right-radius: 0;
+    // }
+
+    .ss-values {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      flex: 1 1 100%;
+      width: calc(100% - #{rem(30px)});
+
+      .ss-disabled {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        color: $ss-font-placeholder-color;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      @keyframes scaleIn {
+        0% {
+          transform: scale(.75);
+          opacity: 0;
+        }
+
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes scaleOut {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+
+        100% {
+          transform: scale(.75);
+          opacity: 0;
+        }
+      }
+
+      .ss-value {
+        display: flex;
+        user-select: none;
+        align-items: center;
+        padding: .15em .25em;
+        margin: .125em .25em .125em 0;
+        background-color: $ss-value-bg;
+        border-radius: $ss-border-radius;
+        animation-name: scaleIn;
+        animation-duration: $transition-time-default;
+        animation-timing-function: ease-out;
+        animation-fill-mode: both;
+
+        &.ss-out {
+          animation-name: scaleOut;
+          animation-duration: $transition-time-default;
+          animation-timing-function: ease-out;
+        }
+
+        .ss-value-delete {
+          @include button-reset;
+          margin-left: rem(5px);
+          display: flex;
+          cursor: pointer;
+
+          height: rem(16px);
+          width: rem(16px);
+          border-radius: 50%;
+          background-color: $ss-delete-bg-color;
+          color: #fff;
+          fill: #fff;
+          transition: all $transition-time-default;
+
+          align-items: center;
+          justify-content: center;
+
+          &:hover,
+          &:focus {
+            background-color: $ss-delete-bg-color-hover;
+          }
+
+          svg {
+            height: 50%;
+            width: 50%;
+          }
+        }
+      }
+    }
+
+    .ss-add {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex: 0 1 rem(3px);
+      margin: 0 0 0 rem($ss-spacing-m);
+
+      .ss-plus {
+        width: 1.1em;
+        height: 1.1em;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 40 20' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cdefs%3E%3Cpath id='a' d='M0 .5v7.4l20 11.6L40 7.9V.5L20 12.1z'/%3E%3C/defs%3E%3Cuse fill='#{$ss-font-color}' xlink:href='%23a' fill-rule='evenodd'/%3E%3C/svg%3E%0A");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+
+        &.ss-cross {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+
+  .ss-content {
+    position: absolute;
+    width: 100%;
+    margin: rem($ss-content-spacing) 0;
+    box-sizing: border-box;
+    border: rem($ss-border-width) solid $ss-border-color;
+    border-radius: $ss-border-radius;
+    overflow: hidden;
+    z-index: 1010;
+    background-color: $ss-white;
+    transform-origin: center top;
+    transition: transform $transition-time-default, opacity $transition-time-default;
+    opacity: 0;
+    transform: scaleY(0);
+
+    &.ss-open {
+      display: block;
+      opacity: 1;
+      transform: scaleY(1);
+    }
+
+    .ss-search {
+      display: flex;
+      flex-direction: row;
+      padding: rem($form-padding-y / 1.5) rem($form-padding-x);
+
+      &.ss-hide {
+        display: none;
+      }
+
+      input {
+        display: inline-flex;
+        font-size: inherit;
+        line-height: inherit;
+        flex: 1 1 auto;
+        width: 100%;
+        min-width: 0;
+        min-height: rem(30px);
+        padding: rem($ss-spacing-m) rem($ss-spacing-l);
+        margin: 0;
+        color: $ss-font-color;
+        border: rem($ss-border-width) solid $ss-border-color;
+        border-radius: $ss-border-radius;
+        background-color: $ss-white;
+        outline: 0;
+        text-align: left;
+        appearance: textfield;
+
+        &::placeholder {
+          color: $ss-font-placeholder-color;
+          vertical-align: middle;
+          font-weight: 400;
+          font-style: italic;
+          opacity: 1;
+        }
+
+        &:focus {
+          outline: 0;
+          background-color: $color-gray-f;
+        }
+      }
+
+      .ss-addable {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-size: 22px;
+        font-weight: bold;
+        flex: 0 0 rem(30px);
+        height: rem(30px);
+        margin: 0 0 0 rem(8px);
+        border: rem($ss-border-width) solid $ss-border-color;
+        border-radius: $ss-border-radius;
+        box-sizing: border-box;
+      }
+    }
+
+    .ss-addable {
+      padding-top: 0;
+    }
+
+    .ss-list {
+      max-height: rem(200px);
+      overflow-x: hidden;
+      overflow-y: auto;
+      text-align: left;
+
+      .ss-optgroup {
+        .ss-optgroup-label {
+          padding: rem(6px) rem(10px) rem(6px) rem(10px);
+          font-weight: bold;
+        }
+
+        .ss-option {
+          padding: rem($form-padding-y / 1.5) rem($form-padding-x);
+        }
+      }
+
+      .ss-optgroup-label-selectable {
+        cursor: pointer;
+
+        &:hover {
+          color: $ss-white;
+          background-color: $ss-primary-color;
+        }
+      }
+
+      .ss-option {
+        padding: rem($form-padding-y / 1.5) rem($form-padding-x);
+        cursor: pointer;
+        user-select: none;
+
+        * {
+          display: inline-block;
+        }
+
+        &:hover,
+        &.ss-highlighted {
+          background-color: $ss-option-hover-bg;
+        }
+
+        &.ss-disabled {
+          cursor: not-allowed;
+          color: $ss-font-placeholder-color;
+          background-color: $ss-white;
+        }
+
+        &.ss-hide {
+          display: none;
+        }
+
+        .ss-search-highlight {
+          background-color: $ss-search-highlight-color;
+        }
+      }
+    }
+  }
+}

@@ -109,11 +109,17 @@
         "@babel/polyfill": "^7.0.0",
         "axios": "^0.18.1",
         "custom-event-polyfill": "^1.0.6",
+        "element-closest": "^3.0.2",
         "fontfaceobserver": "^2.1.0",
+        "headroom.js": "^0.10.3",
+        "houdinijs": "^11.0.2",
         "lazysizes": "^5.1.2",
+        "lodash.throttle": "^4.1.1",
         "object-fit-images": "^3.2.4",
+        "slim-select": "^1.23.1",
         "svgxuse": "^1.2.6",
         "vue": "^2.5.17",
-        "vue-confetti": "^0.4.2"
+        "vue-confetti": "^0.4.2",
+        "whatwg-fetch": "^3.0.0"
     }
 }

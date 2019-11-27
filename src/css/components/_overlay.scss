@@ -1,0 +1,65 @@
+//
+// Overlay
+// --------------------------------------------------
+
+.c-overlay {
+  width: 100%;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  z-index: index($z-index, overlay);
+
+  padding-top: $estimated-topbar-height * 1px; // fallback
+  padding-top: calc(#{'var(--topbar-height)'} * 1px);
+
+  background-color: #fff;
+  color: $color-text;
+
+  opacity: .75;
+  transform: translateX(100%) translateX(1px); // workaround for a weird bug in chrome where the menu was visible
+  transition: all .3s;
+  // Out: Sharp
+  transition-timing-function: cubic-bezier(.4, 0, .6, 1);
+
+  &.is-open {
+    // In: Deceleration
+    transition-timing-function: cubic-bezier(0, 0, .2, 1);
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.c-overlay__inner {
+  height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.c-overlay__content {
+  width: 100%;
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: rem(20px);
+  padding-bottom: rem(40px);
+
+  @include mappy-bp(sm) {
+    padding-top: rem(30px);
+    padding-bottom: rem(56px);
+  }
+}
+
+
+// Make overlay component more global by using a menu modifier
+.c-overlay--menu {
+  @include mappy-bp(lg) {
+    display: none;
+  }
+}

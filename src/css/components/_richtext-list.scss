@@ -1,0 +1,103 @@
+//
+// Richtext lists
+// --------------------------------------------------
+
+// get $typi.paragraph.null font size (without 'px')
+$list-base-font-size: _ty-strip-unit(_ty-get-font-size(map-deep-get($typi, paragraph, null)));
+$list-bullet-space: 32px;
+$list-bullet-space-sm: 40px;
+$list-bullet-space-lg: 48px;
+$list-bullet-space-sub-ol: 28px;
+$list-bullet-space-sub-ol-sm: 49px;
+$list-bullet-space-sub-ol-lg: 71px;
+
+.c-richtext {
+  // general list
+  ul,
+  ol {
+    @include typi('paragraph');
+    padding-left: rem($list-bullet-space);
+
+    @include mappy-bp(sm) {
+      padding-left: rem($list-bullet-space-sm);
+    }
+
+    @include mappy-bp(lg) {
+      padding-left: rem($list-bullet-space-lg);
+    }
+
+    li {
+      clear: left;
+
+      // bullet point / counter / badge
+      &::before {
+        content: '';
+        float: left;
+        margin-left: rem(-$list-bullet-space);
+
+        @include mappy-bp(sm) {
+          margin-left: rem(-$list-bullet-space-sm);
+        }
+
+        @include mappy-bp(lg) {
+          margin-left: rem(-$list-bullet-space-lg);
+        }
+      }
+
+      p:last-of-type,
+      p.p-last {
+        padding: 0;
+      }
+    }
+  }
+
+
+  // bullet point
+  ul:not(.c-checked-list) li::before {
+    background-color: $color-primary;
+    width: (7.75 / $list-base-font-size) * 1em;
+    height: (7.75 / $list-base-font-size) * 1em;
+    margin-top: .49em; // magic number, based on the bullet point dimensions and font-size
+  }
+
+  // sub list bullet point is identical to main bullet point here
+  //ul:not(.c-checked-list) li ul li::before {
+  //}
+
+
+  // counter
+  ol {
+    counter-reset: item;
+
+    li {
+      &::before {
+        content: counter(item) ".";
+        counter-increment: item;
+
+        font-weight: 700;
+        color: inherit;
+      }
+    }
+  }
+
+  // sub ol
+  ol li ol {
+    // counter
+    li::before {
+      content: counters(item, ".");
+      opacity: .8;
+    }
+  }
+
+  // checked list
+  ul.c-checked-list {
+    li {
+      &::before {
+        content: url("data:image/svg+xml,%3Csvg viewBox='0 0 14 11' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.413 5.059L.051 6.524l4.606 4.282 8.803-9.328L12.005.105 4.565 7.99z' fill='#{url-friendly-color($color-text)}' fill-rule='nonzero'/%3E%3C/svg%3E%0A");
+
+        width: (12 / $list-base-font-size) * 1em;
+        height: (12 / $list-base-font-size) * 1em;
+      }
+    }
+  }
+}

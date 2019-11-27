@@ -18,12 +18,20 @@ html {
 
 body {
   color: $color-text;
+  background-color: #fff;
   @include font-sans;
   @include font-smoothing;
+
+  // Dark mode is not supported
+  /* stylelint-disable media-feature-name-no-unknown */
+  @media (prefers-color-scheme: dark) {
+    color: $color-text;
+    background-color: #fff;
+  }
 }
 
 ::selection {
-  background: $color-inverted;
+  background: $color-primary;
   color: #fff;
 }
 

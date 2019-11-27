@@ -1,0 +1,85 @@
+//
+// Alpha teaser
+// --------------------------------------------------
+
+.c-teaser-alpha {
+  display: block;
+  background-color: #fff;
+  border: rem(2px) solid currentColor;
+
+  &,
+  &:hover,
+  &:focus {
+    color: inherit;
+  }
+}
+
+// Image
+.c-teaser-alpha__img-wrapper {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: (288 / 400) * 100%;
+  height: 0;
+}
+
+$teaser-image-size: 75%;
+
+.c-teaser-alpha__img {
+  display: block;
+  position: absolute;
+  left: (100% - $teaser-image-size) / 2;
+  top: (100% - $teaser-image-size) / 2;
+  width: $teaser-image-size;
+  height: $teaser-image-size;
+
+  object-fit: contain;
+  object-position: center center;
+  transition: all $transition-time-default;
+  will-change: transform;
+
+  &.lazyload,
+  &.lazyloading {
+    opacity: 0;
+  }
+
+  .c-teaser-alpha:hover &,
+  .c-teaser-alpha:focus & {
+    @include mappy-bp(lg) {
+      transform: scale(1.05);
+    }
+  }
+}
+
+
+// Grid
+$teasers-alpha-spacing: 24px;
+$teasers-alpha-spacing-sm: 32px;
+$teasers-alpha-spacing-lg: 48px;
+$teasers-alpha-vertical-spacing: 24px;
+$teasers-alpha-vertical-spacing-sm: 32px;
+$teasers-alpha-vertical-spacing-lg: 48px;
+
+.c-teasers-alpha__row {
+  @include make-row-spacing($teasers-alpha-spacing, $teasers-alpha-vertical-spacing);
+
+  @include mappy-bp(sm) {
+    @include make-row-spacing($teasers-alpha-spacing-sm, $teasers-alpha-vertical-spacing-sm);
+  }
+
+  @include mappy-bp(lg) {
+    @include make-row-spacing($teasers-alpha-spacing-lg, $teasers-alpha-vertical-spacing-lg);
+  }
+}
+
+.c-teasers-alpha__col {
+  @include make-col-spacing($teasers-alpha-spacing, $teasers-alpha-vertical-spacing);
+
+  @include mappy-bp(sm) {
+    @include make-col-spacing($teasers-alpha-spacing-sm, $teasers-alpha-vertical-spacing-sm);
+  }
+
+  @include mappy-bp(lg) {
+    @include make-col-spacing($teasers-alpha-spacing-lg, $teasers-alpha-vertical-spacing-lg);
+  }
+}
+

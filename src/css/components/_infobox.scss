@@ -1,0 +1,56 @@
+//
+// Infobox
+// --------------------------------------------------
+
+$infobox-icon-size: 44px;
+$infobox-icon-size-sm: 62px;
+$infobox-icon-size-lg: 80px;
+$infobox-icon-ratio: 39 / 71;
+
+
+.c-infobox {
+  padding: rem(32px) rem(16px);
+  background-color: #fff;
+  color: inherit;
+  border: rem(2px) solid currentColor;
+
+  display: flex;
+  align-items: center;
+
+  @include mappy-bp(sm) {
+    padding: rem(40px) rem(32px);
+  }
+
+  @include mappy-bp(lg) {
+    padding: rem(56px) rem(48px);
+  }
+}
+
+.c-infobox__icon {
+  color: $color-primary;
+  flex-shrink: 0;
+  height: rem($infobox-icon-size);
+  width: rem($infobox-icon-size * $infobox-icon-ratio);
+  margin-right: rem(16px);
+
+  @include mappy-bp(sm) {
+    height: rem($infobox-icon-size-sm);
+    width: rem($infobox-icon-size-sm * $infobox-icon-ratio);
+    margin-right: rem(32px);
+  }
+
+  @include mappy-bp(lg) {
+    height: rem($infobox-icon-size-lg);
+    width: rem($infobox-icon-size-lg * $infobox-icon-ratio);
+    margin-right: rem(48px);
+  }
+
+  svg {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.c-infobox__content {
+  flex-grow: 1;
+}

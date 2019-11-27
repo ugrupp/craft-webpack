@@ -13,6 +13,7 @@
 }
 
 .c-headline--h2 {
+  @include font-ci;
   @include typi('h2');
 }
 
@@ -31,3 +32,4 @@
 .c-headline--h6 {
   @include typi('h6');
 }
+

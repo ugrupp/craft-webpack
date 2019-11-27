@@ -1,4 +1,4 @@
-dateModified: 1574873696
+dateModified: 1574878271
 email:
   fromEmail: $MAIL_SYSTEM_FROM_MAIL
   fromName: $MAIL_SYSTEM_FROM_NAME
@@ -127,9 +127,9 @@ matrixBlockTypes:
           propagationMethod: all
           staticField: ''
           columns:
-            34:
+            25c732bd-b25e-4311-9ccf-30130ee35a0e:
               width: ''
-            33:
+            63594945-f4dd-4173-a595-5d65cd2f815f:
               width: ''
           fieldLayout: row
           selectionLabel: 'Panel hinzufügen'
@@ -270,8 +270,7 @@ matrixBlockTypes:
               sources: '*'
               allowCustomQuery: ''
             entry:
-              sources:
-                - 'single:7d93f9fa-b037-4efb-a916-d7367dfec86d'
+              sources: '*'
               allowCustomQuery: '1'
             site:
               sites: '*'
@@ -513,17 +512,17 @@ matrixBlockTypes:
           propagationMethod: all
           staticField: ''
           columns:
-            15:
+            4ffc7acb-5922-435c-958b-21adc920699f:
               width: ''
-            17:
+            8887e00c-b46a-498e-acca-d4098d58d162:
               width: ''
-            20:
+            9a3c2975-94ad-4f63-8ac3-87df073add2c:
               width: ''
-            18:
+            ab0e9e39-0e0d-4dd9-9bbe-d18bcd0df1cc:
               width: ''
-            19:
+            dc320957-328f-45a3-a8b8-0340ba554c2c:
               width: ''
-            16:
+            ebefdefa-a53d-4644-8e85-895b09af85a0:
               width: ''
           fieldLayout: row
           selectionLabel: ''
@@ -596,9 +595,9 @@ matrixBlockTypes:
           propagationMethod: all
           staticField: ''
           columns:
-            30:
+            29e1e561-03e0-48e6-aa50-db0fb6e3cfd9:
               width: ''
-            31:
+            81fe4a53-33ce-4303-b700-c33aea9daa65:
               width: ''
           fieldLayout: row
           selectionLabel: 'Teaser hinzufügen'
@@ -1439,8 +1438,7 @@ superTableBlockTypes:
               sources: '*'
               allowCustomQuery: ''
             entry:
-              sources:
-                - 'single:7d93f9fa-b037-4efb-a916-d7367dfec86d'
+              sources: '*'
               allowCustomQuery: '1'
             site:
               sites: '*'

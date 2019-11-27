@@ -37,6 +37,15 @@
           "font-weight": "700"
         }
       }
+    },
+    "introtext": {
+      "title": "Intro",
+      "api": "module.block.format",
+      "args": {
+        "tag": "p",
+        "class": "c-intro",
+        "type": "toggle"
+      }
     }
   },
   "plugins": ["fullscreen", "video", "properties", "customstyles"],

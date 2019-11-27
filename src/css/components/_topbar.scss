@@ -1,0 +1,160 @@
+//
+// Topbar
+// --------------------------------------------------
+
+:root {
+  --topbar-height: #{$estimated-topbar-height}; // should be adjusted by JS
+}
+
+@keyframes topbarNodeReady {
+  from { clip: rect(1px, auto, auto, auto); }
+  to { clip: rect(0, auto, auto, auto); }
+}
+
+.c-topbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: index($z-index, topbar);
+  background-color: #fff;
+  will-change: transform;
+
+  // https://keithclark.co.uk/articles/working-with-elements-before-the-dom-is-ready/
+  animation-name: topbarNodeReady;
+  animation-duration: .001s;
+
+  &::after {
+    content: '';
+    z-index: -1; // < topbar content
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    transition: opacity $transition-time-medium;
+    box-shadow: 0 rem(4px) rem(4px) 0 rgba(0, 0, 0, .15);
+  }
+}
+
+// Headroom modifiers
+.c-topbar--headroom-initialized {
+  transition: all $transition-time-medium;
+}
+
+.c-topbar--unpinned {
+  transform: translateY(-100%);
+
+  &::after {
+    opacity: 0;
+  }
+}
+
+.c-topbar__main {
+  height: rem($topbar-height);
+
+  @include mappy-bp(sm) {
+    height: rem($topbar-height-sm);
+  }
+}
+
+.c-topbar__container {
+  height: 100%;
+}
+
+.c-topbar__inner {
+  height: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.c-topbar__left {
+  flex-shrink: 0;
+  display: flex;
+}
+
+// Logo
+.c-topbar__logo {
+  @include font-ci;
+
+  &,
+  &:hover,
+  &:focus {
+    color: $color-secondary;
+  }
+}
+
+
+.c-topbar__right {
+  height: 100%;
+  flex-shrink: 0;
+  margin-left: rem(24px);
+  display: flex;
+  align-items: center;
+}
+
+.c-topbar__menu {
+  align-self: flex-end;
+
+  @include mappy-bp(max lg) {
+    display: none;
+  }
+}
+
+.c-topbar__menu-toggler {
+  flex-shrink: 0;
+  min-width: 0;
+  display: block;
+
+  @include mappy-bp(lg) {
+    display: none;
+  }
+}
+
+.c-topbar__burger {
+  display: block;
+  flex-shrink: 0;
+  position: relative;
+  width: rem($topbar-btn-size);
+  height: rem($topbar-btn-size);
+
+  @include mappy-bp(sm) {
+    width: rem($topbar-btn-size-sm);
+    height: rem($topbar-btn-size-sm);
+  }
+
+  svg {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+
+    transition: all $transition-time-default;
+    transform: translate3d(0, 0, 0);
+
+    // burger
+    &:first-of-type {
+      .is-overlay-menu-open & {
+        transform: scale(.75);
+        opacity: 0;
+      }
+    }
+
+    // close
+    &:last-of-type {
+      transform: scale(.75);
+      opacity: 0;
+
+      .is-overlay-menu-open & {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  }
+}

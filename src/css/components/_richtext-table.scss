@@ -1,0 +1,78 @@
+//
+// Richtext table
+// --------------------------------------------------
+
+.c-table--responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  @include mappy-bp(md) {
+    overflow: visible;
+  }
+
+  table {
+    width: 100%;
+    min-width: rem(500px);
+  }
+}
+
+table {
+  // border-collapse: collapse;
+  // border-style: hidden;
+  caption-side: bottom;
+  color: $color-text;
+
+  caption {
+    margin-top: rem(16px);
+
+    @include mappy-bp(sm) {
+      margin-top: rem(24px);
+    }
+  }
+}
+
+// Rows
+tr {
+  // Head row
+  thead & {
+    background: transparent;
+    border-bottom: rem(2px) solid currentColor;
+  }
+
+  // Body row
+  tbody & {
+    border-bottom: rem(1px) solid currentColor;
+
+    &:nth-of-type(odd) {
+      background: $color-gray-f;
+    }
+  }
+
+  // Foot row
+  tfoot & {
+    background: transparent;
+    font-weight: 700;
+  }
+}
+
+// Columns
+th,
+td {
+  padding: rem(16px);
+
+  > :first-child {
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  > :last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+}
+
+th {
+  border: 0 none;
+  font-weight: 700;
+  text-align: left;
+}

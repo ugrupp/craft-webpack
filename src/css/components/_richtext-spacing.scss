@@ -1,0 +1,232 @@
+//
+// Richtext spacing
+// --------------------------------------------------
+
+.c-richtext {
+  // Inline elements
+  p,
+  address {
+    padding-bottom: rem(32px);
+
+    @include mappy-bp(sm) {
+      padding-bottom: rem(40px);
+    }
+
+    @include mappy-bp(lg) {
+      padding-bottom: rem(56px);
+    }
+
+    &.u-text-sm {
+      padding-bottom: rem(16px);
+    }
+  }
+
+  .c-intro {
+    padding-top: rem(8px);
+
+    @include mappy-bp(sm) {
+      padding-top: rem(16px);
+    }
+
+    @include mappy-bp(sm) {
+      padding-top: rem(24px);
+    }
+  }
+
+  // Headlines
+  .c-headline--h1 {
+    padding-top: rem(8px);
+    padding-bottom: rem(16px);
+
+    @include mappy-bp(sm) {
+      padding-top: rem(16px);
+      padding-bottom: rem(24px);
+    }
+
+    @include mappy-bp(lg) {
+      padding-top: rem(24px);
+      padding-bottom: rem(32px);
+    }
+  }
+
+  .c-headline--h2 {
+    padding-top: rem(16px);
+    padding-bottom: rem(16px);
+
+    @include mappy-bp(sm) {
+      padding-top: rem(32px);
+      padding-bottom: rem(32px);
+    }
+
+    @include mappy-bp(lg) {
+      padding-bottom: rem(56px);
+    }
+  }
+
+  .c-headline--h3 {
+    padding-top: rem(16px);
+    padding-bottom: rem(16px);
+
+    @include mappy-bp(sm) {
+      padding-top: rem(32px);
+      padding-bottom: rem(32px);
+    }
+
+    @include mappy-bp(lg) {
+      padding-bottom: rem(48px);
+    }
+  }
+
+  .c-headline--h4 {
+    padding-top: rem(16px);
+    padding-bottom: rem(16px);
+
+    @include mappy-bp(sm) {
+      padding-top: rem(24px);
+      padding-bottom: rem(32px);
+    }
+
+    @include mappy-bp(lg) {
+      padding-bottom: rem(48px);
+    }
+  }
+
+  .c-headline--h5 {
+    padding-top: rem(16px);
+    padding-bottom: rem(16px);
+
+    @include mappy-bp(sm) {
+      padding-bottom: rem(24px);
+    }
+
+    @include mappy-bp(lg) {
+      padding-bottom: rem(32px);
+    }
+  }
+
+  .c-headline--h6 {
+    padding-top: rem(8px);
+    padding-bottom: rem(16px);
+
+    @include mappy-bp(sm) {
+      padding-top: rem(16px);
+      padding-bottom: rem(24px);
+    }
+
+    @include mappy-bp(lg) {
+      padding-bottom: rem(32px);
+    }
+  }
+
+  .c-headline--meta {
+    padding-bottom: 0;
+  }
+
+
+  hr {
+    margin-top: rem(24px);
+    margin-bottom: rem(24px);
+
+    @include mappy-bp(sm) {
+      margin-top: rem(32px);
+      margin-bottom: rem(32px);
+    }
+
+    @include mappy-bp(lg) {
+      margin-top: rem(56px);
+      margin-bottom: rem(56px);
+    }
+  }
+
+
+  // Lists
+  ul,
+  ol {
+    padding-bottom: rem(32px);
+
+    @include mappy-bp(sm) {
+      padding-bottom: rem(40px);
+    }
+
+    @include mappy-bp(lg) {
+      padding-bottom: rem(56px);
+    }
+
+    // list items
+    li {
+      &:not(:last-of-type) {
+        margin-bottom: rem(16px);
+
+        @include mappy-bp(sm) {
+          margin-bottom: rem(24px);
+        }
+
+        @include mappy-bp(lg) {
+          margin-bottom: rem(32px);
+        }
+      }
+    }
+
+    // nested lists
+    ul,
+    ol {
+      padding-bottom: 0;
+      padding-top: rem(16px);
+
+      @include mappy-bp(sm) {
+        padding-top: rem(24px);
+      }
+
+      @include mappy-bp(lg) {
+        padding-top: rem(32px);
+      }
+    }
+  }
+
+
+  // Tables
+  .c-table {
+    margin-top: rem(32px);
+    margin-bottom: rem(24px);
+
+    @include mappy-bp(sm) {
+      margin-top: rem(48px);
+      margin-bottom: rem(40px);
+    }
+
+    @include mappy-bp(lg) {
+      margin-top: rem(64px);
+      margin-bottom: rem(64px);
+    }
+
+    ul li:not(:last-of-type),
+    ol li:not(:last-of-type) {
+      margin-bottom: rem(8px);
+    }
+  }
+
+
+  // General
+  &:not(.c-richtext--keep-top-spacing) > :first-child,
+  .u-no-top-spacing {
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  &:not(.c-richtext--keep-bottom-spacing) > :last-child,
+  .u-no-bottom-spacing {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+}
+
+p,
+address {
+  &:not(.c-intro):not(.c-headline) {
+    & + & {
+      .c-richtext & {
+        margin-top: rem(-16px);
+      }
+    }
+  }
+}

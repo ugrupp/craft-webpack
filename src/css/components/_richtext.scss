@@ -1,0 +1,201 @@
+//
+// Richtext
+// --------------------------------------------------
+
+@import 'richtext-spacing';
+@import 'richtext-list';
+@import 'richtext-table';
+
+.c-richtext {
+  // Inline elements
+  p,
+  address {
+    @include typi('paragraph');
+  }
+
+  .u-text-sm {
+    @include typi('paragraph-sm');
+  }
+
+  .u-text-lg {
+    @include typi('paragraph-lg');
+  }
+
+  .c-intro {
+    @include typi('paragraph-lg');
+  }
+
+  strong:not(.c-headline) {
+    font-weight: 700;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  mark {
+    color: #fff;
+    background-color: $color-primary;
+  }
+
+  a {
+    color: $color-link;
+    text-decoration: underline;
+
+    &:hover,
+    &:focus {
+      color: $color-link-hover;
+    }
+  }
+
+  &.c-richtext--inverted a {
+    color: inherit;
+
+    &:hover,
+    &:focus {
+      color: inherit;
+    }
+  }
+
+  abbr {
+    text-decoration: none;
+    border-bottom: rem(1px) dashed currentColor;
+    cursor: help;
+  }
+
+  sub,
+  sup {
+    font-size: (14 / 20) * 1em;
+    line-height: 0;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  sup {
+    vertical-align: super;
+  }
+
+  sub {
+    vertical-align: sub;
+  }
+
+  small {
+    @include typi('paragraph-sm');
+  }
+
+  hr {
+    background-color: currentColor;
+    height: rem(2px);
+    border: 0 none;
+  }
+
+  // figure {
+  //   @extend .c-figure;
+  // }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  // Headlines
+  h1,
+  .c-headline--h1 {
+    @extend .c-headline;
+    @extend .c-headline--h1;
+  }
+
+  h2,
+  .c-headline--h2 {
+    @extend .c-headline;
+    @extend .c-headline--h2;
+  }
+
+  h3,
+  .c-headline--h3 {
+    @extend .c-headline;
+    @extend .c-headline--h3;
+  }
+
+  h4,
+  .c-headline--h4 {
+    @extend .c-headline;
+    @extend .c-headline--h4;
+  }
+
+  h5,
+  .c-headline--h5 {
+    @extend .c-headline;
+    @extend .c-headline--h5;
+  }
+
+  h6,
+  .c-headline--h6 {
+    @extend .c-headline;
+    @extend .c-headline--h6;
+  }
+
+  .c-headline--h1,
+  .c-headline--h2,
+  .c-headline--h3,
+  .c-headline--h4,
+  .c-headline--h5,
+  .c-headline--h6 {
+    color: inherit;
+
+    a {
+      &,
+      &:hover,
+      &:focus {
+        text-decoration: inherit;
+        color: inherit;
+      }
+    }
+  }
+
+  // Headline classes on <a>
+  a.c-headline--h1,
+  a.c-headline--h2,
+  a.c-headline--h3,
+  a.c-headline--h4,
+  a.c-headline--h5,
+  a.c-headline--h6 {
+    &,
+    &:hover,
+    &:focus {
+      text-decoration: inherit;
+      color: inherit;
+    }
+  }
+}
+
+.c-richtext--centered {
+  text-align: center;
+}
+
+.c-richtext--underline-inverted a {
+  text-decoration-color: #fff;
+}
+
+.c-richtext--sm {
+  p,
+  address,
+  ul,
+  ol,
+  table {
+    @include typi('paragraph-sm');
+  }
+}
+
+.c-richtext--lg {
+  p,
+  address,
+  ul,
+  ol,
+  table {
+    @include typi('paragraph-lg');
+  }
+}

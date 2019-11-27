@@ -12,6 +12,24 @@ export default class Util {
     });
   }
 
+  // Get the transitionend event name
+  // Adapted from Modernizr: https://modernizr.com
+  static whichTransitionEndEvent() {
+    let el = document.createElement('fakeelement');
+    let transitions = {
+      'transition': 'transitionend',
+      'OTransition': 'oTransitionEnd',
+      'MozTransition': 'transitionend',
+      'WebkitTransition': 'webkitTransitionEnd',
+    };
+
+    for (let t in transitions) {
+      if (el.style[t] !== undefined) {
+        return transitions[t];
+      }
+    }
+  }
+
   // Helper function to trigger events
   static triggerEvent(eventName) {
     if (!eventName) return;
@@ -30,5 +48,12 @@ export default class Util {
       detail: payload,
     });
     document.dispatchEvent(event);
+  }
+
+  static offset(el) {
+    let rect = el.getBoundingClientRect(),
+    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
   }
 }

@@ -31,6 +31,22 @@
 
 // Components (~ leafs)
 @import 'components/headlines';
+@import 'components/richtext';
+@import 'components/buttons';
+@import 'components/figure';
+@import 'components/text';
+@import 'components/form';
+@import 'components/loader';
+
+// Components (~ bundles)
+@import 'components/panels';
+@import 'components/teasers-alpha';
+@import 'components/infobox';
+@import 'components/blockquote';
 
 // Components (~ static)
+@import 'components/topbar';
+@import 'components/overlay';
+@import 'components/menu';
+@import 'components/footer';
 //@import 'components/cookieconsent';

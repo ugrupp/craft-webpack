@@ -16,13 +16,25 @@ $typi-breakpoint: mappy-bp;
 $typi: (
   // Base for <html>, will be inherited
   base: (
-    null: (16px, 1.7)
+    null: (16px, 1.5)
   ),
 
   paragraph: (
-    null: (14px, 1.7),
+    null: (14px, 1.5),
     sm: (18px),
     lg: (20px),
+  ),
+
+  paragraph-sm: (
+    null: (12px, 1.5),
+    sm: (14px),
+    lg: (16px),
+  ),
+
+  paragraph-lg: (
+    null: (16px, 1.5),
+    sm: (20px),
+    lg: (24px),
   ),
 
   h1: (
@@ -58,6 +70,50 @@ $typi: (
     null: (14px, 1.2),
     sm: (18px),
     lg: (20px)
+  ),
+
+  button: (
+    null: (14px, 1.2),
+    sm: (18px),
+    lg: (20px)
+  ),
+
+  panel-headline: (
+    null: (14px, 1.2),
+    sm: (18px),
+    lg: (20px)
+  ),
+
+  form-label: (
+    null: (14px, 1.2),
+    sm: (18px),
+    lg: (20px)
+  ),
+
+  form-element: (
+    null: (14px, 1.2),
+    sm: (18px),
+    lg: (20px)
+  ),
+
+  menu-level1: (
+    null: (14px, 1.2),
+    sm: (18px),
+  ),
+
+  menu-level2: (
+    null: (14px, 1.2),
+    sm: (18px),
+  ),
+
+  menu-level3: (
+    null: (14px, 1.2),
+    sm: (18px),
+  ),
+
+  footer: (
+    null: (14px, 1.2),
+    sm: (18px),
   ),
 );
 /* stylelint-enable */

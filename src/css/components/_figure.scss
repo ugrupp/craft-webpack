@@ -1,0 +1,98 @@
+//
+// Figure
+// --------------------------------------------------
+
+.c-figure__img-wrapper {
+  background-color: $color-gray-f;
+  width: 100%;
+}
+
+// Image
+.c-figure__img-wrapper,
+.c-figure__img {
+  border-radius: 0;
+}
+
+img.c-figure__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: all $transition-time-default;
+
+  &.lazyload,
+  &.lazyloading {
+    opacity: 0;
+    height: rem(400px); // dummy height, still better than the square placeholder gif
+  }
+}
+
+// Caption
+.c-figure figcaption {
+  margin-top: rem(16px);
+
+  @include mappy-bp(sm) {
+    margin-top: rem(24px);
+  }
+}
+
+// Video
+.c-figure__video-wrapper {
+  iframe {
+    max-width: 100%;
+  }
+
+  + figcaption {
+    text-align: left;
+  }
+}
+
+.c-figure__video-wrapper--aspect-ratio {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  height: 0;
+  position: relative;
+
+  iframe {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  + figcaption {
+    text-align: center;
+  }
+}
+
+// Centered modifier
+.c-figure--centered {
+  .c-figure__img-wrapper {
+    background-color: transparent;
+  }
+
+  img.c-figure__img {
+    max-width: 100%;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .c-figure__video-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  figcaption {
+    text-align: center;
+  }
+}
+
+// No-background modifier
+.c-figure--no-bg {
+  .c-figure__img-wrapper {
+    background-color: transparent;
+  }
+}

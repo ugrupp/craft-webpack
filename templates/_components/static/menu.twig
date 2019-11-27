@@ -89,9 +89,6 @@
 {% macro buildMenuItem(options) %}
   {% from '_macros' import svgSprite %}
 
-  {# Set overview flag #}
-  {% set isOverview = options.item.menuOverviewItem ??? false %}
-
   {# Set active flag #}
   {% set isActive = false %}
   {% if options.linkedEntry %}
@@ -100,11 +97,11 @@
     {# ^ = start of string, prevents mid-url matches. {} = custom delimiters, since / doesn't play well with URLs. #}
     {% set pageIsInPath = (options.entry.uri matches '{^' ~ options.linkedEntry.uri ~ '}') %}
 
-    {% set isActive = pageIsCurrent or (not isOverview and (pageIsTopParent or pageIsInPath)) %}
+    {% set isActive = pageIsCurrent or pageIsTopParent or pageIsInPath %}
   {% endif %}
 
   {# Item #}
-  <li class="{{ options.itemBaseClass }}__item{% if isOverview %} {{ options.itemBaseClass }}__item--overview{% endif %}{% if isActive %} is-active{% endif %}" data-menu-item="{{ options.level }}">
+  <li class="{{ options.itemBaseClass }}__item{% if isActive %} is-active{% endif %}" data-menu-item="{{ options.level }}">
     {# Link wrapper #}
     <div class="{{ options.itemBaseClass }}__link-wrapper">
       {# Link #}
@@ -114,12 +111,6 @@
         {% if options.showSubmenu %}data-menu-toggle="{{ options.level + 1 }}"{% endif %}
         {% if options.showSubmenu %}data-menu-target="{{ options.submenuID }}"{% endif %}
       >
-        {# Overview icon #}
-        {% if isOverview %}
-          <div class="{{ options.itemBaseClass }}__overview-icon">
-            {{ svgSprite('ic-overview') }}
-          </div>
-        {% endif %}
 
         {# Title #}
         <strong class="{{ options.itemBaseClass }}__title">

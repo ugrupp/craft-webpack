@@ -1,0 +1,105 @@
+//
+// Panels
+// --------------------------------------------------
+
+$panel-padding-x: 16px;
+$panel-padding-x-sm: 24px;
+
+.c-panel {
+  position: relative;
+  width: 100%;
+
+  & + & {
+    margin-top: rem(16px);
+
+    @include mappy-bp(lg) {
+      margin-top: rem(24px);
+    }
+  }
+}
+
+.c-panel__header-wrapper {
+  position: relative;
+  display: flex;
+}
+
+.c-panel__header {
+  flex-grow: 1;
+
+  @include button-reset;
+  cursor: pointer;
+  text-align: left;
+  @include typi('panel-headline');
+
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: rem(16px) rem($panel-padding-x);
+  background-color: $color-gray-f;
+  transition: all $transition-time-default;
+
+  @include mappy-bp(sm) {
+    padding: rem(16px) rem($panel-padding-x-sm);
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $color-gray-d;
+  }
+}
+
+.c-panel__header-content {
+  width: 100%;
+
+  @include mappy-bp(sm) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.c-panel__headline {
+  display: block;
+  font-weight: 700;
+}
+
+.c-panel__toggle-icon {
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  transition: all $transition-time-default;
+  margin-left: rem(16px);
+
+  @include mappy-bp(sm) {
+    margin-left: rem(24px);
+  }
+
+  svg {
+    height: 100%;
+    width: 100%;
+  }
+
+  .c-panel.is-expanded & {
+    transform: rotate(180deg);
+  }
+}
+
+.c-panel__panel {
+  &.houdini {
+    max-height: 75vh; // overwritten by JS
+    transition: max-height ease-in-out $transition-time-default;
+    overflow: hidden;
+
+    .c-panel.is-collapsed & {
+      max-height: 0 !important;
+    }
+  }
+}
+
+.c-panel__content {
+  padding: rem(16px) rem($panel-padding-x);
+
+  @include mappy-bp(sm) {
+    padding: rem(24px) rem($panel-padding-x-sm);
+  }
+}

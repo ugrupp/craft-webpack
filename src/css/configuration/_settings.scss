@@ -11,10 +11,50 @@ $breakpoints: (
   xl: 1400px
 );
 
+// Container
+// INVARIANT: Each container width + (2 * $container-padding) should not be larger than the corresponding breakpoint width
+$container-padding: 20px;
+$container-max-widths: (
+  xs: 280px,
+  sm: 720px,
+  md: 848px,
+  lg: 1072px,
+  xl: 1296px,
+);
+
 // Transition timing
 $transition-time-default: .2s;
 $transition-time-medium: .4s;
 $transition-time-long: .8s;
 
 // z-index indexes
-$z-index: main, footer, topbar, overlay;
+$z-index: pagelayout, main, footer, topbar, overlay, loader;
+
+// Topbar
+$estimated-topbar-height: 144;
+$topbar-height: 48px;
+$topbar-height-sm: 96px;
+$topbar-btn-size: 22px;
+$topbar-btn-size-sm: 28px;
+
+// Section spacing
+$section-spacing: 48px;
+$section-spacing-sm: 72px;
+$section-spacing-lg: 112px;
+
+// Form elements
+$form-input-height: 53px;
+$form-input-height-sm: 55px;
+$form-input-height-lg: 62px;
+$form-padding-x: 16px;
+$form-padding-y: 16px;
+$form-checkbox-radio-size: 16px;
+$form-checkbox-radio-size-sm: 18px;
+$form-checkbox-radio-size-lg: 22px;
+$form-input-color: $color-text;
+
+$form-spacing: 32px;
+$form-spacing-lg: 48px;
+$form-vertical-spacing: 24px;
+$form-vertical-spacing-sm: 24px;
+$form-vertical-spacing-lg: 32px;

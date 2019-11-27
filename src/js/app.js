@@ -20,6 +20,19 @@ Object.assign;
 // JS module imports
 import './modules/fontfaceobserver';
 import './modules/object-fit-images';
+import './modules/scrollbar';
+import Overlays from './modules/overlays';
+import Menues from './modules/menu';
+import Panels from './modules/panels';
+import Selects from './modules/selects';
+import Inputs from './modules/inputs';
+
+new Selects();
+new Overlays();
+new Menues();
+new Panels();
+new Inputs();
+
 
 // Example app main
 const main = async () => {
@@ -43,5 +56,4 @@ const main = async () => {
 // Execute async function
 main().then((value) => {
     console.log('main executed');
-
 });

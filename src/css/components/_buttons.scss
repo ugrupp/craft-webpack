@@ -1,0 +1,219 @@
+//
+// Buttons
+// --------------------------------------------------
+
+$button-border-width: 2px;
+$button-padding-x: 24px;
+$button-icon-size: 11px;
+$button-icon-size-sm: 16px;
+$button-icon-spacing-x: 16px;
+$button-icon-spacing-y: 6px;
+
+.c-button {
+  @include button-reset;
+  cursor: pointer;
+  @include typi('button');
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: all $transition-time-default;
+
+  position: relative; // for background
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  min-width: rem(160px);
+  padding-left: rem($button-padding-x);
+  padding-right: rem($button-padding-x);
+
+  color: #fff;
+  background-color: $color-primary;
+  border: rem($button-border-width) solid $color-primary;
+
+  // Hover background
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+
+    background-color: rgba(255, 255, 255, .15);
+    transition: all $transition-time-default;
+    opacity: 0;
+  }
+
+  &:hover,
+  &:focus {
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+.c-button__icon {
+  z-index: 10; // > background
+  height: rem($button-icon-size);
+  width: rem($button-icon-size);
+  margin-top: rem($button-icon-spacing-y);
+  margin-bottom: rem($button-icon-spacing-y);
+
+  @include mappy-bp(sm) {
+    height: rem($button-icon-size-sm);
+    width: rem($button-icon-size-sm);
+  }
+
+  // aspect ratio can be provided in HTML
+  @supports (--css: variables) {
+    --aspect-ratio: 1; // fallback = square
+
+    width: calc(#{rem($button-icon-size)} * var(--aspect-ratio));
+
+    @include mappy-bp(sm) {
+      width: calc(#{rem($button-icon-size-sm)} * var(--aspect-ratio));
+    }
+  }
+}
+
+
+// Secondary
+.c-button--secondary {
+  color: $color-primary;
+  border-color: currentColor;
+  background-color: #fff;
+
+  &::before {
+    background-color: rgba($color-primary, .1);
+  }
+}
+
+// Tertiary
+.c-button--tertiary {
+  color: $color-primary;
+  border-color: #fff;
+  background-color: transparent;
+}
+
+// Block
+.c-button--block {
+  display: flex;
+  min-width: 0;
+}
+
+.c-button--block-xs {
+  @include mappy-bp(max sm) {
+    display: flex;
+    min-width: 0;
+  }
+}
+
+// Readonly
+.c-button--readonly {
+  pointer-events: none;
+}
+
+// Icon only on XS
+.c-button--icon-only-xs {
+  @include mappy-bp(max sm) {
+    min-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+
+    .c-button__icon,
+    .c-button__text + .c-button__icon {
+      margin-left: rem($button-icon-spacing-x);
+      margin-right: rem($button-icon-spacing-x);
+    }
+
+    .c-button__text {
+      display: none;
+    }
+  }
+}
+
+// Text
+.c-button__text {
+  z-index: 10; // > background
+  margin-top: rem(16px);
+  margin-bottom: rem(16px);
+}
+
+// Inner spacing
+.c-button__text + .c-button__icon,
+.c-button__icon + .c-button__text {
+  margin-left: rem(10px);
+}
+
+
+// Button group
+$button-group-spacing: 8px;
+$button-group-spacing-sm: 12px;
+$button-group-spacing-lg: 16px;
+
+.c-button-group {
+  overflow: hidden;
+
+  .c-button {
+    margin-top: rem($button-group-spacing);
+    margin-left: rem($button-group-spacing);
+    margin-right: rem($button-group-spacing);
+
+    @include mappy-bp(sm) {
+      margin-top: rem($button-group-spacing-sm);
+      margin-left: rem($button-group-spacing-sm);
+      margin-right: rem($button-group-spacing-sm);
+    }
+
+    @include mappy-bp(lg) {
+      margin-top: rem($button-group-spacing-lg);
+      margin-left: rem($button-group-spacing-lg);
+      margin-right: rem($button-group-spacing-lg);
+    }
+  }
+}
+
+.c-button-group--stretch {
+  .c-button {
+    flex-grow: 1;
+  }
+}
+
+.c-button-group__inner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  margin-top: rem(-$button-group-spacing);
+  margin-left: rem(-$button-group-spacing);
+  margin-right: rem(-$button-group-spacing);
+
+  @include mappy-bp(sm) {
+    margin-top: rem(-$button-group-spacing-sm);
+    margin-left: rem(-$button-group-spacing-sm);
+    margin-right: rem(-$button-group-spacing-sm);
+  }
+
+  @include mappy-bp(lg) {
+    margin-top: rem(-$button-group-spacing-lg);
+    margin-left: rem(-$button-group-spacing-lg);
+    margin-right: rem(-$button-group-spacing-lg);
+  }
+
+  .c-button-group--centered & {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .c-button-group--column-xs & {
+    @include mappy-bp(max sm) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

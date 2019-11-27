@@ -10,11 +10,18 @@ $color-gray-a: #a7a7a7;
 $color-gray-4: #4a4a4a;
 
 // CI colors
-$color-primary: #009fe3;
-$color-secondary: yellow;
+$color-green: #55ae95;
+$color-blue: #3f4d71;
+$color-orange: #ffac8e;
+$color-red: #fd7792;
 
 // Color mapping
-$color-inverted: $color-primary;
+$color-primary: $color-green;
+$color-secondary: $color-red;
 $color-text: $color-gray-4;
-$color-link: $color-inverted;
+$color-text-dark: $color-blue;
+$color-link: $color-primary;
 $color-link-hover: inherit;
+$color-error: $color-red;
+$color-success: $color-green;
+
