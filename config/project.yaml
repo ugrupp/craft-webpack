@@ -1,4 +1,4 @@
-dateModified: 1574896555
+dateModified: 1575362659
 email:
   fromEmail: $MAIL_SYSTEM_FROM_MAIL
   fromName: $MAIL_SYSTEM_FROM_NAME
@@ -877,6 +877,10 @@ plugins:
       robotsTxt: "{# Sitemap URL #}\nSitemap: {{ url(seo.sitemapName ~ '.xml') }}\n\n{# Disallows #}\n{% if craft.app.config.env != 'production' %}\n\n{# Disallow access to everything when NOT in production #}\nUser-agent: *\nDisallow: /\n\n{% else %}\n\n{# Disallow access to cpresources/ when live #}\nUser-agent: *\nDisallow: /cpresources/\n\n{% endif %}"
       facebookAppId: ''
       twitterHandle: ''
+  dumper:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
 sections:
   2ef4c03a-16ca-4899-bd3f-8882715a3c7d:
     name: Pages
