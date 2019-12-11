@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9ec91692365eb25a463be5c5980eb36b",
+    "content-hash": "3a944692b33221f693c0b6b66b75dab1",
     "packages": [
         {
             "name": "aelvan/imager",
@@ -71,6 +71,74 @@
                 "transform"
             ],
             "time": "2019-09-21T14:25:19+00:00"
+        },
+        {
+            "name": "am-impact/amcommand",
+            "version": "3.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/am-impact/amcommand.git",
+                "reference": "dd8b102ac68a3e79474c9cdd0e8b591415ab799c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/am-impact/amcommand/zipball/dd8b102ac68a3e79474c9cdd0e8b591415ab799c",
+                "reference": "dd8b102ac68a3e79474c9cdd0e8b591415ab799c",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^3.0.0-RC1"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "Command Palette",
+                "handle": "command-palette",
+                "version": "3.1.4",
+                "schemaVersion": "3.0.0",
+                "hasSettings": true,
+                "hasCpSection": true,
+                "developer": "a&m impact",
+                "developerUrl": "http://www.am-impact.nl",
+                "description": "Command palette in Craft.",
+                "changelogUrl": "https://raw.githubusercontent.com/am-impact/amcommand/craft3/CHANGELOG.md",
+                "documentationUrl": "https://github.com/am-impact/amcommand/blob/master/README.md",
+                "components": {
+                    "entries": "amimpact\\commandpalette\\services\\Entries",
+                    "general": "amimpact\\commandpalette\\services\\General",
+                    "globals": "amimpact\\commandpalette\\services\\Globals",
+                    "plugins": "amimpact\\commandpalette\\services\\Plugins",
+                    "search": "amimpact\\commandpalette\\services\\Search",
+                    "settings": "amimpact\\commandpalette\\services\\Settings",
+                    "tasks": "amimpact\\commandpalette\\services\\Tasks",
+                    "utilities": "amimpact\\commandpalette\\services\\Utilities",
+                    "users": "amimpact\\commandpalette\\services\\Users"
+                },
+                "class": "amimpact\\commandpalette\\CommandPalette"
+            },
+            "autoload": {
+                "psr-4": {
+                    "amimpact\\commandpalette\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "a&m impact",
+                    "homepage": "http://www.am-impact.nl"
+                }
+            ],
+            "description": "Command palette in Craft.",
+            "keywords": [
+                "Craft",
+                "cms",
+                "command",
+                "craftcms",
+                "plugin"
+            ],
+            "time": "2018-05-30T07:07:23+00:00"
         },
         {
             "name": "aws/aws-sdk-php",

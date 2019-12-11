@@ -1,6 +1,7 @@
 {
   "require": {
     "aelvan/imager": "^2.3",
+    "am-impact/amcommand": "^3.1",
     "carlcs/craft-redactorcustomstyles": "^3.0",
     "craftcms/cms": "3.3.16.3",
     "craftcms/redactor": "^2.4",

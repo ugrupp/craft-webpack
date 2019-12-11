@@ -1,4 +1,4 @@
-dateModified: 1575362659
+dateModified: 1576062949
 email:
   fromEmail: $MAIL_SYSTEM_FROM_MAIL
   fromName: $MAIL_SYSTEM_FROM_NAME
@@ -881,6 +881,38 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 1.0.0
+  command-palette:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.0.0
+    settings:
+      pluginName: ''
+      theme: 'Palette Craft.css'
+      elementSearchElementTypes:
+        asset:
+          elementType: Asset
+          enabled: ''
+        category:
+          elementType: Category
+          enabled: ''
+        entry:
+          elementType: Entry
+          enabled: '1'
+        globalset:
+          elementType: 'Global Set'
+          enabled: '1'
+        matrixblock:
+          elementType: 'Matrix Block'
+          enabled: ''
+        supertableblock:
+          elementType: 'SuperTable Block'
+          enabled: ''
+        tag:
+          elementType: Tag
+          enabled: ''
+        user:
+          elementType: User
+          enabled: ''
 sections:
   2ef4c03a-16ca-4899-bd3f-8882715a3c7d:
     name: Pages
