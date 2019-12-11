@@ -12,6 +12,7 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const Stylish = require('webpack-stylish');
 const StylelintBarePlugin = require('stylelint-bare-webpack-plugin');
+const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
 
 // config files
 const common = require('./webpack.common.js');
@@ -167,6 +168,7 @@ module.exports = [
                     configureCleanWebpack()
                 ),
                 new webpack.HotModuleReplacementPlugin(),
+                new ImageminWebpWebpackPlugin(),
             ],
         }
     ),
