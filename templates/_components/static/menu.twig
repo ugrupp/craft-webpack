@@ -22,66 +22,18 @@
       {# Build submenu ID #}
       {% set submenuID = showSubmenu ? (options.id ~ "-" ~ loop.index0) : false %}
 
-      {# Category link element #}
-      {% if item.menuLink.type == 'category' %}
-        {% set linkedCategory = item.menuLink.getElement() ??? false %}
-        {% if linkedCategory %}
-          {# Get category parent page #}
-          {# TODO: Remove the diagnostics scope, make it more abstract ('categoryOverviewPage') #}
-          {% set categoryOverviewPage = linkedCategory.diagnosticsParent.one() %}
-          {% if categoryOverviewPage %}
-
-            {# Query category items #}
-            {% set categoryItemsQuery = craft.entries()
-              .relatedTo(linkedCategory)
-              .descendantOf(categoryOverviewPage) %}
-            {% set categoryItems = categoryItemsQuery.all() %}
-
-            {% if categoryItems|length %}
-              <li class="{{ itemBaseClass }}__item {{ itemBaseClass }}__item--category" data-menu-item="{{ options.level }}">
-                {# Label #}
-                <div class="{{ itemBaseClass }}__label-wrapper">
-                  {% set itemTitle = item.menuLink.getText() ??? item.title %}
-                  <strong class="{{ itemBaseClass }}__label">
-                    {{ itemTitle }}
-                  </strong>
-                </div>
-
-                <ul class="{{ itemBaseClass }}__category-items">
-                  {# Print category items #}
-                  {% for categoryItem in categoryItems %}
-                    {{ macro.buildMenuItem({
-                      item: null,
-                      linkedEntry: categoryItem,
-                      target: null,
-                      title: categoryItem.title,
-                      entry: options.entry,
-                      level: options.level,
-                      itemBaseClass: itemBaseClass,
-                      showSubmenu: false,
-                      submenuID: submenuID
-                    }) }}
-                  {% endfor %}
-                </ul>
-              </li>
-            {% endif %}
-          {% endif %}
-        {% endif %}
-
-      {# Default link element #}
-      {% else %}
-        {{ macro.buildMenuItem({
-          item: item,
-          linkedEntry: item.menuLink.getElement() ??? null,
-          target: item.menuLink.getTarget(),
-          title: item.menuLink.getText() ??? item.title,
-          entry: options.entry,
-          level: options.level,
-          itemBaseClass: itemBaseClass,
-          showSubmenu: showSubmenu,
-          submenuID: submenuID
-        }) }}
-      {% endif %}
+      {# Build menu item #}
+      {{ macro.buildMenuItem({
+        item: item,
+        linkedEntry: item.menuLink.getElement() ??? null,
+        target: item.menuLink.getTarget(),
+        title: item.menuLink.getText() ??? item.title,
+        entry: options.entry,
+        level: options.level,
+        itemBaseClass: itemBaseClass,
+        showSubmenu: showSubmenu,
+        submenuID: submenuID
+      }) }}
     {% endfor %}
   </ul>
 {% endmacro %}
@@ -105,7 +57,7 @@
     {# Link wrapper #}
     <div class="{{ options.itemBaseClass }}__link-wrapper">
       {# Link #}
-      <a href="{{ options.linkedEntry.url ??? options.item.menuLink.getUrl() ??? '#' }}"
+      <a href="{{ options.item.menuLink.getUrl() ??? options.linkedEntry.url ??? '#' }}"
         {% if options.target %}target="{{ options.target }}"{% endif %}
         class="{{ options.itemBaseClass }}__link"
         {% if options.showSubmenu %}data-menu-toggle="{{ options.level + 1 }}"{% endif %}
