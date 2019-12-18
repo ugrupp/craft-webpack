@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "961176280428bc142af7bf86b78f9b53",
+    "content-hash": "da56f59a874aa454bc0b54fa443eaef4",
     "packages": [
         {
             "name": "aelvan/imager",
@@ -314,22 +314,17 @@
         },
         {
             "name": "composer/ca-bundle",
-            "version": "1.2.4",
+            "version": "1.2.5",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/10bb96592168a0f8e8f6dcde3532d9fa50b0b527",
-                "reference": "10bb96592168a0f8e8f6dcde3532d9fa50b0b527",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/62e8fc2dc550e5d6d8c9360c7721662670f58149",
+                "reference": "62e8fc2dc550e5d6d8c9360c7721662670f58149",
                 "shasum": ""
             },
             "require": {
                 "ext-openssl": "*",
                 "ext-pcre": "*",
                 "php": "^5.3.2 || ^7.0 || ^8.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8.35 || ^5.7 || 6.5 - 8",
-                "psr/log": "^1.0",
-                "symfony/process": "^2.5 || ^3.0 || ^4.0"
             },
             "type": "library",
             "extra": {
@@ -342,7 +337,6 @@
                     "Composer\\CaBundle\\": "src"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -361,7 +355,7 @@
                 "ssl",
                 "tls"
             ],
-            "time": "2019-08-30T08:44:50+00:00"
+            "time": "2019-12-11T14:44:42+00:00"
         },
         {
             "name": "composer/composer",
@@ -549,11 +543,11 @@
         },
         {
             "name": "craftcms/cms",
-            "version": "3.3.18.1",
+            "version": "3.3.18.3",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/cms/zipball/3cbeb54e1ae91c1500fd166d65b48597c7c6381e",
-                "reference": "3cbeb54e1ae91c1500fd166d65b48597c7c6381e",
+                "url": "https://api.github.com/repos/craftcms/cms/zipball/47beab74bcc1e3341a19f69f0e20b5f4092bc877",
+                "reference": "47beab74bcc1e3341a19f69f0e20b5f4092bc877",
                 "shasum": ""
             },
             "require": {
@@ -563,7 +557,7 @@
                 "craftcms/server-check": "~1.1.0",
                 "creocoder/yii2-nested-sets": "~0.9.0",
                 "elvanto/litemoji": "^1.3.1",
-                "enshrined/svg-sanitize": "~0.13.0",
+                "enshrined/svg-sanitize": "~0.13.2",
                 "ext-curl": "*",
                 "ext-dom": "*",
                 "ext-json": "*",
@@ -572,7 +566,7 @@
                 "ext-pcre": "*",
                 "ext-pdo": "*",
                 "ext-zip": "*",
-                "guzzlehttp/guzzle": "^6.3.0",
+                "guzzlehttp/guzzle": ">=6.3.0 <6.5.0 || ^6.5.1",
                 "league/flysystem": "^1.0.35",
                 "league/oauth2-client": "^2.2.1",
                 "mikehaertl/php-shellcommand": "^1.2.5",
@@ -631,7 +625,7 @@
                 "docs": "https://docs.craftcms.com/v3/",
                 "rss": "https://github.com/craftcms/cms/releases.atom"
             },
-            "time": "2019-12-10T21:37:26+00:00"
+            "time": "2019-12-17T23:46:45+00:00"
         },
         {
             "name": "craftcms/oauth2-craftid",
@@ -996,11 +990,11 @@
         },
         {
             "name": "ether/seo",
-            "version": "3.6.2",
+            "version": "3.6.3",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ethercreative/seo/zipball/97d036bb3c887131cd3d784ac35770c6f7780173",
-                "reference": "97d036bb3c887131cd3d784ac35770c6f7780173",
+                "url": "https://api.github.com/repos/ethercreative/seo/zipball/9f491fd107192c78f6565298520635b3889c2a27",
+                "reference": "9f491fd107192c78f6565298520635b3889c2a27",
                 "shasum": ""
             },
             "require": {
@@ -1019,12 +1013,15 @@
                     "ether\\seo\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "description": "SEO utilities including a unique field type, sitemap, & redirect manager",
-            "time": "2019-08-05T11:00:38+00:00"
+            "support": {
+                "issues": "https://github.com/ethercreative/seo",
+                "docs": "https://github.com/ethercreative/seo/blob/v3/README.md"
+            },
+            "time": "2019-12-18T16:52:52+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -1593,11 +1590,11 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.5.0",
+            "version": "6.4.1",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/dbc2bc3a293ed6b1ae08a3651e2bfd213d19b6a5",
-                "reference": "dbc2bc3a293ed6b1ae08a3651e2bfd213d19b6a5",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/0895c932405407fd3a7368b6910c09a24d26db11",
+                "reference": "0895c932405407fd3a7368b6910c09a24d26db11",
                 "shasum": ""
             },
             "require": {
@@ -1607,13 +1604,12 @@
                 "php": ">=5.5"
             },
             "suggest": {
-                "ext-intl": "Required for Internationalized Domain Name (IDN) support",
                 "psr/log": "Required for using the Log middleware"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "6.5-dev"
+                    "dev-master": "6.3-dev"
                 }
             },
             "autoload": {
@@ -1645,7 +1641,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2019-12-07T18:20:45+00:00"
+            "time": "2019-10-23T15:58:00+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -4854,11 +4850,11 @@
         },
         {
             "name": "voku/portable-ascii",
-            "version": "1.3.5",
+            "version": "1.4.2",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/portable-ascii/zipball/056000d679a44b06ee61a63114f587cde066b1a8",
-                "reference": "056000d679a44b06ee61a63114f587cde066b1a8",
+                "url": "https://api.github.com/repos/voku/portable-ascii/zipball/8b26da3760a6de80eb319493a7e4684f80097e41",
+                "reference": "8b26da3760a6de80eb319493a7e4684f80097e41",
                 "shasum": ""
             },
             "require": {
@@ -4890,15 +4886,15 @@
                 "clean",
                 "php"
             ],
-            "time": "2019-11-11T16:55:47+00:00"
+            "time": "2019-12-13T02:54:15+00:00"
         },
         {
             "name": "voku/portable-utf8",
-            "version": "5.4.30",
+            "version": "5.4.32",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/713c7201c2026344e4fb679cbc8e437a97fbc868",
-                "reference": "713c7201c2026344e4fb679cbc8e437a97fbc868",
+                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/527aa7e8164ea1f2b6084b1483d8e89a5fc3311b",
+                "reference": "527aa7e8164ea1f2b6084b1483d8e89a5fc3311b",
                 "shasum": ""
             },
             "require": {
@@ -4908,7 +4904,7 @@
                 "symfony/polyfill-intl-normalizer": "~1.0",
                 "symfony/polyfill-mbstring": "~1.0",
                 "symfony/polyfill-php72": "~1.0",
-                "voku/portable-ascii": "~1.3"
+                "voku/portable-ascii": "~1.4"
             },
             "suggest": {
                 "ext-ctype": "Use Ctype for e.g. hexadecimal digit detection",
@@ -4955,7 +4951,7 @@
                 "utf-8",
                 "utf8"
             ],
-            "time": "2019-12-04T11:04:42+00:00"
+            "time": "2019-12-13T03:10:14+00:00"
         },
         {
             "name": "voku/stop-words",
