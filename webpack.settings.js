@@ -8,6 +8,7 @@ require('dotenv').config();
 module.exports = {
     name: "Craft Webpack Scaffold",
     copyright: "Urs Grupp, 21sieben.de",
+    enableIEDevelopment: false,
     paths: {
         src: {
             base: "./src/",

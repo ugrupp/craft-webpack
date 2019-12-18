@@ -97,14 +97,14 @@ const configureImageLoader = (buildType) => {
 
 // Configure the Postcss loader
 const configurePostcssLoader = (buildType) => {
-    // Don't generate CSS for the legacy config in development
-    if (buildType === LEGACY_CONFIG) {
+    // Don't generate CSS for the legacy config in development, unless IE dev is enabled
+    if (buildType === LEGACY_CONFIG && !settings.enableIEDevelopment) {
         return {
             test: /\.scss$/,
             loader: 'ignore-loader'
         };
     }
-    if (buildType === MODERN_CONFIG) {
+    if (buildType === MODERN_CONFIG || settings.enableIEDevelopment) {
         return {
             test: /\.scss$/,
             use: [
