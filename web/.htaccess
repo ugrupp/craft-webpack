@@ -20,6 +20,9 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
+    ### mandatory for uberspace
+    RewriteBase /
+
     ### -> redirects ###
 
     # Send would-be 404 requests to Craft
