@@ -2,18 +2,44 @@
 // Figure
 // --------------------------------------------------
 
-.c-figure__img-wrapper {
-  background-color: $color-gray-f;
-  width: 100%;
+$figure-aspect-ratio: 10 / 16;
+
+.c-figure {
+  display: block;
 }
 
 // Image
-.c-figure__img-wrapper,
-.c-figure__img {
-  border-radius: 0;
+.c-figure__img-wrapper {
+  background-color: $color-gray-f;
+
+  .c-figure--use-aspect-ratio & {
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      display: block;
+      padding-bottom: $figure-aspect-ratio * 100%;
+    }
+  }
+
+  picture {
+    top: 0; // mandatory for lazysizes' object-fit-poylfill to work correctly
+    width: 100%;
+
+    .c-figure--use-aspect-ratio & {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+    }
+  }
 }
 
-img.c-figure__img {
+.c-figure__img {
   display: block;
   width: 100%;
   height: auto;
@@ -23,68 +49,31 @@ img.c-figure__img {
   &.lazyloading {
     opacity: 0;
     height: rem(400px); // dummy height, still better than the square placeholder gif
+
+    .c-figure--use-aspect-ratio & {
+      height: 100%;
+    }
+  }
+
+  .c-figure--use-aspect-ratio & {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
   }
 }
 
 // Caption
 .c-figure figcaption {
-  margin-top: rem(16px);
-
-  @include mappy-bp(sm) {
-    margin-top: rem(24px);
-  }
-}
-
-// Video
-.c-figure__video-wrapper {
-  iframe {
-    max-width: 100%;
-  }
-
-  + figcaption {
-    text-align: left;
-  }
-}
-
-.c-figure__video-wrapper--aspect-ratio {
-  overflow: hidden;
-  padding-bottom: 56.25%;
-  height: 0;
-  position: relative;
-
-  iframe {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  + figcaption {
-    text-align: center;
-  }
+  margin-top: rem(8px);
 }
 
 // Centered modifier
 .c-figure--centered {
-  .c-figure__img-wrapper {
-    background-color: transparent;
-  }
-
-  img.c-figure__img {
-    max-width: 100%;
-    width: auto;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .c-figure__video-wrapper {
-    display: flex;
-    justify-content: center;
-  }
-
   figcaption {
     text-align: center;
   }

@@ -6,11 +6,12 @@
 
 {% set defaults = {
   image: null,
+  alt: '',
   caption: '',
   centered: true,
-  video: false,
-  videoAspectRatio: false,
   size: 'xl',
+  aspectRatio: false,
+  imageOptions: {},
 } %}
 
 {% set options = options is defined ? defaults|merge(options) : defaults %}
@@ -23,71 +24,51 @@
   {% set modifiersStringArray = modifiersStringArray|merge(['c-figure--centered']) %}
 {% endif %}
 
+{# Aspect ratio modifier #}
+{% if options.aspectRatio %}
+  {% set modifiersStringArray = modifiersStringArray|merge(['c-figure--use-aspect-ratio']) %}
+{% endif %}
+
 {# No-bg modifier #}
 {% if options.image and options.image.extension|lower in ['png', 'svg'] %}
   {% set modifiersStringArray = modifiersStringArray|merge(['c-figure--no-bg']) %}
 {% endif %}
 
 <figure class="c-figure {{ modifiersStringArray|join(' ') }}">
-  {# Video (TODO) #}
-  {% if options.video %}
-    <figure class="c-figure {{ modifiersStringArray|join(' ') }}">
-      <div class="c-figure__video-wrapper{% if options.videoAspectRatio %} c-figure__video-wrapper--aspect-ratio{% endif %}">
-        <iframe src='https://player.vimeo.com/video/112866269' width='640' height='360' frameborder='0' allow='autoplay; fullscreen' allowfullscreen=''></iframe>
-      </div>
-    </figure>
 
   {# Image #}
-  {% elseif options.image %}
-    {# SVG #}
-    {% if options.image.extension|lower == 'svg' %}
-      <div class="c-figure__img-wrapper">
-        <img
-          class="c-figure__img lazyload"
-          src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='
-          data-src="{{ options.image.url }}"
-          alt="{{ options.image.title }}">
-      </div>
+  {% if options.image|length %}
+    {% set transformedStartWidth = null %}
+    {% switch options.size %}
+      {% case "full" %}
+        {% set transformedStartWidth = 1920 %}
+      {% case "xl" %}
+        {% set transformedStartWidth = 1296 %}
+      {% case "lg" %}
+        {% set transformedStartWidth = 1072 %}
+      {% case "md" %}
+        {% set transformedStartWidth = 848 %}
+      {% case "sm" %}
+        {% set transformedStartWidth = 720 %}
+      {% case "xs" %}
+        {% set transformedStartWidth = 440 %}
+      {% default %}
+        {% set transformedStartWidth = 1296 %}
+    {% endswitch %}
 
-    {# No SVG #}
-    {% else %}
-      {% set transformedStartWidth = null %}
-      {% switch options.size %}
-        {% case "full" %}
-          {% set transformedStartWidth = 1920 %}
-        {% case "xl" %}
-          {% set transformedStartWidth = 1296 %}
-        {% case "lg" %}
-          {% set transformedStartWidth = 1072 %}
-        {% case "md" %}
-          {% set transformedStartWidth = 848 %}
-        {% case "sm" %}
-          {% set transformedStartWidth = 720 %}
-        {% case "xs" %}
-          {% set transformedStartWidth = 440 %}
-        {% default %}
-          {% set transformedStartWidth = 1296 %}
-      {% endswitch %}
+    {% set imageOptions = {
+      image: options.image,
+      baseClass: 'c-figure__',
+      objectFit: 'cover',
+      alt: options.alt,
+      imageSizesMax: transformedStartWidth,
+    } %}
 
-      {% set transformedImages = craft.imager.transformImage(options.image, [
-        { width: transformedStartWidth },
-        { width: 440 },
-      ],
-      null,
-      {
-        fillTransforms: true,
-        fillInterval: 300,
-      }) %}
+    {% set imageOptions = imageOptions|merge(options.imageOptions) %}
 
-      <div class="c-figure__img-wrapper">
-        <img
-          class="c-figure__img lazyload"
-          src="{{ transformedImages[0].url }}"
-          srcset='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='
-          data-srcset="{{ transformedImages | srcset }}"
-          alt="{{ options.image.title }}">
-      </div>
-    {% endif %}
+    {% include '_components/image' with {
+      options: imageOptions,
+    } %}
   {% endif %}
 
   {# Caption #}

@@ -12,59 +12,84 @@
   objectFit: false,
   alt: null,
   imageSizesMax: 1920,
-  imageSizesMin: 320,
+  imageSizesMin: 420,
   fillInterval: 300,
+  instanceReuseEnabled: true,
+  lazyload: true,
+  lazyloadClass: 'lazyload',
 } %}
 
 {% set options = options is defined ? defaults|merge(options) : defaults %}
 
 {% if options.image %}
   {# Set alt text #}
-  {% set altText = options.alt is not null ? options.alt : options.image.title %}
+  {% set altText = options.alt is not null ? options.alt : (options.image.title ??? '') %}
 
-  {# Create transforms #}
-  {% set imageSizes = [
-    { width: options.imageSizesMax },
-    { width: options.imageSizesMin },
-  ] %}
+  {% if options.image is instance of('craft\\elements\\Asset') %}
+    {# Create transforms #}
+    {% set imageSizes = [
+      { width: options.imageSizesMax },
+      { width: options.imageSizesMin },
+    ] %}
 
-  {# Default transforms #}
-  {% set transformedImages = craft.imager.transformImage(options.image,
-    imageSizes,
-    null,
-    {
-      fillTransforms: true,
-      fillInterval: options.fillInterval,
-    })
-  %}
-
-  {# If the server has support for WebP, create transforms #}
-  {% if craft.imager.serverSupportsWebp() %}
-    {% set transformedImagesWebp = craft.imager.transformImage(options.image,
+    {# Default transforms #}
+    {% set transformedImages = craft.imager.transformImage(options.image,
       imageSizes,
-      { format: 'webp' },
+      null,
       {
         fillTransforms: true,
         fillInterval: options.fillInterval,
+        instanceReuseEnabled: options.instanceReuseEnabled,
       })
     %}
+
+    {# If the server has support for WebP, create transforms #}
+    {% if craft.imager.serverSupportsWebp() %}
+      {% set transformedImagesWebp = craft.imager.transformImage(options.image,
+        imageSizes,
+        { format: 'webp' },
+        {
+          fillTransforms: true,
+          fillInterval: options.fillInterval,
+          instanceReuseEnabled: options.instanceReuseEnabled,
+        })
+      %}
+    {% endif %}
   {% endif %}
 
-  <picture class="{{ options.baseClass }}img-wrapper">
-    {% if craft.imager.serverSupportsWebp() %}
-      <source
-        data-srcset="{{ transformedImagesWebp|srcset }}"
-        srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-        type="image/webp" />
-    {% endif %}
+  <div class="{{ options.baseClass }}img-wrapper">
+    <picture>
+      {# Craft image #}
+      {% if options.image is instance of('craft\\elements\\Asset') %}
+        {# Swiper-lazy & <picture> sadly don't work together #}
+        {% if craft.imager.serverSupportsWebp() and options.lazyloadClass != 'swiper-lazy' %}
+          <source
+            data-srcset="{{ transformedImagesWebp|srcset }}"
+            srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+            type="image/webp" />
+        {% endif %}
 
-    <img
-        class="{{ options.baseClass }}img lazyload"
-        src="{{ transformedImages[transformedImages|length - 1].url }}"
-        srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-        data-srcset="{{ transformedImages|srcset }}"
-        data-sizes="auto"
-        {% if options.objectFit %} style="{{ objectFit(options.image, options.objectFit) }}"{% endif %}
-        alt="{{ altText }}">
-  </picture>
+        <img
+          class="{{ options.baseClass }}img{% if options.lazyload %} {{ options.lazyloadClass }}{% endif %}"
+          src="{{ transformedImages[transformedImages|length - 1].url }}"
+          srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+          data-srcset="{{ transformedImages|srcset }}"
+          {% if options.objectFit %} style="{{ objectFit(options.image, options.objectFit) }}"{% endif %}
+          alt="{{ altText }}">
+
+      {# External image #}
+      {% else %}
+        <img
+          class="{{ options.baseClass }}img{% if options.lazyload %} {{ options.lazyloadClass }}{% endif %}"
+          data-src="{{ options.image }}"
+          src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+          alt="{{ altText }}">
+      {% endif %}
+    </picture>
+
+    {# Lazyload spinner #}
+    {% if options.lazyload and options.lazyloadClass == 'swiper-lazy' %}
+      <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+    {% endif %}
+  </div>
 {% endif %}
