@@ -12,6 +12,8 @@
   company: '',
 } %}
 
+{% set options = options is defined ? defaults|merge(options) : defaults %}
+
 <blockquote class="c-blockquote">
   {# Icon #}
   <div class="c-blockquote__icon">
