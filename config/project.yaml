@@ -1,4 +1,4 @@
-dateModified: 1576062949
+dateModified: 1585740571
 email:
   fromEmail: $MAIL_SYSTEM_FROM_MAIL
   fromName: $MAIL_SYSTEM_FROM_NAME
@@ -1547,7 +1547,7 @@ superTableBlockTypes:
                 required: true
                 sortOrder: 3
 system:
-  edition: solo
+  edition: pro
   live: true
   name: 'Craft Webpack Scaffold'
   schemaVersion: 3.3.3
