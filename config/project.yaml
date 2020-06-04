@@ -1,4 +1,4 @@
-dateModified: 1586997016
+dateModified: 1591280343
 email:
   fromEmail: $MAIL_SYSTEM_FROM_MAIL
   fromName: $MAIL_SYSTEM_FROM_NAME
@@ -1269,7 +1269,7 @@ plugins:
   seo:
     edition: standard
     enabled: true
-    schemaVersion: 3.1.0
+    schemaVersion: 3.1.1
     settings:
       description: ''
       facebookAppId: ''
