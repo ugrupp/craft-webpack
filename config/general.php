@@ -38,6 +38,9 @@ return [
         // custom backup command (see https://craftcms.com/guides/database-backups-in-craft-3-with-mamp)
         'backupCommand' => getenv('BACKUP_COMMAND'),
         'restoreCommand' => getenv('RESTORE_COMMAND'),
+
+        // Disable template caching on dev
+        'enableTemplateCaching' => false
     ],
 
     // Staging environment settings
