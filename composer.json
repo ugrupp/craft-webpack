@@ -16,7 +16,7 @@
     "verbb/expanded-singles": "1.1.2",
     "verbb/field-manager": "2.1.6",
     "verbb/smith": "1.1.3",
-    "verbb/super-table": "2.4.9",
+    "verbb/super-table": "2.5.0",
     "vlucas/phpdotenv": "^2.4.0"
   },
   "autoload": {

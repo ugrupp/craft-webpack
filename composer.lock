@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d6176515a36657e5a152c3c4907d3beb",
+    "content-hash": "148b13377854f1ab50dda43860cacba9",
     "packages": [
         {
             "name": "aelvan/imager",
@@ -5214,15 +5214,15 @@
         },
         {
             "name": "verbb/super-table",
-            "version": "2.4.9",
+            "version": "2.5.0",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/verbb/super-table/zipball/cf3237d0e5be608561bfcf02d77e9bef03855a69",
-                "reference": "cf3237d0e5be608561bfcf02d77e9bef03855a69",
+                "url": "https://api.github.com/repos/verbb/super-table/zipball/a9b0a35620796b6ffe396d41dff3928b3c9c8763",
+                "reference": "a9b0a35620796b6ffe396d41dff3928b3c9c8763",
                 "shasum": ""
             },
             "require": {
-                "craftcms/cms": "^3.4.8",
+                "craftcms/cms": "^3.4.22",
                 "verbb/base": "^1.0.2"
             },
             "type": "craft-plugin",
@@ -5263,7 +5263,7 @@
                 "docs": "https://github.com/verbb/super-table",
                 "rss": "https://github.com/verbb/super-table/commits/v2.atom"
             },
-            "time": "2020-04-15T22:45:13+00:00"
+            "time": "2020-05-30T03:27:47+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
