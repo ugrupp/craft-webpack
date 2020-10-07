@@ -1,0 +1,8 @@
+baseUrl: $DEFAULT_SITE_URL
+handle: default
+hasUrls: true
+language: de
+name: 'Craft Webpack Scaffold'
+primary: true
+siteGroup: a160c4ba-1b94-4a79-ae3c-8bedb0b16477
+sortOrder: 1

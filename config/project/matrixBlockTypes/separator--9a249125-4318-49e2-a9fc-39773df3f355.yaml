@@ -1,0 +1,10 @@
+field: a2dcd655-a57b-404b-af71-b272c5ed6621
+fieldLayouts:
+  b9631e43-c721-43fb-91e0-047485463b3e:
+    tabs:
+      -
+        name: Content
+        sortOrder: 1
+handle: separator
+name: Separator
+sortOrder: 9

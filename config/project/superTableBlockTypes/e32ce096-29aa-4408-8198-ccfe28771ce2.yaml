@@ -1,0 +1,173 @@
+field: e4af480c-70ce-465d-b323-42c79a1ca454
+fieldLayouts:
+  e3b83d1f-f3fb-45c9-8a5f-be78b6e422bd:
+    tabs:
+      -
+        fields:
+          29e1e561-03e0-48e6-aa50-db0fb6e3cfd9:
+            required: true
+            sortOrder: 1
+          657f4c29-3c6a-4a3a-961c-4d62db1d8388:
+            required: true
+            sortOrder: 2
+          81fe4a53-33ce-4303-b700-c33aea9daa65:
+            required: true
+            sortOrder: 3
+        name: Content
+        sortOrder: 1
+fields:
+  29e1e561-03e0-48e6-aa50-db0fb6e3cfd9:
+    contentColumnType: string
+    fieldGroup: null
+    handle: image
+    instructions: ''
+    name: Image
+    searchable: true
+    settings:
+      allowedKinds: null
+      defaultUploadLocationSource: 'volume:363f5ba4-c212-4c6e-8c67-563b1735f0d4'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: ''
+      restrictFiles: ''
+      selectionLabel: ''
+      singleUploadLocationSource: 'volume:363f5ba4-c212-4c6e-8c67-563b1735f0d4'
+      singleUploadLocationSubpath: ''
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: ''
+      validateRelatedElements: ''
+      viewMode: large
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  657f4c29-3c6a-4a3a-961c-4d62db1d8388:
+    contentColumnType: text
+    fieldGroup: null
+    handle: body
+    instructions: ''
+    name: Body
+    searchable: true
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: Standard.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\redactor\Field
+  81fe4a53-33ce-4303-b700-c33aea9daa65:
+    contentColumnType: text
+    fieldGroup: null
+    handle: linkit
+    instructions: ''
+    name: Link
+    searchable: true
+    settings:
+      allowCustomText: '1'
+      allowTarget: '1'
+      allowedLinkNames: '*'
+      autoNoReferrer: '1'
+      defaultLinkName: entry
+      defaultText: ''
+      enableAriaLabel: ''
+      enableTitle: '1'
+      typeSettings:
+        __assoc__:
+          -
+            - asset
+            -
+              __assoc__:
+                -
+                  - sources
+                  - '*'
+                -
+                  - allowCustomQuery
+                  - ''
+          -
+            - category
+            -
+              __assoc__:
+                -
+                  - sources
+                  - '*'
+                -
+                  - allowCustomQuery
+                  - ''
+          -
+            - entry
+            -
+              __assoc__:
+                -
+                  - sources
+                  - '*'
+                -
+                  - allowCustomQuery
+                  - '1'
+          -
+            - site
+            -
+              __assoc__:
+                -
+                  - sites
+                  - '*'
+          -
+            - user
+            -
+              __assoc__:
+                -
+                  - sources
+                  - '*'
+                -
+                  - allowCustomQuery
+                  - ''
+          -
+            - custom
+            -
+              __assoc__:
+                -
+                  - disableValidation
+                  - ''
+                -
+                  - allowAliases
+                  - '1'
+          -
+            - email
+            -
+              __assoc__:
+                -
+                  - disableValidation
+                  - ''
+                -
+                  - allowAliases
+                  - ''
+          -
+            - tel
+            -
+              __assoc__:
+                -
+                  - disableValidation
+                  - ''
+                -
+                  - allowAliases
+                  - ''
+          -
+            - url
+            -
+              __assoc__:
+                -
+                  - disableValidation
+                  - ''
+                -
+                  - allowAliases
+                  - '1'
+    translationKeyFormat: null
+    translationMethod: site
+    type: typedlinkfield\fields\LinkField

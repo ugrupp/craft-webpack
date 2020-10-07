@@ -1,0 +1,145 @@
+dateModified: 1602073363
+email:
+  fromEmail: $MAIL_SYSTEM_FROM_MAIL
+  fromName: $MAIL_SYSTEM_FROM_NAME
+  template: null
+  transportSettings:
+    encryptionMethod: ssl
+    host: $SMTP_HOST
+    password: $SMTP_PASSWORD
+    port: $SMTP_PORT
+    timeout: '10'
+    useAuthentication: '1'
+    username: $SMTP_USER
+  transportType: craft\mail\transportadapters\Smtp
+plugins:
+  command-palette:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.0.0
+    settings:
+      elementSearchElementTypes:
+        asset:
+          elementType: Asset
+          enabled: ''
+        category:
+          elementType: Category
+          enabled: ''
+        entry:
+          elementType: Entry
+          enabled: '1'
+        globalset:
+          elementType: 'Global Set'
+          enabled: '1'
+        matrixblock:
+          elementType: 'Matrix Block'
+          enabled: ''
+        supertableblock:
+          elementType: 'SuperTable Block'
+          enabled: ''
+        tag:
+          elementType: Tag
+          enabled: ''
+        user:
+          elementType: User
+          enabled: ''
+      pluginName: ''
+      theme: 'Palette Craft.css'
+  cp-field-inspect:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  dumper:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  empty-coalesce:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  expanded-singles:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  field-manager:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  imager:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.0.0
+  recentchanges:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  redactor:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.3.0
+  redactor-custom-styles:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  seo:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.1.1
+    settings:
+      description: ''
+      facebookAppId: ''
+      metaTemplate: _meta.twig
+      robots:
+        - ''
+        - ''
+        - ''
+        - ''
+        - ''
+        - ''
+      robotsTxt: "{# Sitemap URL #}\nSitemap: {{ url(seo.sitemapName ~ '.xml') }}\n\n{# Disallows #}\n{% if craft.app.config.env != 'production' %}\n\n{# Disallow access to everything when NOT in production #}\nUser-agent: *\nDisallow: /\n\n{% else %}\n\n{# Disallow access to cpresources/ when live #}\nUser-agent: *\nDisallow: /cpresources/\n\n{% endif %}"
+      sitemapLimit: '1000'
+      sitemapName: sitemap
+      socialImage: null
+      title:
+        -
+          key: '1'
+          locked: '0'
+          template: '{title}'
+        -
+          key: '2'
+          locked: '1'
+          template: ' - {{ siteName }}'
+      titleSuffix: null
+      twitterHandle: ''
+  smith:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  super-table:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.2.1
+  twigpack:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  typedlinkfield:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  typogrify:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+system:
+  edition: pro
+  live: true
+  name: 'Craft Webpack Scaffold'
+  schemaVersion: 3.5.13
+  timeZone: Europe/Berlin
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: ''
+  photoVolumeUid: null
+  requireEmailVerification: true

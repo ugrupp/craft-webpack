@@ -1,0 +1,19 @@
+enableVersioning: true
+handle: menu
+name: Menu
+propagationMethod: all
+siteSettings:
+  610abf1d-0955-4e63-91d9-1cb77062c2ea:
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: ''
+  665b92a3-8815-4c5e-9908-277d2d6ea628:
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: ''
+structure:
+  maxLevels: 3
+  uid: 3d2f5bb4-c428-4877-b3bb-1dc475502673
+type: structure

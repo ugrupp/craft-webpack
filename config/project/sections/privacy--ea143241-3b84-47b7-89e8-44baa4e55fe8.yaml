@@ -1,0 +1,20 @@
+enableVersioning: true
+handle: privacy
+name: Privacy
+previewTargets:
+  -
+    label: 'Primary entry page'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  610abf1d-0955-4e63-91d9-1cb77062c2ea:
+    enabledByDefault: true
+    hasUrls: true
+    template: _routers/page
+    uriFormat: privacy
+  665b92a3-8815-4c5e-9908-277d2d6ea628:
+    enabledByDefault: true
+    hasUrls: true
+    template: _routers/page
+    uriFormat: datenschutz
+type: single

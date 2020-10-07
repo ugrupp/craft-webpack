@@ -1,0 +1,21 @@
+fieldLayouts:
+  1b99ec98-a4dd-4e16-af6b-3bc9a59cbacb:
+    tabs:
+      -
+        elements:
+          -
+            instructions: null
+            label: Title
+            type: craft\fieldlayoutelements\EntryTitleField
+          -
+            fieldUid: 8fbaf8ac-b5a8-44c6-819a-b2312acf1639
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: Menu
+        sortOrder: 1
+handle: menuItem
+hasTitleField: false
+name: 'Menu item'
+section: ad6c0b8f-c9fb-4cc8-9eeb-01cbbc64ca3a
+sortOrder: 1
+titleFormat: '{menuLink.getText()}'

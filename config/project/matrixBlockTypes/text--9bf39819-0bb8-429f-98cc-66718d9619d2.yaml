@@ -1,0 +1,167 @@
+field: a2dcd655-a57b-404b-af71-b272c5ed6621
+fieldLayouts:
+  c9a12436-e7fe-4023-b7a5-b99ea4b8eca7:
+    tabs:
+      -
+        fields:
+          2237d837-d9d3-4ce3-884a-b64e435842a4:
+            required: true
+            sortOrder: 1
+          42d8451c-ba6f-473a-9bd4-7293a18e0936:
+            required: false
+            sortOrder: 3
+          73fb5471-67b3-40b7-8f1f-523803c3f6ea:
+            required: true
+            sortOrder: 2
+        name: Content
+        sortOrder: 1
+fields:
+  2237d837-d9d3-4ce3-884a-b64e435842a4:
+    contentColumnType: text
+    fieldGroup: null
+    handle: text
+    instructions: ''
+    name: Text
+    searchable: true
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: Standard.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\redactor\Field
+  42d8451c-ba6f-473a-9bd4-7293a18e0936:
+    contentColumnType: string
+    fieldGroup: null
+    handle: spacing
+    instructions: ''
+    name: Spacing
+    searchable: true
+    settings:
+      multi: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - 'Remove Top Spacing'
+            -
+              - value
+              - noTopSpacing
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 'Remove Bottom Spacing'
+            -
+              - value
+              - noBottomSpacing
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 'Keep First Text Element Top Spacing'
+            -
+              - value
+              - keepRichtextTopSpacing
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 'Keep Last Text Element Bottom Spacing'
+            -
+              - value
+              - keepRichtextBottomSpacing
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Checkboxes
+  73fb5471-67b3-40b7-8f1f-523803c3f6ea:
+    contentColumnType: string
+    fieldGroup: null
+    handle: width
+    instructions: ''
+    name: Width
+    searchable: true
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - 'Extra large'
+            -
+              - value
+              - xl
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Large
+            -
+              - value
+              - lg
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Medium
+            -
+              - value
+              - md
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - Small
+            -
+              - value
+              - sm
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 'Extra small'
+            -
+              - value
+              - xs
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Dropdown
+handle: text
+name: Text
+sortOrder: 1

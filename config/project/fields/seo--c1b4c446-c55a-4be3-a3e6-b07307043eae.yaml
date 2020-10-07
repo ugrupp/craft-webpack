@@ -1,0 +1,23 @@
+contentColumnType: text
+fieldGroup: 62181779-bbb0-4dca-a87b-59910072f35a
+handle: seo
+instructions: ''
+name: SEO
+searchable: true
+settings:
+  description: ''
+  hideSocial: ''
+  robots:
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  socialImage: null
+  suffixAsPrefix: null
+  title: null
+  titleSuffix: null
+translationKeyFormat: null
+translationMethod: site
+type: ether\seo\fields\SeoField

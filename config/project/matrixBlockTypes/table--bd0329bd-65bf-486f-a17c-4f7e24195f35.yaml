@@ -1,0 +1,279 @@
+field: a2dcd655-a57b-404b-af71-b272c5ed6621
+fieldLayouts:
+  aa453f9f-bc59-480b-a4b5-c8c4ebaf265c:
+    tabs:
+      -
+        fields:
+          357569b6-3054-43d0-9cb4-f4e0fa0e7737:
+            required: false
+            sortOrder: 6
+          549475c0-be8b-4651-9164-d73fababada4:
+            required: false
+            sortOrder: 4
+          690c04a3-3fd0-4332-b37c-626be37b2974:
+            required: false
+            sortOrder: 3
+          896716a1-7d05-46ea-bebf-a40161429ff2:
+            required: false
+            sortOrder: 5
+          ac618106-0e6d-4389-9c23-876a3a8167f4:
+            required: false
+            sortOrder: 2
+          f4fddd3d-70b1-4845-b6ae-3e4016199993:
+            required: true
+            sortOrder: 1
+        name: Content
+        sortOrder: 1
+fields:
+  357569b6-3054-43d0-9cb4-f4e0fa0e7737:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: responsive
+    instructions: ''
+    name: Responsive
+    searchable: true
+    settings:
+      default: '1'
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Lightswitch
+  549475c0-be8b-4651-9164-d73fababada4:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: headColumn
+    instructions: ''
+    name: 'Head column'
+    searchable: true
+    settings:
+      default: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Lightswitch
+  690c04a3-3fd0-4332-b37c-626be37b2974:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: headRow
+    instructions: ''
+    name: 'Head row'
+    searchable: true
+    settings:
+      default: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Lightswitch
+  896716a1-7d05-46ea-bebf-a40161429ff2:
+    contentColumnType: string
+    fieldGroup: null
+    handle: caption
+    instructions: ''
+    name: Caption
+    searchable: true
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: string
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  ac618106-0e6d-4389-9c23-876a3a8167f4:
+    contentColumnType: text
+    fieldGroup: null
+    handle: width
+    instructions: 'Set the column''s width, e.g. 30% or 100px'
+    name: Width
+    searchable: true
+    settings:
+      addRowLabel: 'Add a row'
+      columnType: text
+      columns:
+        __assoc__:
+          -
+            - col1
+            -
+              __assoc__:
+                -
+                  - heading
+                  - 'Width Column 1'
+                -
+                  - handle
+                  - widthColumn1
+                -
+                  - width
+                  - ''
+                -
+                  - type
+                  - singleline
+          -
+            - col2
+            -
+              __assoc__:
+                -
+                  - heading
+                  - 'Width Column 2'
+                -
+                  - handle
+                  - widthColumn2
+                -
+                  - width
+                  - ''
+                -
+                  - type
+                  - singleline
+          -
+            - col3
+            -
+              __assoc__:
+                -
+                  - heading
+                  - 'Width Column 3'
+                -
+                  - handle
+                  - widthColumn3
+                -
+                  - width
+                  - ''
+                -
+                  - type
+                  - singleline
+          -
+            - col4
+            -
+              __assoc__:
+                -
+                  - heading
+                  - 'Width Column 4'
+                -
+                  - handle
+                  - widthColumn4
+                -
+                  - width
+                  - ''
+                -
+                  - type
+                  - singleline
+          -
+            - col5
+            -
+              __assoc__:
+                -
+                  - heading
+                  - 'Width Column 5'
+                -
+                  - handle
+                  - widthColumn5
+                -
+                  - width
+                  - ''
+                -
+                  - type
+                  - singleline
+          -
+            - col6
+            -
+              __assoc__:
+                -
+                  - heading
+                  - 'Width Column 6'
+                -
+                  - handle
+                  - widthColumn6
+                -
+                  - width
+                  - ''
+                -
+                  - type
+                  - singleline
+      defaults:
+        -
+          __assoc__:
+            -
+              - col1
+              - ''
+            -
+              - col2
+              - ''
+            -
+              - col3
+              - ''
+            -
+              - col4
+              - ''
+            -
+              - col5
+              - ''
+            -
+              - col6
+              - ''
+      maxRows: '1'
+      minRows: '1'
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Table
+  f4fddd3d-70b1-4845-b6ae-3e4016199993:
+    contentColumnType: string
+    fieldGroup: null
+    handle: table
+    instructions: ''
+    name: Table
+    searchable: true
+    settings:
+      columns:
+        __assoc__:
+          -
+            - 4ffc7acb-5922-435c-958b-21adc920699f
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - 8887e00c-b46a-498e-acca-d4098d58d162
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - 9a3c2975-94ad-4f63-8ac3-87df073add2c
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - ab0e9e39-0e0d-4dd9-9bbe-d18bcd0df1cc
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - dc320957-328f-45a3-a8b8-0340ba554c2c
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - ebefdefa-a53d-4644-8e85-895b09af85a0
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+      contentTable: '{{%stc_3_table}}'
+      fieldLayout: row
+      maxRows: ''
+      minRows: ''
+      propagationMethod: all
+      selectionLabel: ''
+      staticField: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: verbb\supertable\fields\SuperTableField
+handle: table
+name: Table
+sortOrder: 3

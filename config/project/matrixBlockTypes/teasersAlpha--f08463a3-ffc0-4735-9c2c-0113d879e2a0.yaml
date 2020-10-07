@@ -1,0 +1,56 @@
+field: a2dcd655-a57b-404b-af71-b272c5ed6621
+fieldLayouts:
+  75d12041-facd-4ad2-9f14-1a6820fbd6c9:
+    tabs:
+      -
+        fields:
+          e4af480c-70ce-465d-b323-42c79a1ca454:
+            required: true
+            sortOrder: 1
+        name: Content
+        sortOrder: 1
+fields:
+  e4af480c-70ce-465d-b323-42c79a1ca454:
+    contentColumnType: string
+    fieldGroup: null
+    handle: teasers
+    instructions: ''
+    name: Teasers
+    searchable: true
+    settings:
+      columns:
+        __assoc__:
+          -
+            - 29e1e561-03e0-48e6-aa50-db0fb6e3cfd9
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - 657f4c29-3c6a-4a3a-961c-4d62db1d8388
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - 81fe4a53-33ce-4303-b700-c33aea9daa65
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+      contentTable: '{{%stc_7_teasers}}'
+      fieldLayout: row
+      maxRows: ''
+      minRows: ''
+      propagationMethod: all
+      selectionLabel: 'Add teaser'
+      staticField: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: verbb\supertable\fields\SuperTableField
+handle: teasersAlpha
+name: Teasers
+sortOrder: 7

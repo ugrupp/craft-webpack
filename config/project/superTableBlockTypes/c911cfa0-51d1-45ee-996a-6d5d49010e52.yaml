@@ -1,0 +1,153 @@
+field: f4fddd3d-70b1-4845-b6ae-3e4016199993
+fieldLayouts:
+  24ff135d-dc3c-4348-ba07-b049c72876c6:
+    tabs:
+      -
+        fields:
+          4ffc7acb-5922-435c-958b-21adc920699f:
+            required: false
+            sortOrder: 1
+          8887e00c-b46a-498e-acca-d4098d58d162:
+            required: false
+            sortOrder: 6
+          9a3c2975-94ad-4f63-8ac3-87df073add2c:
+            required: false
+            sortOrder: 2
+          ab0e9e39-0e0d-4dd9-9bbe-d18bcd0df1cc:
+            required: false
+            sortOrder: 4
+          dc320957-328f-45a3-a8b8-0340ba554c2c:
+            required: false
+            sortOrder: 5
+          ebefdefa-a53d-4644-8e85-895b09af85a0:
+            required: false
+            sortOrder: 3
+        name: Content
+        sortOrder: 1
+fields:
+  4ffc7acb-5922-435c-958b-21adc920699f:
+    contentColumnType: text
+    fieldGroup: null
+    handle: column1
+    instructions: ''
+    name: 'Column 1'
+    searchable: true
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: Standard.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\redactor\Field
+  8887e00c-b46a-498e-acca-d4098d58d162:
+    contentColumnType: text
+    fieldGroup: null
+    handle: column6
+    instructions: ''
+    name: 'Column 6'
+    searchable: true
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: Standard.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\redactor\Field
+  9a3c2975-94ad-4f63-8ac3-87df073add2c:
+    contentColumnType: text
+    fieldGroup: null
+    handle: column2
+    instructions: ''
+    name: 'Column 2'
+    searchable: true
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: Standard.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\redactor\Field
+  ab0e9e39-0e0d-4dd9-9bbe-d18bcd0df1cc:
+    contentColumnType: text
+    fieldGroup: null
+    handle: column4
+    instructions: ''
+    name: 'Column 4'
+    searchable: true
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: Standard.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\redactor\Field
+  dc320957-328f-45a3-a8b8-0340ba554c2c:
+    contentColumnType: text
+    fieldGroup: null
+    handle: column5
+    instructions: ''
+    name: 'Column 5'
+    searchable: true
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: Standard.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\redactor\Field
+  ebefdefa-a53d-4644-8e85-895b09af85a0:
+    contentColumnType: text
+    fieldGroup: null
+    handle: column3
+    instructions: ''
+    name: 'Column 3'
+    searchable: true
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: Standard.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\redactor\Field

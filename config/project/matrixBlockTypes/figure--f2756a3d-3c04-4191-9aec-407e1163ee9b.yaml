@@ -1,0 +1,148 @@
+field: a2dcd655-a57b-404b-af71-b272c5ed6621
+fieldLayouts:
+  c419dd7b-6f93-4e39-8270-298068fd86bb:
+    tabs:
+      -
+        fields:
+          0aa7341f-a475-4f12-adb3-a6b8fd12e53e:
+            required: true
+            sortOrder: 3
+          9d04ec93-67ad-48f9-ad39-427d9ba750d2:
+            required: false
+            sortOrder: 2
+          d21c0e9d-35b5-4a85-9232-789957a79e92:
+            required: true
+            sortOrder: 1
+        name: Content
+        sortOrder: 1
+fields:
+  0aa7341f-a475-4f12-adb3-a6b8fd12e53e:
+    contentColumnType: string
+    fieldGroup: null
+    handle: size
+    instructions: ''
+    name: Size
+    searchable: true
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - 'Full width'
+            -
+              - value
+              - full
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 'Extra Large'
+            -
+              - value
+              - xl
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Large
+            -
+              - value
+              - lg
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - Medium
+            -
+              - value
+              - md
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Small
+            -
+              - value
+              - sm
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 'Extra Small'
+            -
+              - value
+              - xs
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Dropdown
+  9d04ec93-67ad-48f9-ad39-427d9ba750d2:
+    contentColumnType: text
+    fieldGroup: null
+    handle: caption
+    instructions: ''
+    name: Caption
+    searchable: true
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: Simple.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\redactor\Field
+  d21c0e9d-35b5-4a85-9232-789957a79e92:
+    contentColumnType: string
+    fieldGroup: null
+    handle: image
+    instructions: ''
+    name: Image
+    searchable: true
+    settings:
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:363f5ba4-c212-4c6e-8c67-563b1735f0d4'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: ''
+      restrictFiles: '1'
+      selectionLabel: ''
+      singleUploadLocationSource: 'volume:363f5ba4-c212-4c6e-8c67-563b1735f0d4'
+      singleUploadLocationSubpath: ''
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: ''
+      validateRelatedElements: ''
+      viewMode: large
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+handle: figure
+name: Figure
+sortOrder: 2

@@ -32,6 +32,7 @@ set('writable_dirs', [
     'storage/config-backups',
     'storage/logs',
     'storage/runtime',
+    'config/project',
     'web/cpresources',
     'web/imager',
     'web/photos',

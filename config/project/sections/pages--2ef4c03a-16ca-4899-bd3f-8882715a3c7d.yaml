@@ -1,0 +1,42 @@
+enableVersioning: true
+handle: pages
+name: Pages
+previewTargets:
+  1:
+    __assoc__:
+      -
+        - label
+        - Gatsby
+      -
+        - urlFormat
+        - '{{ getenv(''GATSBY_SITE_URL'') }}/{uri}'
+      -
+        - refresh
+        - '1'
+  2:
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  610abf1d-0955-4e63-91d9-1cb77062c2ea:
+    enabledByDefault: true
+    hasUrls: true
+    template: _routers/page
+    uriFormat: '{parent.uri}/{slug}'
+  665b92a3-8815-4c5e-9908-277d2d6ea628:
+    enabledByDefault: true
+    hasUrls: true
+    template: _routers/page
+    uriFormat: '{parent.uri}/{slug}'
+structure:
+  maxLevels: null
+  uid: 4b55f16c-00ba-4133-a9bb-d4eaee59cbb9
+type: structure

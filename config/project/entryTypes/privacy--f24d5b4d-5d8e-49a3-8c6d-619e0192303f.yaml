@@ -1,0 +1,29 @@
+fieldLayouts:
+  530cb2f7-7ca1-4e29-823b-40888bf133a9:
+    tabs:
+      -
+        elements:
+          -
+            instructions: null
+            label: ''
+            type: craft\fieldlayoutelements\EntryTitleField
+          -
+            fieldUid: a2dcd655-a57b-404b-af71-b272c5ed6621
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: Content
+        sortOrder: 1
+      -
+        elements:
+          -
+            fieldUid: c1b4c446-c55a-4be3-a3e6-b07307043eae
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: SEO
+        sortOrder: 2
+handle: privacy
+hasTitleField: false
+name: Privacy
+section: ea143241-3b84-47b7-89e8-44baa4e55fe8
+sortOrder: 1
+titleFormat: '{section.name|raw}'

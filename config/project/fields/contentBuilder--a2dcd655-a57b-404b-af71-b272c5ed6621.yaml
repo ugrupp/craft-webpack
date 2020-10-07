@@ -1,0 +1,14 @@
+contentColumnType: string
+fieldGroup: cab7298a-2d38-439d-9204-b271e752cb63
+handle: contentBuilder
+instructions: ''
+name: 'Content Builder'
+searchable: true
+settings:
+  contentTable: '{{%matrixcontent_contentbuilder}}'
+  maxBlocks: ''
+  minBlocks: ''
+  propagationMethod: none
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

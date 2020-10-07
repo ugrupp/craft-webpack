@@ -1,0 +1,72 @@
+field: a2dcd655-a57b-404b-af71-b272c5ed6621
+fieldLayouts:
+  2d660785-6aa2-4b5a-8a4f-dd8ba467bdad:
+    tabs:
+      -
+        fields:
+          3fcf1c07-4384-4044-815e-0dd70d9ed1da:
+            required: false
+            sortOrder: 3
+          65a2c109-1144-40d5-90a0-158b2c4fbb70:
+            required: false
+            sortOrder: 2
+          d3c07bcb-2ba8-4e76-9e58-545803351e4d:
+            required: true
+            sortOrder: 1
+        name: Content
+        sortOrder: 1
+fields:
+  3fcf1c07-4384-4044-815e-0dd70d9ed1da:
+    contentColumnType: string
+    fieldGroup: null
+    handle: company
+    instructions: ''
+    name: Company
+    searchable: true
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: string
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  65a2c109-1144-40d5-90a0-158b2c4fbb70:
+    contentColumnType: string
+    fieldGroup: null
+    handle: author
+    instructions: ''
+    name: Author
+    searchable: true
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: string
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  d3c07bcb-2ba8-4e76-9e58-545803351e4d:
+    contentColumnType: string
+    fieldGroup: null
+    handle: quote
+    instructions: ''
+    name: Quote
+    searchable: true
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: string
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+handle: blockquote
+name: Blockquote
+sortOrder: 5

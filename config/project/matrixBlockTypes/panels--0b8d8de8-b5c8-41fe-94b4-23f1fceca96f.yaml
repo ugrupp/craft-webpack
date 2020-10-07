@@ -1,0 +1,49 @@
+field: a2dcd655-a57b-404b-af71-b272c5ed6621
+fieldLayouts:
+  8a64bb12-8d2f-4070-8c0a-9f228a710bd4:
+    tabs:
+      -
+        fields:
+          d8fd50e1-7d58-4da7-a3e5-67e3ab3467dc:
+            required: true
+            sortOrder: 1
+        name: Content
+        sortOrder: 1
+fields:
+  d8fd50e1-7d58-4da7-a3e5-67e3ab3467dc:
+    contentColumnType: string
+    fieldGroup: null
+    handle: panels
+    instructions: ''
+    name: Panels
+    searchable: true
+    settings:
+      columns:
+        __assoc__:
+          -
+            - 25c732bd-b25e-4311-9ccf-30130ee35a0e
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - 63594945-f4dd-4173-a595-5d65cd2f815f
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+      contentTable: '{{%stc_8_panels}}'
+      fieldLayout: row
+      maxRows: ''
+      minRows: '1'
+      propagationMethod: none
+      selectionLabel: 'Add panel'
+      staticField: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: verbb\supertable\fields\SuperTableField
+handle: panels
+name: Panels
+sortOrder: 8
